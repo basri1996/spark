@@ -43,7 +43,7 @@ function DealsTable({
     },
     {
       name: "ID",
-      width: "70px",
+      width: "80px",
       sortable: true,
       cell: (row: IDealsResponseObjectTypes) => (
         <Box

@@ -6,7 +6,6 @@ function SingleDeal() {
   const { id } = useParams();
   const { data } = useGetSingleDealQuery({ id });
 
-  console.log(data);
   return <Box>id</Box>;
 }
 
