@@ -8,12 +8,14 @@ import queryClient from "./query/queryClient";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "./theme/theme";
 import { AuthContextProvider } from "./context/AuthContext";
+import keycloak from "./keycloak/keycloak";
+import { ReactKeycloakProvider } from "@react-keycloak/web";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
+  <ReactKeycloakProvider authClient={keycloak}>
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <AuthContextProvider>
@@ -21,5 +23,5 @@ root.render(
         </AuthContextProvider>
       </ThemeProvider>
     </QueryClientProvider>
-  </React.StrictMode>
+  </ReactKeycloakProvider>
 );

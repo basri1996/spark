@@ -5,7 +5,7 @@ export const activeColumns = [
       status: "CLIENT_IN_PROGRESS",
       label: "Clients in Progress",
     },
-    deal: [
+    deals: [
       {
         id: "134",
         name: "დათუნა ბასილაძე",
@@ -35,7 +35,7 @@ export const activeColumns = [
       status: "CLIENT_IN_PROGRESS",
       label: "Clients in Progress",
     },
-    deal: [
+    deals: [
       {
         id: "134",
         name: "დათუნა ბასილაძე",
@@ -65,7 +65,7 @@ export const activeColumns = [
       status: "CLIENT_IN_PROGRESS",
       label: "Clients in Progress",
     },
-    deal: [
+    deals: [
       {
         id: "134",
         name: "დათუნა ბასილაძე",
@@ -95,7 +95,7 @@ export const activeColumns = [
       status: "CLIENT_IN_PROGRESS",
       label: "Clients in Progress",
     },
-    deal: [
+    deals: [
       {
         id: "134",
         name: "დათუნა ბასილაძე",
@@ -125,7 +125,7 @@ export const activeColumns = [
       status: "CLIENT_IN_PROGRESS",
       label: "Clients in Progress",
     },
-    deal: [
+    deals: [
       {
         id: "134",
         name: "დათუნა ბასილაძე",
@@ -155,7 +155,7 @@ export const activeColumns = [
       status: "CLIENT_IN_PROGRESS",
       label: "Clients in Progress",
     },
-    deal: [
+    deals: [
       {
         id: "134",
         name: "დათუნა ბასილაძე",
@@ -185,7 +185,7 @@ export const activeColumns = [
       status: "CLIENT_IN_PROGRESS",
       label: "Clients in Progress",
     },
-    deal: [
+    deals: [
       {
         id: "134",
         name: "დათუნა ბასილაძე",

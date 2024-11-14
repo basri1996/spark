@@ -17,7 +17,7 @@ const useGetDealsListQuery = ({
       getDealsList({
         dealStatuses,
         ownerExternalIds,
-        pageNumber,
+        pageNumber: pageNumber - 1,
         pageSize,
         progressStatuses,
         searchText,

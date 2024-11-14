@@ -1,5 +1,4 @@
 import { Card, Typography } from "@mui/material";
-
 import { ColumnCardTypes } from "./types";
 import { useStyles } from "./useStyles";
 

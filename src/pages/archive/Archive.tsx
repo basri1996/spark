@@ -27,8 +27,8 @@ function Archive() {
       searchText: e.target.value,
     }));
   };
-  const handlePageChange = (pageSize: number) => {
-    setParams((prev) => ({ ...prev, pageSize }));
+  const handlePageChange = (pageNumber: number) => {
+    setParams((prev) => ({ ...prev, pageNumber }));
   };
 
   const handlePerRowsChange = (pageSize: number, pageNumber: number) => {
