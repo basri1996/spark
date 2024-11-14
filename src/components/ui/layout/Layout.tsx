@@ -14,9 +14,12 @@ function Layout() {
   };
 
   useEffect(() => {
-    console.log(keycloak);
-    keycloak?.login();
-  }, []);
+    if (!keycloak?.authenticated) {
+      keycloak?.login({ redirectUrl: window.location.href });
+    }
+  }, [keycloak, initialized]);
+
+  if (!keycloak?.authenticated) return null;
 
   return (
     <Box>

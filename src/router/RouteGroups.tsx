@@ -13,6 +13,10 @@ const routes: RouteObject[] = [
     element: <Layout />,
     children: [
       {
+        index: true,
+        element: <Deals />,
+      },
+      {
         path: "deals",
         element: <Deals />,
       },
