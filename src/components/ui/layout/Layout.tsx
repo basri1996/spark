@@ -19,8 +19,6 @@ function Layout() {
     }
   }, [keycloak, initialized]);
 
-  if (!keycloak?.authenticated) return null;
-
   return (
     <Box>
       <Sidebar setOpen={setOpen} open={open} />
