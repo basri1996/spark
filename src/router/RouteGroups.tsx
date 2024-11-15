@@ -1,7 +1,6 @@
 import { createBrowserRouter, RouteObject } from "react-router-dom";
 import Deals from "../pages/deals/Deals";
-import Layout from "../components/ui/layout/Layout";
-// import SignIn from "../pages/singIn/SignIn";
+import Layout from "../components/layout/Layout";
 import Active from "../pages/active/Active";
 import OnHold from "../pages/onHold/OnHold";
 import Archive from "../pages/archive/Archive";
@@ -36,10 +35,6 @@ const routes: RouteObject[] = [
         path: "archive",
         element: <Archive />,
       },
-      // {
-      //   path: "sign-in",
-      //   element: <SignIn />,
-      // },
     ],
   },
 ];

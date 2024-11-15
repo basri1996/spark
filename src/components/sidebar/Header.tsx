@@ -1,9 +1,9 @@
 import { Box, Button } from "@mui/material";
 import React, { useState } from "react";
-import UserLogo from "../../../../assets/icons/HeaderUserLogo.svg";
-import Menu from "../../../../assets/icons/menu.svg";
+import UserLogo from "../../assets/icons/HeaderUserLogo.svg";
+import Menu from "../../assets/icons/menu.svg";
 import { useKeycloak } from "@react-keycloak/web";
-import PopOver from "../../PopOver";
+import PopOver from "../common/PopOver";
 
 interface Props {
   ToggleSideBar: () => void;

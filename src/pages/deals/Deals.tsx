@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
-import DealsTable from "../../components/ui/tables/DealsTable";
-import TextInput from "../../components/ui/formElements/TextInput";
+import DealsTable from "../../components/tables/DealsTable";
+import TextInput from "../../components/fields/TextInput";
 import { useStyles } from "./useStyles";
 import useGetDealsListQuery from "../../common/queries/useGetDealsListQuery";
 import React, { useState } from "react";

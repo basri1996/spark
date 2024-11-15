@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import Sidebar from "./sidebar/SideBar";
-import Header from "./sidebar/Header";
 import { useKeycloak } from "@react-keycloak/web";
+import Sidebar from "../sidebar/SideBar";
+import Header from "../sidebar/Header";
 
 function Layout() {
   const [open, setOpen] = useState<boolean>(false);

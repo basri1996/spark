@@ -100,3 +100,11 @@ export interface ISingleDealResponse {
   deal: IDealsResponseObjectTypes;
   activities: IActivity[];
 }
+
+export interface IStatusesObject {
+  id: number;
+  status: string;
+  label: string;
+  order: number;
+}
+export type IStatusesResponse = IStatusesObject[];

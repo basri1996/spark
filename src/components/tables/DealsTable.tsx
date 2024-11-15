@@ -4,7 +4,7 @@ import DataTable from "react-data-table-component";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import { useStyles } from "./useStyles";
-import { IDealsResponseObjectTypes } from "../../../common/types";
+import { IDealsResponseObjectTypes } from "../../common/types";
 import { useNavigate } from "react-router-dom";
 
 function DealsTable({

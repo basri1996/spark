@@ -1,6 +1,6 @@
 import React from "react";
 import { InputAdornment, TextField } from "@mui/material";
-import Search from "../../../assets/icons/search.svg";
+import Search from "../../assets/icons/search.svg";
 
 const SearchIcon = ({ width = 20, height = 20, color = "#6C63FF" }) => (
   <img

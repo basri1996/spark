@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
-import TextInput from "../../components/ui/formElements/TextInput";
-import DealsTable from "../../components/ui/tables/DealsTable";
+import TextInput from "../../components/fields/TextInput";
+import DealsTable from "../../components/tables/DealsTable";
 import { useStyles } from "./useStyles";
 import { useState } from "react";
 import useDebounce from "../../hooks/useDebounce";
