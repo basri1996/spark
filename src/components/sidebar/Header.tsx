@@ -23,7 +23,7 @@ function Header({ ToggleSideBar }: Props) {
     setAnchorEl(null);
   };
 
-  const open = Boolean(anchorEl); // Popover is open if anchorEl is set
+  const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
   return (
@@ -59,12 +59,12 @@ function Header({ ToggleSideBar }: Props) {
         open={open}
       >
         <Button
-          sx={(theme) => ({
-            fontSize: "12px",
-            "&:hover": {
-              backgroundColor: theme.palette.background.default,
-            },
-          })}
+          sx={{
+            backgroundColor: (theme) => theme.palette.background.default,
+            paddingX: "30px",
+            border: "1px solid #5080ff",
+            borderRadius: "5px",
+          }}
           onClick={() => keycloak.logout()}
         >
           Log out

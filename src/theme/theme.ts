@@ -120,10 +120,10 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           position: "absolute",
-          color: "#667085",
+          color: "#5080ff",
           "& .MuiInputBase-root": {},
           "&.Mui-focused": {
-            color: "#6C63FF",
+            color: "#5080ff",
             padding: "0px",
             top: "0px",
           },
@@ -155,7 +155,7 @@ export const theme = createTheme({
           borderRadius: "12px",
 
           "& fieldset": {
-            borderColor: "#D0D5DD",
+            borderColor: "#5080ff",
           },
           "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
             border: "1px solid #5080ff",

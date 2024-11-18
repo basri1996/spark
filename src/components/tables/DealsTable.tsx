@@ -47,7 +47,7 @@ function DealsTable({
       sortable: true,
       cell: (row: IDealsResponseObjectTypes) => (
         <Box
-          onClick={() => navigate(`deals/${row.id}`)}
+          onClick={() => navigate(`/deals/${row.id}`)}
           sx={styles.tableBoxStyles}
         >
           {row.id}

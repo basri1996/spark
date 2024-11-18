@@ -16,6 +16,7 @@ import StepConnector, {
 } from "@mui/material/StepConnector";
 import { StepIconProps } from "@mui/material/StepIcon";
 import useGetDealStatusListQuery from "../../common/queries/useGetDealStatusListQuery";
+import { steps } from "../../dummyData";
 
 const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -108,7 +109,7 @@ export default function CustomizedSteppers({
 }: {
   activeStep: number | undefined;
 }) {
-  const { data: steps } = useGetDealStatusListQuery();
+  // const { data: steps } = useGetDealStatusListQuery();
   return (
     <Stack
       sx={{

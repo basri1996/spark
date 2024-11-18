@@ -5,8 +5,6 @@ const SimpleStepper = ({ steps }: { steps: IActivity[] }) => {
   return (
     <Box
       sx={{
-        width: "100%",
-        maxWidth: 400,
         paddingX: {
           md: "50px",
         },
@@ -16,7 +14,9 @@ const SimpleStepper = ({ steps }: { steps: IActivity[] }) => {
         {steps?.map((item) => (
           <Step key={item?.id} completed={true}>
             <StepLabel>
-              <Typography variant="body1">{item?.activityType}</Typography>
+              <Typography sx={{ fontSize: "12px" }}>
+                {item?.activityType}
+              </Typography>
             </StepLabel>
           </Step>
         ))}

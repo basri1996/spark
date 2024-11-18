@@ -577,3 +577,106 @@ export const deals = {
   totalElements: 25,
   totalPages: 25,
 };
+
+export const steps = [
+  {
+    id: 1,
+    status: "CLIENTS_IN_PROGRESS",
+    label: "Clients in Progress",
+    order: 0,
+  },
+  {
+    id: 1,
+    status: "CLIENTS_IN_PROGRESS",
+    label: "Clients in Progress",
+    order: 0,
+  },
+  {
+    id: 1,
+    status: "CLIENTS_IN_PROGRESS",
+    label: "Clients in Progress",
+    order: 0,
+  },
+  {
+    id: 1,
+    status: "CLIENTS_IN_PROGRESS",
+    label: "Clients in Progress",
+    order: 0,
+  },
+  {
+    id: 1,
+    status: "CLIENTS_IN_PROGRESS",
+    label: "Clients in Progress",
+    order: 0,
+  },
+  {
+    id: 1,
+    status: "CLIENTS_IN_PROGRESS",
+    label: "Clients in Progress",
+    order: 0,
+  },
+  {
+    id: 1,
+    status: "CLIENTS_IN_PROGRESS",
+    label: "Clients in Progress",
+    order: 0,
+  },
+];
+
+export const activities = [
+  {
+    id: 9752,
+    activityType: "CLIENT_REJECTED_COMMUNICATION",
+    activityDate: "2024-07-17T12:14:44",
+    comment: "",
+    attributes: [
+      {
+        key: "NUMBER_OF_COMMUNICATION_ATTEMPTS",
+        value: "2",
+      },
+    ],
+  },
+  {
+    id: 9753,
+    activityType: "CLIENT_REDIRECTED_TO_BRANCH",
+    activityDate: "2024-07-19T08:49:00",
+    comment: "",
+    attributes: [
+      {
+        key: "BRANCH_ID",
+        value: "4",
+      },
+      {
+        key: "BRANCH_NAME",
+        value: '"ბაზისბანკი" ლესელიძის #2 განყოფილება',
+      },
+      {
+        key: "COMMUNICATION_DATE",
+        value: "2024-07-19",
+      },
+    ],
+  },
+];
+
+export const selectOptions = [
+  {
+    productCode: "CONSUMER_LOAN",
+    name: "სამომხმარებლო სესხი",
+  },
+  {
+    productCode: "MORTGAGE_LOAN",
+    name: "იპოთეკური სესხი",
+  },
+  {
+    productCode: "SECURED_CONSUMER_LOAN",
+    name: "უზრუნველყოფილი სამომხმარებლო სესხი",
+  },
+  {
+    productCode: "MEGO_CARD",
+    name: "მეგობარათი",
+  },
+  {
+    productCode: "OVERDRAFT",
+    name: "ოვერდრაფტი",
+  },
+];
