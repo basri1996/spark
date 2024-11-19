@@ -1,7 +1,7 @@
 import { Box, Card } from "@mui/material";
 import DataTable from "react-data-table-component";
 import { useStyles } from "./useStyles";
-import { IDealsResponseObjectTypes, Lead } from "../../common/types";
+import { Lead } from "../../common/types";
 
 function SimpleTable({ list }: { list: Lead[] }) {
   const styles = useStyles();

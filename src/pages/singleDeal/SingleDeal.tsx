@@ -7,7 +7,6 @@ import DealsActionsCard from "./DealsActionsCard";
 import SimpleStepper from "../../components/common/SimpleStepper";
 import SimpleTable from "../../components/tables/SimpleTable";
 import VerticalSteppers from "../../components/common/VerticalSteppers";
-import { activities } from "../../dummyData";
 import {
   SignleDealInformationBox,
   SingleDealCardMainStyle,
@@ -34,7 +33,7 @@ function SingleDeal() {
         <Box sx={SignleDealInformationBox}>
           <SingleDealCard information={data?.deal} />
           <DealsActionsCard />
-          <SimpleStepper steps={data?.activities || activities} />
+          <SimpleStepper steps={data?.activities || []} />
         </Box>
       </Box>
       <SimpleTable list={data?.deal?.leads || []} />

@@ -1,5 +1,5 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
 interface Props {
@@ -26,7 +26,7 @@ function ControlledSingleSelect({
       inputRef?.current?.offsetWidth &&
         setMaxWidth(inputRef?.current?.offsetWidth);
     }
-  }, [inputRef.current]);
+  }, [inputRef, setMaxWidth]);
 
   return (
     <Controller

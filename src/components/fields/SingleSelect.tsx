@@ -5,7 +5,7 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Props {
   onChange: (event: SelectChangeEvent<string>) => void;
@@ -32,7 +32,7 @@ function SingleSelect({
       inputRef?.current?.offsetWidth &&
         setMaxWidth(inputRef?.current?.offsetWidth);
     }
-  }, [inputRef.current]);
+  }, [setMaxWidth]);
 
   return (
     <FormControl fullWidth>

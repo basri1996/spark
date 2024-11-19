@@ -23,7 +23,7 @@ function Layout() {
     if (keycloak.token) {
       setPrincipal(jwtDecode(keycloak.token));
     }
-  }, [keycloak, initialized]);
+  }, [keycloak, initialized, setPrincipal]);
 
   if (!keycloak?.authenticated) return null;
 

@@ -1,4 +1,4 @@
-import { Box, CardContent, Typography } from "@mui/material";
+import { Box, CardContent } from "@mui/material";
 import { IDealsResponseObjectTypes } from "../../common/types";
 import { GridBox } from "./useStyles";
 import UserInfo from "./UserInfo";

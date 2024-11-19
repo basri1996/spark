@@ -5,7 +5,7 @@ const UserInfo = ({ icon, title, text, textColor = "#000" }: any) => {
     <Box display={"flex"} gap={"10px"}>
       {icon && (
         <Box>
-          <img src={icon} height={"44px"} />
+          <Box component="img" src={icon} height={"44px"} alt="icon" />
         </Box>
       )}
       <Box display={"flex"} flexDirection={"column"} justifyContent={"center"}>

@@ -43,7 +43,12 @@ function ActionModifyContent({
           name="productCode"
           inputValueKey="productCode"
         />
-        <ControlledInput name="amount" label="Amount" type="number" />
+        <ControlledInput
+          name="amount"
+          label="Amount"
+          type="number"
+          shrink={true}
+        />
         <ControlledSingleSelect
           label="Currency"
           options={Currency}

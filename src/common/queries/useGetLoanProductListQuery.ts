@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { IProductResponse } from "../types";
 import { AxiosError } from "axios";
-import { getDealStatuses } from "../services/commonService";
+import { getProductUrl } from "../services/commonService";
 
 const useGetLoanProductListQuery = () => {
   return useQuery<IProductResponse, AxiosError, IProductResponse>({
-    queryFn: () => getDealStatuses(),
+    queryFn: () => getProductUrl(),
     queryKey: ["useGetLoanProductListQuery"],
     staleTime: Infinity,
     gcTime: Infinity,
