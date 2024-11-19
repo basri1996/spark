@@ -23,15 +23,15 @@ function CallActionContent({
   const queryClient = useQueryClient();
   const cachedData = queryClient.getQueryData<ISingleDealResponse>([
     "useGetSingleDealQuery",
+    id,
   ]);
+  const filteredCash = cachedData?.activities?.find(
+    (el) => el?.activityType === "CLIENT_REJECTED_COMMUNICATION"
+  )?.attributes;
   const callCount =
-    Number(
-      cachedData?.activities
-        ?.find((el) => el?.activityType === "CLIENT_REJECTED_COMMUNICATION")
-        ?.attributes.find(
-          (item) => item.key === "NUMBER_OF_COMMUNICATION_ATTEMPTS"
-        )?.value
-    ) === 3;
+    filteredCash &&
+    Number(filteredCash[filteredCash.length - 1]?.attributes[0].value) ===
+      Number(process.env.REACT_APP_MAX_COMMUNICATION_ATTEMP);
 
   const handleClick = () => {
     if (notAnswered) {

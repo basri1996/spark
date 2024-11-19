@@ -52,7 +52,7 @@ function ActionRedirectContent({
             name="attributes.BRANCH_ID"
             options={branchList || []}
             label="Branch"
-            key="branchId"
+            inputValueKey="branchId"
             content="branchDesc"
           />
         )}

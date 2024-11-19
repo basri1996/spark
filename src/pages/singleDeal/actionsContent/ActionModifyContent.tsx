@@ -41,7 +41,7 @@ function ActionModifyContent({
           label="Product"
           options={selectOptions || []}
           name="productCode"
-          key="productCode"
+          inputValueKey="productCode"
         />
         <ControlledInput name="amount" label="Amount" type="number" />
         <ControlledSingleSelect

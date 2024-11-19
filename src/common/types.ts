@@ -55,15 +55,16 @@ export interface IDealsResponseTypes {
 }
 
 export interface IDealsListParams {
-  dealStatuses?: string[];
+  dealStatuses?: string;
   ownerExternalIds?: string[];
   pageNumber: number;
   pageSize: number;
-  progressStatuses?: string[];
+  progressStatuses?: string;
   searchText?: string;
 }
 
 export interface Attribute {
+  attributes: any;
   key: string;
   value: string;
 }

@@ -8,8 +8,8 @@ import React, {
 } from "react";
 
 interface AuthContextProps {
-  logIn: boolean;
-  setLogIn: Dispatch<SetStateAction<boolean>>;
+  principal: any;
+  setPrincipal: Dispatch<SetStateAction<any>>;
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
@@ -17,10 +17,12 @@ const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [logIn, setLogIn] = useState(false);
+  const [principal, setPrincipal] = useState();
+
+  console.log("principal", principal);
 
   return (
-    <AuthContext.Provider value={{ logIn, setLogIn }}>
+    <AuthContext.Provider value={{ principal, setPrincipal }}>
       {children}
     </AuthContext.Provider>
   );

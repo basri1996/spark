@@ -774,7 +774,7 @@ export const statusType = [
     icon: PhonePausedIcon,
   },
   {
-    id: "ARCHIVE",
+    id: "ARCHIVED",
     label: "Archive",
     icon: ArchiveIcon,
   },

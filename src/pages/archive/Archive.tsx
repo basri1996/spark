@@ -9,7 +9,7 @@ import useGetDealsQuery from "../../common/queries/useGetDealsListQuery";
 function Archive() {
   const styles = useStyles();
   const [params, setParams] = useState({
-    dealStatuses: ["ARCHIVED"],
+    dealStatuses: "ARCHIVED",
     pageNumber: 1,
     pageSize: 10,
     searchText: "",

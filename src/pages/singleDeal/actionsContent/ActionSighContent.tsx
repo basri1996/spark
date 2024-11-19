@@ -82,7 +82,7 @@ function ActionSighContent({
               value={values.comment}
               label="Branch"
               options={branchList || []}
-              key="branchId"
+              inputValueKey="branchId"
               content="branchDesc"
             />
           )}

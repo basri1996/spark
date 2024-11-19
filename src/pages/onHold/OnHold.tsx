@@ -9,7 +9,7 @@ import useGetDealsQuery from "../../common/queries/useGetDealsListQuery";
 function OnHold() {
   const styles = useStyles();
   const [params, setParams] = useState({
-    dealStatuses: ["ON_HOLD"],
+    dealStatuses: "ON_HOLD",
     pageNumber: 1,
     pageSize: 10,
     searchText: "",

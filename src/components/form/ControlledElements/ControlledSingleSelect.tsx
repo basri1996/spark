@@ -6,7 +6,7 @@ interface Props {
   name: string;
   options: any[];
   label: string;
-  key?: string;
+  inputValueKey?: string;
   content?: string;
 }
 
@@ -14,7 +14,7 @@ function ControlledSingleSelect({
   name,
   options,
   label,
-  key = "id",
+  inputValueKey = "id",
   content = "name",
 }: Props) {
   const [maxWidth, setMaxWidth] = useState(0);
@@ -57,7 +57,9 @@ function ControlledSingleSelect({
             }}
           >
             {options.map((option) => (
-              <MenuItem value={option[key]}>{option[content]}</MenuItem>
+              <MenuItem value={option[inputValueKey]}>
+                {option[content]}
+              </MenuItem>
             ))}
           </Select>
         </FormControl>

@@ -9,10 +9,10 @@ import useDebounce from "../../hooks/useDebounce";
 function Deals() {
   const styles = useStyles();
   const [params, setParams] = useState({
-    dealStatuses: ["ACTIVE"],
+    dealStatuses: "ACTIVE",
     pageNumber: 1,
     pageSize: 10,
-    progressStatuses: ["CLIENTS_IN_PROGRESS"],
+    progressStatuses: "CLIENTS_IN_PROGRESS",
     searchText: "",
   });
   const debouncedSearchTerm = useDebounce(params.searchText, 1000);
