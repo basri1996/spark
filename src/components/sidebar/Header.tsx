@@ -8,7 +8,6 @@ import PopOver from "../common/PopOver";
 interface Props {
   ToggleSideBar: () => void;
 }
-
 function Header({ ToggleSideBar }: Props) {
   const { keycloak, initialized } = useKeycloak();
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);

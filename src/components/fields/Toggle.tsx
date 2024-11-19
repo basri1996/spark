@@ -66,7 +66,7 @@ const Toggle = ({
       control={
         <ToggleButton
           defaultChecked={initialChecked}
-          onChange={(event) => onChange && onChange(event)}
+          onChange={(event) => onChange(event.target.checked, id)}
           disabled={disabled}
           id={id}
           checked={checked}

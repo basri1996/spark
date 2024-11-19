@@ -41,14 +41,16 @@ function Archive() {
         <Typography variant="h6" sx={styles.ArchiveTypographyStyles}>
           Archive
         </Typography>
-        <TextInput
-          type="text"
-          placeholder="Search"
-          value={params.searchText}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            handleInputChange(e)
-          }
-        />
+        <Box sx={{ width: "200px" }}>
+          <TextInput
+            type="text"
+            placeholder="Search"
+            value={params.searchText}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              handleInputChange(e)
+            }
+          />
+        </Box>
       </Box>
       <DealsTable
         list={deals?.content}

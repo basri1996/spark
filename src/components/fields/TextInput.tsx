@@ -24,47 +24,45 @@ const TextInput = ({
   placeholder: string;
 }) => {
   return (
-    <div className="flex flex-col gap-2.5 relative ">
-      <TextField
-        type={type}
-        variant="outlined"
-        defaultValue=""
-        value={value}
-        onChange={onChange}
-        fullWidth
-        placeholder={placeholder}
-        InputProps={{
-          inputMode: "numeric",
-          startAdornment: placeholder === "Search" && (
-            <InputAdornment position="start">
-              <SearchIcon />
-            </InputAdornment>
-          ),
-          inputProps: {
-            step: "any",
-            style: {
-              MozAppearance: "textfield",
-            },
-          },
-        }}
-        sx={{
-          "& input[type=number]": {
+    <TextField
+      type={type}
+      variant="outlined"
+      defaultValue=""
+      value={value}
+      onChange={onChange}
+      fullWidth
+      placeholder={placeholder}
+      InputProps={{
+        inputMode: "numeric",
+        startAdornment: placeholder === "Search" && (
+          <InputAdornment position="start">
+            <SearchIcon />
+          </InputAdornment>
+        ),
+        inputProps: {
+          step: "any",
+          style: {
             MozAppearance: "textfield",
           },
-          "& input[type=number]::-webkit-outer-spin-button": {
-            WebkitAppearance: "none",
-            margin: 0,
-          },
-          "& input[type=number]::-webkit-inner-spin-button": {
-            WebkitAppearance: "none",
-            margin: 0,
-          },
-          borderRadius: "12px",
+        },
+      }}
+      sx={{
+        "& input[type=number]": {
+          MozAppearance: "textfield",
+        },
+        "& input[type=number]::-webkit-outer-spin-button": {
+          WebkitAppearance: "none",
+          margin: 0,
+        },
+        "& input[type=number]::-webkit-inner-spin-button": {
+          WebkitAppearance: "none",
+          margin: 0,
+        },
+        borderRadius: "12px",
 
-          "& label": {},
-        }}
-      />
-    </div>
+        "& label": {},
+      }}
+    />
   );
 };
 

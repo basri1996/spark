@@ -5,10 +5,17 @@ interface Props {
   name: string;
   label: string;
   type: string;
-  disabled: boolean;
+  disabled?: boolean;
+  shrink?: boolean;
 }
 
-function ControlledInput({ name, label, type, disabled = false }: Props) {
+function ControlledInput({
+  name,
+  label,
+  type,
+  disabled = false,
+  shrink = false,
+}: Props) {
   const { control } = useFormContext();
   return (
     <Controller
@@ -20,6 +27,9 @@ function ControlledInput({ name, label, type, disabled = false }: Props) {
           disabled={disabled}
           type={type}
           id={name}
+          InputLabelProps={{
+            shrink: shrink,
+          }}
           variant="outlined"
           value={value || ""}
           onChange={onChange}
@@ -46,6 +56,7 @@ function ControlledInput({ name, label, type, disabled = false }: Props) {
             },
             "& .MuiInputBase-root": {
               height: "50px",
+              width: "400px",
             },
             "& .MuiInputBase-input": {
               fontSize: {

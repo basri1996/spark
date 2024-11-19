@@ -13,7 +13,7 @@ function Modal({ title, isDialogOpen, children, handleDialogClose }: any) {
       PaperProps={{
         sx: {
           borderRadius: "16px",
-          minWidth: "300px",
+          minWidth: "400px",
         },
       }}
       open={isDialogOpen}

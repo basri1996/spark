@@ -1,14 +1,29 @@
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+} from "@mui/material";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 
 interface Props {
-  onChange: Dispatch<SetStateAction<string>>;
+  onChange: (event: SelectChangeEvent<string>) => void;
   value: string;
-  options: { name: string; productCode: string }[];
+  options: any[];
   label: string;
+  key?: string;
+  content?: string;
 }
 
-function SingleSelect({ onChange, value, options, label }: Props) {
+function SingleSelect({
+  onChange,
+  value,
+  options,
+  label,
+  key = "id",
+  content = "name",
+}: Props) {
   const [maxWidth, setMaxWidth] = useState(0);
   const inputRef = useRef<HTMLDivElement>(null);
 
@@ -28,7 +43,7 @@ function SingleSelect({ onChange, value, options, label }: Props) {
         value={value}
         label={label}
         inputRef={inputRef}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={onChange}
         sx={{
           width: "400px",
         }}
@@ -43,7 +58,7 @@ function SingleSelect({ onChange, value, options, label }: Props) {
         }}
       >
         {options.map((option) => (
-          <MenuItem value={option.productCode}>{option.name}</MenuItem>
+          <MenuItem value={option[key]}>{option[content]}</MenuItem>
         ))}
       </Select>
     </FormControl>

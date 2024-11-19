@@ -108,3 +108,17 @@ export interface IStatusesObject {
   order: number;
 }
 export type IStatusesResponse = IStatusesObject[];
+
+export interface IProductObject {
+  productCode: string;
+  name: string;
+}
+export type IProductResponse = IProductObject[];
+
+export interface IBranchObject {
+  branchId: string;
+  branchDesc: string;
+  branchEmail: string | null;
+}
+
+export type IBranchesResponse = IBranchObject[];

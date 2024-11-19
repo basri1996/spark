@@ -13,13 +13,13 @@ function Layout() {
     setOpen((prev: boolean) => !prev);
   };
 
-  // useEffect(() => {
-  //   if (initialized && !keycloak?.authenticated) {
-  //     keycloak?.login({ redirectUrl: window.location.href });
-  //   }
-  // }, [keycloak, initialized]);
+  useEffect(() => {
+    if (initialized && !keycloak?.authenticated) {
+      keycloak?.login({ redirectUrl: window.location.href });
+    }
+  }, [keycloak, initialized]);
 
-  // if (!keycloak?.authenticated) return null;
+  if (!keycloak?.authenticated) return null;
 
   return (
     <Box>
