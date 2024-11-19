@@ -17,8 +17,23 @@ export const useStyles = () => {
     },
     ActiveSecondaryBoxStyles: {
       display: "flex",
-      flexWrap: "wrap",
+      overflowX: "auto",
       gap: "20px",
+      width: "100%",
+      paddingBottom: "50px",
+      "&::-webkit-scrollbar": {
+        width: "12px",
+        height: "12px",
+      },
+      "&::-webkit-scrollbar-track": {
+        background: "rgba(108, 99, 255, 0.1)",
+        borderRadius: "10px",
+      },
+      "&::-webkit-scrollbar-thumb": {
+        background: "#5080ff",
+        borderRadius: "10px",
+        transition: "background-color 0.3s ease",
+      },
     },
 
     CardMainBoxStyles: {
@@ -27,6 +42,10 @@ export const useStyles = () => {
       backgroundColor: theme.palette.background.default,
       borderTopLeftRadius: "4px",
       borderTopRightRadius: "4px",
+    },
+    SrollebleCard: {
+      width: "300px",
+      flex: "0 0 auto",
     },
 
     CardTypographyStyles: {
@@ -41,6 +60,7 @@ export const useStyles = () => {
       padding: "20px",
       borderBottomLeftRadius: "4px",
       borderBottomRightRadius: "4px",
+      alignItems: "center",
     },
 
     ColumnCardMainBoxStyles: {

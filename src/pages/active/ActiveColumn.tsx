@@ -7,7 +7,7 @@ function ActiveColumn({ label, deals }: ActiveColumnTypes) {
   const styles = useStyles();
 
   return (
-    <Card>
+    <Card sx={styles.SrollebleCard}>
       <Box sx={styles.CardMainBoxStyles}>
         <Typography sx={styles.CardTypographyStyles}>{label}</Typography>
       </Box>
