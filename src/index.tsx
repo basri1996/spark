@@ -18,7 +18,13 @@ root.render(
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <AuthContextProvider>
-          <RouterProvider router={router} />;
+          <RouterProvider
+            router={router}
+            future={{
+              v7_startTransition: true,
+            }}
+          />
+          ;
         </AuthContextProvider>
       </ThemeProvider>
     </QueryClientProvider>

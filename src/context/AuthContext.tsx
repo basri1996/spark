@@ -3,13 +3,13 @@ import React, {
   useState,
   useContext,
   ReactNode,
-  Dispatch,
-  SetStateAction,
+  useEffect,
 } from "react";
+import { jwtDecode } from "jwt-decode";
+import { useKeycloak } from "@react-keycloak/web";
 
 interface AuthContextProps {
   principal: any;
-  setPrincipal: Dispatch<SetStateAction<any>>;
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
@@ -17,12 +17,22 @@ const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
+  const { keycloak, initialized } = useKeycloak();
   const [principal, setPrincipal] = useState();
 
-  console.log("principal", principal);
+  useEffect(() => {
+    if (initialized && !keycloak?.authenticated) {
+      keycloak?.login({ redirectUrl: window.location.href });
+    }
+    if (keycloak.token) {
+      setPrincipal(jwtDecode(keycloak.token));
+    }
+  }, [keycloak, initialized, setPrincipal]);
+
+  if (!keycloak?.authenticated) return null;
 
   return (
-    <AuthContext.Provider value={{ principal, setPrincipal }}>
+    <AuthContext.Provider value={{ principal }}>
       {children}
     </AuthContext.Provider>
   );

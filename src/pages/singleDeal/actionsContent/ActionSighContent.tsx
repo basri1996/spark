@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { useState } from "react";
 import RadioPositionEnd from "../../../components/common/RadioGroupComponent";
 import { Box, Button } from "@mui/material";
 import { dealAcceptType } from "../../../dummyData";
@@ -8,13 +8,11 @@ import CommentInput from "../../../components/fields/CommentInput";
 import useGetBranchesListQuery from "../../../common/queries/useGetBranchesListQuery";
 import SingleSelect from "../../../components/fields/SingleSelect";
 import { SelectChangeEvent } from "@mui/material";
+import { useAction } from "../../../context/ActionContext";
 
-function ActionSighContent({
-  setActionType,
-}: {
-  setActionType: Dispatch<SetStateAction<string>>;
-}) {
+function ActionSighContent() {
   const { id } = useParams();
+  const { setActionType } = useAction();
   const [values, setValues] = useState<{
     radioValue: string;
     nextStep: string;

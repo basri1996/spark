@@ -1,23 +1,19 @@
 import { Box, Button } from "@mui/material";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 import CommentInput from "../../../components/fields/CommentInput";
 import useActivitiesMutation from "../mutations/useActivitiesMutation";
 import { useParams } from "react-router-dom";
+import { useAction } from "../../../context/ActionContext";
 
-function ActionCommentdStepContent({
-  activityType,
-  setActionType,
-}: {
-  activityType: string;
-  setActionType: Dispatch<SetStateAction<string>>;
-}) {
+function ActionCommentdStepContent() {
   const [commentValue, setCommentValue] = useState("");
   const { id } = useParams();
   const { mutate: createActivity } = useActivitiesMutation();
+  const { setActionType, callActionStep } = useAction();
 
   const handleClick = () => {
     createActivity(
-      { id, data: { activityType, comment: commentValue } },
+      { id, data: { activityType: callActionStep, comment: commentValue } },
       {
         onSuccess: () => {
           setActionType("");

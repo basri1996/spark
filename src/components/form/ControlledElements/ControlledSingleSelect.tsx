@@ -32,7 +32,6 @@ function ControlledSingleSelect({
     <Controller
       control={control}
       name={name}
-      defaultValue=""
       render={({ field: { onChange, value }, fieldState: { error } }) => (
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">{label}</InputLabel>
@@ -57,7 +56,10 @@ function ControlledSingleSelect({
             }}
           >
             {options.map((option) => (
-              <MenuItem value={option[inputValueKey]}>
+              <MenuItem
+                key={option[inputValueKey]}
+                value={option[inputValueKey]}
+              >
                 {option[content]}
               </MenuItem>
             ))}

@@ -8,7 +8,6 @@ function ControlledCommentInput({ name, label }: any) {
     <Controller
       control={control}
       name={name}
-      defaultValue=""
       render={({ field: { onChange, value }, fieldState: { error } }) => (
         <TextField
           value={value}

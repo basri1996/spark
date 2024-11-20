@@ -3,13 +3,10 @@ import Toggle from "../../../components/fields/Toggle";
 import { RiskOptions } from "../../../dummyData";
 import useChangeTagsMutation from "../mutations/useChangeTagsMutation";
 import { useParams } from "react-router-dom";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
+import { useAction } from "../../../context/ActionContext";
 
-function ActionRiskContent({
-  setActionType,
-}: {
-  setActionType: Dispatch<SetStateAction<string>>;
-}) {
+function ActionRiskContent() {
   const { id } = useParams();
   const { mutate: changeTags } = useChangeTagsMutation();
   const [toggleState, setToggleState] = useState<{ [key: string]: boolean }>({
@@ -17,10 +14,11 @@ function ActionRiskContent({
     SENT_FOR_EVALUATION: false,
     CONSIDERED_FOR_APPROVAL: false,
   });
+  const { setActionType } = useAction();
 
   const handleClick = () => {
     const tags = Object.entries(toggleState)
-      .filter(([key, value]) => value)
+      .filter(([_, value]) => value)
       .map(([key]) => key);
     changeTags(
       {

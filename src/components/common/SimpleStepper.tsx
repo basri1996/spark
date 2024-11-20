@@ -11,15 +11,23 @@ const SimpleStepper = ({ steps }: { steps: IActivity[] }) => {
       }}
     >
       <Stepper orientation="vertical">
-        {steps?.map((item) => (
-          <Step key={item?.id} completed={true}>
+        {steps.length ? (
+          steps?.map((item) => (
+            <Step key={item?.id} completed={true}>
+              <StepLabel>
+                <Typography sx={{ fontSize: "12px" }}>{item?.label}</Typography>
+              </StepLabel>
+            </Step>
+          ))
+        ) : (
+          <Step key={"noItems"} completed={false}>
             <StepLabel>
-              <Typography sx={{ fontSize: "12px" }}>
-                {item?.activityType}
+              <Typography sx={{ fontSize: "14px" }}>
+                არ არის ხელმისაწვდომი აქტივობები
               </Typography>
             </StepLabel>
           </Step>
-        ))}
+        )}
       </Stepper>
     </Box>
   );

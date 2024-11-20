@@ -14,11 +14,7 @@ const FormComponent = <T extends FieldValues>({
 }: FormComponentProps<T>) => {
   return (
     <FormProvider {...methods}>
-      <form
-        onSubmit={methods.handleSubmit(onSubmit, (error) => console.log(error))}
-      >
-        {children}
-      </form>
+      <form onSubmit={methods.handleSubmit(onSubmit)}>{children}</form>
     </FormProvider>
   );
 };

@@ -97,7 +97,6 @@ export const SignleDealInformationBox = {
     lg: "repeat(3, auto)",
     md: "repeat(2, auto)",
   },
-  gap: "20px",
   boxShadow: "4px 2px 11.2px 4px #0000000A",
   padding: "30px",
   border: "1px solid #00000014",

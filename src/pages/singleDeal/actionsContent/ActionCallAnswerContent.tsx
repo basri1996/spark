@@ -1,12 +1,14 @@
 import RadioPositionEnd from "../../../components/common/RadioGroupComponent";
 import { useState } from "react";
 import { responseTypeNext } from "../../../dummyData";
+import { useAction } from "../../../context/ActionContext";
 
-function ActionCallAnswerContent({ setStep }: any) {
-  const [selectedValue, setSelectedValue] = useState<number | null>(null);
+function ActionCallAnswerContent() {
+  const [selectedValue, setSelectedValue] = useState<string>("");
+  const { setCallActionStep } = useAction();
 
   const handleClick = () => {
-    setStep(selectedValue);
+    setCallActionStep(selectedValue);
   };
 
   return (

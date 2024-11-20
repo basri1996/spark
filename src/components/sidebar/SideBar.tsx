@@ -7,6 +7,7 @@ import CircleNotificationsSharpIcon from "@mui/icons-material/CircleNotification
 import ForwardToInboxIcon from "@mui/icons-material/ForwardToInbox";
 import PhonePausedIcon from "@mui/icons-material/PhonePaused";
 import ArchiveIcon from "@mui/icons-material/Archive";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
@@ -15,6 +16,7 @@ interface Props {
 
 export default function Sidebar({ setOpen, open }: Props) {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const navigate = useNavigate();
 
   const closeSidebar = () => {
     if (isMobile) {
@@ -60,7 +62,8 @@ export default function Sidebar({ setOpen, open }: Props) {
           component="img"
           src={Logo}
           alt="Logo"
-          sx={{ height: "50px", width: "150px" }}
+          sx={{ height: "50px", width: "150px", cursor: "pointer" }}
+          onClick={() => navigate("/deals")}
         />
 
         <List sx={{ display: "flex", flexDirection: "column", gap: "2px" }}>

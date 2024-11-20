@@ -21,14 +21,15 @@ function ControlledInput({
     <Controller
       control={control}
       name={name}
-      defaultValue=""
       render={({ field: { onChange, value }, fieldState: { error } }) => (
         <TextField
           disabled={disabled}
           type={type}
           id={name}
-          InputLabelProps={{
-            shrink: shrink,
+          slotProps={{
+            inputLabel: {
+              shrink: shrink || Boolean(value),
+            },
           }}
           variant="outlined"
           value={value || ""}

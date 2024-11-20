@@ -14,11 +14,13 @@ export const useStyles = () => {
       color: theme.palette.text.primary,
       fontSize: "24px",
       fontWeight: 700,
+      paddingLeft: "44px",
     },
     ActiveSecondaryBoxStyles: {
       display: "flex",
       overflowX: "auto",
       gap: "20px",
+      scrollBehavior: "smooth",
       width: "100%",
       paddingBottom: "50px",
       "&::-webkit-scrollbar": {
@@ -71,6 +73,7 @@ export const useStyles = () => {
       flexDirection: "column",
       gap: "5px",
       padding: "10px",
+      cursor: "pointer",
     },
 
     ColumnCardTypographyStyles: {

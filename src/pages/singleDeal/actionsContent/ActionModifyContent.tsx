@@ -8,17 +8,14 @@ import { Currency } from "../../../dummyData";
 import { Box, Button } from "@mui/material";
 import useModifyDealMutation from "../mutations/useModifyDealMutation";
 import { useParams } from "react-router-dom";
-import { Dispatch, SetStateAction } from "react";
+import { useAction } from "../../../context/ActionContext";
 
-function ActionModifyContent({
-  setActionType,
-}: {
-  setActionType: Dispatch<SetStateAction<string>>;
-}) {
+function ActionModifyContent() {
   const methods: UseFormReturn<IModifyData> = useForm<IModifyData>({});
   const { id } = useParams();
   const { data: selectOptions } = useGetLoanProductListQuery();
   const { mutate: ModifyDeal } = useModifyDealMutation();
+  const { setActionType } = useAction();
 
   const onSubmit: SubmitHandler<IModifyData> = async (
     formData: IModifyData
@@ -43,12 +40,7 @@ function ActionModifyContent({
           name="productCode"
           inputValueKey="productCode"
         />
-        <ControlledInput
-          name="amount"
-          label="Amount"
-          type="number"
-          shrink={true}
-        />
+        <ControlledInput name="amount" label="Amount" type="number" />
         <ControlledSingleSelect
           label="Currency"
           options={Currency}

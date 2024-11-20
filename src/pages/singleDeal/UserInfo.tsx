@@ -14,8 +14,8 @@ const UserInfo = ({ icon, title, text, textColor = "#000" }: any) => {
           textTransform={"uppercase"}
           sx={{
             fontSize: {
-              xs: "14px",
-              lg: "12px",
+              xs: "12px",
+              lg: "14px",
             },
           }}
         >
@@ -24,8 +24,8 @@ const UserInfo = ({ icon, title, text, textColor = "#000" }: any) => {
         <Typography
           sx={{
             fontSize: {
-              xs: "14px",
-              lg: "12px",
+              xs: "12px",
+              lg: "14px",
             },
             color: textColor,
             fontWeight: 600,

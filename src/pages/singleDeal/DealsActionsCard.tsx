@@ -1,12 +1,17 @@
 import { Box, CardContent, Typography } from "@mui/material";
 import Modal from "../../components/common/Modal";
-import { useState } from "react";
 import { ActionButton, DealsActionCardBox } from "./useStyles";
 import ActionModalContent from "./actionsContent/ActionModalContent";
 import { ActionsType } from "../../dummyData";
+import { useAction } from "../../context/ActionContext";
 
 function DealsActionsCard() {
-  const [actionType, setActionType] = useState("");
+  const { actionType, setActionType, setCallActionStep } = useAction();
+
+  const handleClose = () => {
+    setCallActionStep("INITIAL");
+    setActionType("");
+  };
   return (
     <CardContent sx={DealsActionCardBox}>
       {ActionsType.map((action) => (
@@ -16,16 +21,12 @@ function DealsActionsCard() {
           </Box>
         </Box>
       ))}
-
       <Modal
         title={actionType}
         isDialogOpen={Boolean(actionType)}
-        handleDialogClose={() => setActionType("")}
+        handleDialogClose={handleClose}
       >
-        <ActionModalContent
-          actionType={actionType}
-          setActionType={setActionType}
-        />
+        <ActionModalContent />
       </Modal>
     </CardContent>
   );

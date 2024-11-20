@@ -13,7 +13,7 @@ function ActiveColumn({ label, deals }: ActiveColumnTypes) {
       </Box>
       <Box sx={styles.CardSecondaryBoxStyles}>
         {deals?.map((el) => (
-          <ActiveColumnCard {...el} />
+          <ActiveColumnCard key={el.id} {...el} />
         ))}
       </Box>
     </Card>

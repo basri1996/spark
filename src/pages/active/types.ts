@@ -3,6 +3,7 @@ export interface ColumnCardTypes {
   product: string;
   amount: number;
   ccy: string;
+  id: string;
 }
 
 export interface ActiveColumnTypes {

@@ -8,21 +8,17 @@ import ControlledSingleSelect from "../../../components/form/ControlledElements/
 import ControlledInput from "../../../components/form/ControlledElements/ControlledInput";
 import ControlledCommentInput from "../../../components/form/ControlledElements/ControlledCommentInput";
 import { useParams } from "react-router-dom";
-import { Dispatch, SetStateAction } from "react";
+import { useAction } from "../../../context/ActionContext";
 
-function ActionRedirectContent({
-  activityType,
-  setActionType,
-}: {
-  activityType: string;
-  setActionType: Dispatch<SetStateAction<string>>;
-}) {
+function ActionRedirectContent() {
   const methods: UseFormReturn<IRedirectObject> = useForm<IRedirectObject>({});
+  const { setActionType, callActionStep } = useAction();
+
   const { mutate: createActivity } = useActivitiesMutation();
   const { id } = useParams();
   const { data: branchList } = useGetBranchesListQuery();
-  const isDelay = activityType === "COMMUNICATION_RESCHEDULED";
-  const alreadySigned = activityType === "CLIENT_FILLED_IN_BRANCH";
+  const isDelay = callActionStep === "COMMUNICATION_RESCHEDULED";
+  const alreadySigned = callActionStep === "CLIENT_FILLED_IN_BRANCH";
 
   const onSubmit: SubmitHandler<IRedirectObject> = async (
     formData: IRedirectObject
@@ -34,7 +30,14 @@ function ActionRedirectContent({
       })
     );
     createActivity(
-      { id, data: { activityType, attributes, comment: formData?.comment } },
+      {
+        id,
+        data: {
+          activityType: callActionStep,
+          attributes,
+          comment: formData?.comment,
+        },
+      },
       {
         onSuccess: () => {
           setActionType("");

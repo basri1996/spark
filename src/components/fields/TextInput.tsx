@@ -27,7 +27,6 @@ const TextInput = ({
     <TextField
       type={type}
       variant="outlined"
-      defaultValue=""
       value={value}
       onChange={onChange}
       fullWidth

@@ -5,6 +5,7 @@ import Active from "../pages/active/Active";
 import OnHold from "../pages/onHold/OnHold";
 import Archive from "../pages/archive/Archive";
 import SingleDeal from "../pages/singleDeal/SingleDeal";
+import { ActionContextProvider } from "../context/ActionContext";
 
 const routes: RouteObject[] = [
   {
@@ -21,7 +22,11 @@ const routes: RouteObject[] = [
       },
       {
         path: "deals/:id",
-        element: <SingleDeal />,
+        element: (
+          <ActionContextProvider>
+            <SingleDeal />
+          </ActionContextProvider>
+        ),
       },
       {
         path: "active",
@@ -39,6 +44,14 @@ const routes: RouteObject[] = [
   },
 ];
 
-const router = createBrowserRouter(routes);
+const router = createBrowserRouter(routes, {
+  future: {
+    v7_fetcherPersist: true,
+    v7_normalizeFormMethod: true,
+    v7_partialHydration: true,
+    v7_relativeSplatPath: true,
+    v7_skipActionErrorRevalidation: true,
+  },
+});
 
 export default router;

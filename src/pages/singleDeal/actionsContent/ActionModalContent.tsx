@@ -4,34 +4,23 @@ import ActionRiskContent from "./ActionRiskContent";
 import ActionModifyContent from "./ActionModifyContent";
 import ActionStatusContent from "./ActionStatusContent";
 import ActionSighContent from "./ActionSighContent";
-import { Dispatch, SetStateAction } from "react";
+import { useAction } from "../../../context/ActionContext";
 
-interface Props {
-  actionType: string;
-  setActionType: Dispatch<SetStateAction<string>>;
-}
+const ContentMap = new Map([
+  ["Call", ActionCallContent],
+  ["Modify", ActionModifyContent],
+  ["Risk", ActionRiskContent],
+  ["Sign", ActionSighContent],
+  ["Status", ActionStatusContent],
+]);
 
-function ActionModalContent({ actionType, setActionType }: Props) {
-  const Content = (actionType: string) => {
-    switch (actionType) {
-      case "Call":
-        return <ActionCallContent setActionType={setActionType} />;
-      case "Modify":
-        return <ActionModifyContent setActionType={setActionType} />;
-      case "Risk":
-        return <ActionRiskContent setActionType={setActionType} />;
-      case "Sign":
-        return <ActionSighContent setActionType={setActionType} />;
-      case "Status":
-        return <ActionStatusContent setActionType={setActionType} />;
-      default:
-        return null;
-    }
-  };
+function ActionModalContent() {
+  const { actionType } = useAction();
+  const Content = ContentMap.get(actionType);
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: "15px" }}>
-      {Content(actionType)}
+      {Content && <Content />}
     </Box>
   );
 }
