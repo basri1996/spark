@@ -6,11 +6,13 @@ import OnHold from "../pages/onHold/OnHold";
 import Archive from "../pages/archive/Archive";
 import SingleDeal from "../pages/singleDeal/SingleDeal";
 import { ActionContextProvider } from "../context/ActionContext";
+import ErrorPage from "../error/ErrorPage";
 
 const routes: RouteObject[] = [
   {
     path: "/",
     element: <Layout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,

@@ -9,6 +9,7 @@ import { theme } from "./theme/theme";
 import { AuthContextProvider } from "./context/AuthContext";
 import keycloak from "./keycloak/keycloak";
 import { ReactKeycloakProvider } from "@react-keycloak/web";
+import ErrorBoundary from "./error/ErrorBoundary";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -18,13 +19,14 @@ root.render(
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <AuthContextProvider>
-          <RouterProvider
-            router={router}
-            future={{
-              v7_startTransition: true,
-            }}
-          />
-          ;
+          <ErrorBoundary>
+            <RouterProvider
+              router={router}
+              future={{
+                v7_startTransition: true,
+              }}
+            />
+          </ErrorBoundary>
         </AuthContextProvider>
       </ThemeProvider>
     </QueryClientProvider>

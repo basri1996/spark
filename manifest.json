@@ -3,12 +3,12 @@
   "name": "Spark",
   "icons": [
     {
-      "src": "MainLogo.png",
+      "src": "src/assets/icons/MainLogo.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "MainLogo.png",
+      "src": "src/assets/icons/MainLogo.png",
       "type": "image/png",
       "sizes": "512x512"
     }
