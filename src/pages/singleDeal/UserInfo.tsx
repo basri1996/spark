@@ -1,6 +1,13 @@
 import { Box, Typography } from "@mui/material";
 
-const UserInfo = ({ icon, title, text, textColor = "#000" }: any) => {
+interface Props {
+  icon?: string;
+  title: string;
+  text: string | number;
+  textColor?: string;
+}
+
+const UserInfo = ({ icon, title, text, textColor = "#000" }: Props) => {
   return (
     <Box display={"flex"} gap={"10px"}>
       {icon && (

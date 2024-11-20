@@ -8,6 +8,13 @@ import ForwardToInboxIcon from "@mui/icons-material/ForwardToInbox";
 import PhonePausedIcon from "@mui/icons-material/PhonePaused";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import { useNavigate } from "react-router-dom";
+import {
+  MainLogoStyles,
+  SideBarCloseIcon,
+  SideBarList,
+  SideBarMainBox,
+  SideBarSecondaryBox,
+} from "./useStyles";
 
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
@@ -39,34 +46,18 @@ export default function Sidebar({ setOpen, open }: Props) {
       variant={isMobile ? "temporary" : "permanent"}
       open={open}
       onClose={() => setOpen(false)}
-      sx={{
-        width: 240,
-        flexShrink: 0,
-        "& .MuiDrawer-paper": {
-          width: 240,
-          boxSizing: "border-box",
-          backgroundColor: "#FFFFFF",
-        },
-      }}
+      sx={SideBarMainBox}
     >
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          height: "100%",
-          padding: "1.5rem",
-          gap: "1rem",
-        }}
-      >
+      <Box sx={SideBarSecondaryBox}>
         <Box
           component="img"
           src={Logo}
           alt="Logo"
-          sx={{ height: "50px", width: "150px", cursor: "pointer" }}
+          sx={MainLogoStyles}
           onClick={() => navigate("/deals")}
         />
 
-        <List sx={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+        <List sx={SideBarList}>
           <SideBarItem
             closeSidebar={closeSidebar}
             title={"Inbox"}
@@ -98,15 +89,7 @@ export default function Sidebar({ setOpen, open }: Props) {
         </List>
 
         {isMobile && (
-          <CloseIcon
-            sx={{
-              position: "absolute",
-              top: 4,
-              right: 4,
-              color: "#5080ff",
-            }}
-            onClick={() => setOpen(false)}
-          />
+          <CloseIcon sx={SideBarCloseIcon} onClick={() => setOpen(false)} />
         )}
       </Box>
     </Drawer>

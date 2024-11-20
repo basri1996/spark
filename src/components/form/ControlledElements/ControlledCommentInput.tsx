@@ -1,7 +1,13 @@
 import { TextField } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
 
-function ControlledCommentInput({ name, label }: any) {
+function ControlledCommentInput({
+  name,
+  label,
+}: {
+  name: string;
+  label: string;
+}) {
   const { control } = useFormContext();
 
   return (

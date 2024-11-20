@@ -13,7 +13,7 @@ import { useAction } from "../../../context/ActionContext";
 
 function CallActionContent() {
   const { setActionType, callActionStep, setCallActionStep } = useAction();
-  const [selectedValue, setSelectedValue] = useState<string | null>(null);
+  const [selectedValue, setSelectedValue] = useState<string>("");
   const notAnswered = selectedValue === "CLIENT_REJECTED_COMMUNICATION";
   const { id } = useParams();
   const { mutate: createActivity } = useActivitiesMutation();
@@ -57,7 +57,6 @@ function CallActionContent() {
       "INITIAL",
       <RadioPositionEnd
         list={responseType}
-        state={selectedValue}
         setState={setSelectedValue}
         handleClick={handleClick}
         isFinished={notAnswered}

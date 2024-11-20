@@ -14,7 +14,6 @@ function ActionCallAnswerContent() {
   return (
     <RadioPositionEnd
       list={responseTypeNext}
-      state={selectedValue}
       setState={setSelectedValue}
       handleClick={handleClick}
     />

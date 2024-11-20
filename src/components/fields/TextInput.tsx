@@ -1,6 +1,7 @@
 import React from "react";
 import { InputAdornment, TextField } from "@mui/material";
 import Search from "../../assets/icons/search.svg";
+import { TextInputStyles } from "./useStyles";
 
 const SearchIcon = ({ width = 20, height = 20, color = "#6C63FF" }) => (
   <img
@@ -31,36 +32,23 @@ const TextInput = ({
       onChange={onChange}
       fullWidth
       placeholder={placeholder}
-      InputProps={{
-        inputMode: "numeric",
-        startAdornment: placeholder === "Search" && (
-          <InputAdornment position="start">
-            <SearchIcon />
-          </InputAdornment>
-        ),
-        inputProps: {
-          step: "any",
-          style: {
-            MozAppearance: "textfield",
+      slotProps={{
+        input: {
+          inputMode: "numeric",
+          startAdornment: placeholder === "Search" && (
+            <InputAdornment position="start">
+              <SearchIcon />
+            </InputAdornment>
+          ),
+          inputProps: {
+            step: "any",
+            style: {
+              MozAppearance: "textfield",
+            },
           },
         },
       }}
-      sx={{
-        "& input[type=number]": {
-          MozAppearance: "textfield",
-        },
-        "& input[type=number]::-webkit-outer-spin-button": {
-          WebkitAppearance: "none",
-          margin: 0,
-        },
-        "& input[type=number]::-webkit-inner-spin-button": {
-          WebkitAppearance: "none",
-          margin: 0,
-        },
-        borderRadius: "12px",
-
-        "& label": {},
-      }}
+      sx={TextInputStyles}
     />
   );
 };

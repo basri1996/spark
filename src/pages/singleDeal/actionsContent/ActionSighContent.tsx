@@ -109,7 +109,6 @@ function ActionSighContent() {
       ) : (
         <RadioPositionEnd
           list={dealAcceptType}
-          state={values.radioValue}
           setState={handleSet}
           handleClick={handleClick}
           isFinished={false}

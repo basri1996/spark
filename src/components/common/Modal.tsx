@@ -6,8 +6,20 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { ModalTitle } from "./useStyles";
+import { PropsWithChildren } from "react";
 
-function Modal({ title, isDialogOpen, children, handleDialogClose }: any) {
+interface Props {
+  title: string;
+  isDialogOpen: boolean;
+  handleDialogClose: () => void;
+}
+
+function Modal({
+  title,
+  isDialogOpen,
+  children,
+  handleDialogClose,
+}: PropsWithChildren<Props>) {
   return (
     <Dialog
       PaperProps={{

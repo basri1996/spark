@@ -1,6 +1,13 @@
 import { Box, TextField } from "@mui/material";
+import { Dispatch, SetStateAction } from "react";
 
-function CommentInput({ value, onChange, label }: any) {
+type Props = {
+  value: string;
+  onChange: Dispatch<SetStateAction<string>> | (([key]: string) => void);
+  label: string;
+};
+
+function CommentInput({ value, onChange, label }: Props) {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
       <TextField

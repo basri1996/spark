@@ -32,7 +32,6 @@ function ActionStatusContent() {
     <>
       <RadioPositionEnd
         list={statusType}
-        state={selectedValue}
         setState={setSelectedValue}
         handleClick={handleClick}
         isFinished={true}

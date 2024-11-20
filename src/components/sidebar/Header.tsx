@@ -4,6 +4,7 @@ import UserLogo from "../../assets/icons/HeaderUserLogo.svg";
 import Menu from "../../assets/icons/menu.svg";
 import { useKeycloak } from "@react-keycloak/web";
 import PopOver from "../common/PopOver";
+import { HeaderButton, HeaderMainBox } from "./useStyles";
 
 interface Props {
   ToggleSideBar: () => void;
@@ -11,6 +12,8 @@ interface Props {
 function Header({ ToggleSideBar }: Props) {
   const { keycloak } = useKeycloak();
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
 
   const handleClick = (
     event: React.MouseEvent<HTMLImageElement, MouseEvent>
@@ -22,21 +25,8 @@ function Header({ ToggleSideBar }: Props) {
     setAnchorEl(null);
   };
 
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
-
   return (
-    <Box
-      sx={{
-        height: "70px",
-        backgroundColor: "rgba(230, 237, 244, 1)",
-        width: "100%",
-        display: "flex",
-        justifyContent: "space-between",
-        paddingX: "1.5rem",
-        alignItems: "center",
-      }}
-    >
+    <Box sx={HeaderMainBox}>
       <Box
         component="img"
         src={Menu}
@@ -57,15 +47,7 @@ function Header({ ToggleSideBar }: Props) {
         anchorEl={anchorEl}
         open={open}
       >
-        <Button
-          sx={{
-            backgroundColor: (theme) => theme.palette.background.default,
-            paddingX: "30px",
-            border: "1px solid #5080ff",
-            borderRadius: "5px",
-          }}
-          onClick={() => keycloak.logout()}
-        >
+        <Button sx={HeaderButton} onClick={() => keycloak.logout()}>
           Log out
         </Button>
       </PopOver>
