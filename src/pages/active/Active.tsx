@@ -5,13 +5,12 @@ import useGetActiveDealsListQuery from "../../common/queries/useGetActiveDealsLi
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { useRef } from "react";
-import { activeColumns } from "../../dummyData";
 function Active() {
   const scrollableRef = useRef<HTMLDivElement>(null);
   const styles = useStyles();
-  // const { data: activeColumns } = useGetActiveDealsListQuery({
-  //   dealStatuses: ["ACTIVE"],
-  // });
+  const { data: activeColumns } = useGetActiveDealsListQuery({
+    dealStatuses: ["ACTIVE"],
+  });
 
   const scrollToLeft = () => {
     if (scrollableRef.current) {

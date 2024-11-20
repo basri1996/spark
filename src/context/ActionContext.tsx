@@ -9,8 +9,8 @@ import React, {
 } from "react";
 
 interface ActionContextProps {
-  actionType: string;
-  setActionType: Dispatch<SetStateAction<string>>;
+  actionType: { name: string; id: string };
+  setActionType: Dispatch<SetStateAction<{ name: string; id: string }>>;
   callActionStep: string;
   setCallActionStep: Dispatch<SetStateAction<string>>;
 }
@@ -20,7 +20,7 @@ const ActionContext = createContext<ActionContextProps | undefined>(undefined);
 export const ActionContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [actionType, setActionType] = useState("");
+  const [actionType, setActionType] = useState({ name: "", id: "" });
   const [callActionStep, setCallActionStep] = useState("INITIAL");
 
   return (

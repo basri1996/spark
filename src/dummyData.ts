@@ -797,11 +797,11 @@ export const responseTypeNext = [
 ];
 
 export const ActionsType = [
-  { name: "Call", id: "Call" },
-  { name: "Modify", id: "Modify" },
-  { name: "Status", id: "Status" },
-  { name: "Sign", id: "Sign" },
-  { name: "Risk", id: "Risk" },
+  { name: "დარეკვა", id: "Call" },
+  { name: "შეცვლა", id: "Modify" },
+  { name: "სტატუსი", id: "Status" },
+  { name: "ხელმოწერა", id: "Sign" },
+  { name: "რისკი", id: "Risk" },
 ];
 
 export const statusType = [

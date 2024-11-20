@@ -21,7 +21,7 @@ function ActionStatusContent() {
       },
       {
         onSuccess: () => {
-          setActionType("");
+          setActionType({ name: "", id: "" });
         },
         onError: (error) => {},
       }

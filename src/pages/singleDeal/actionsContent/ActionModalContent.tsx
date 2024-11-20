@@ -16,7 +16,7 @@ const ContentMap = new Map([
 
 function ActionModalContent() {
   const { actionType } = useAction();
-  const Content = ContentMap.get(actionType);
+  const Content = ContentMap.get(actionType.id);
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: "15px" }}>

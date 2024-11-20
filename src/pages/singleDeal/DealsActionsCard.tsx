@@ -10,20 +10,20 @@ function DealsActionsCard() {
 
   const handleClose = () => {
     setCallActionStep("INITIAL");
-    setActionType("");
+    setActionType({ name: "", id: "" });
   };
   return (
     <CardContent sx={DealsActionCardBox}>
       {ActionsType.map((action) => (
         <Box key={action.id}>
-          <Box sx={ActionButton} onClick={() => setActionType(action.name)}>
+          <Box sx={ActionButton} onClick={() => setActionType(action)}>
             <Typography variant="body1">{action.name}</Typography>
           </Box>
         </Box>
       ))}
       <Modal
-        title={actionType}
-        isDialogOpen={Boolean(actionType)}
+        title={actionType.name}
+        isDialogOpen={Boolean(actionType.id)}
         handleDialogClose={handleClose}
       >
         <ActionModalContent />

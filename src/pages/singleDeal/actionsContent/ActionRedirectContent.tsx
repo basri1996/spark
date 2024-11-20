@@ -40,7 +40,7 @@ function ActionRedirectContent() {
       },
       {
         onSuccess: () => {
-          setActionType("");
+          setActionType({ name: "", id: "" });
         },
         onError: (error) => {},
       }
@@ -54,18 +54,18 @@ function ActionRedirectContent() {
           <ControlledSingleSelect
             name="attributes.BRANCH_ID"
             options={branchList || []}
-            label="Branch"
+            label="მისამართი"
             inputValueKey="branchId"
             content="branchDesc"
           />
         )}
-        <ControlledCommentInput name="comment" label="Comment" />
+        <ControlledCommentInput name="comment" label="კომენტარი" />
         {!alreadySigned && (
           <ControlledInput
             shrink={true}
             type="date"
             name="attributes.COMMUNICATION_DATE"
-            label="Communication Date"
+            label="თარიღი"
           />
         )}
         <Box sx={{ display: "flex", justifyContent: "flex-end" }}>

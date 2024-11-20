@@ -92,7 +92,7 @@ export type IActiveDealsResponse = IActiveDealsObject[];
 export interface IActivity {
   id: number;
   activityType: string;
-  label: string;
+  activityLabel: string;
   activityDate: string;
   comment: string;
   attributes: Attribute[];

@@ -27,7 +27,7 @@ function ActionRiskContent() {
       },
       {
         onSuccess: () => {
-          setActionType("");
+          setActionType({ name: "", id: "" });
         },
         onError: (error) => {},
       }

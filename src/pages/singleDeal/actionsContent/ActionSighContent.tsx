@@ -52,7 +52,7 @@ function ActionSighContent() {
       },
       {
         onSuccess: () => {
-          setActionType("");
+          setActionType({ name: "", id: "" });
         },
         onError: (error) => {},
       }

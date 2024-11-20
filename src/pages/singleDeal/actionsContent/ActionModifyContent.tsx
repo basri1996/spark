@@ -24,7 +24,7 @@ function ActionModifyContent() {
       { id, data: formData },
       {
         onSuccess: () => {
-          setActionType("");
+          setActionType({ name: "", id: "" });
         },
         onError: (error) => {},
       }
@@ -35,14 +35,14 @@ function ActionModifyContent() {
     <FormComponent methods={methods} onSubmit={onSubmit}>
       <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         <ControlledSingleSelect
-          label="Product"
+          label="პროდუქტი"
           options={selectOptions || []}
           name="productCode"
           inputValueKey="productCode"
         />
-        <ControlledInput name="amount" label="Amount" type="number" />
+        <ControlledInput name="amount" label="თანხა" type="number" />
         <ControlledSingleSelect
-          label="Currency"
+          label="ვალუტა"
           options={Currency}
           name="currency"
         />

@@ -28,7 +28,7 @@ function CallActionContent() {
   const callCount =
     filteredCash &&
     Number(filteredCash[filteredCash.length - 1]?.attributes[0].value) ===
-      Number(process.env.REACT_APP_MAX_COMMUNICATION_ATTEMP);
+      Number(import.meta.env.VITE_APP_MAX_COMMUNICATION_ATTEMP);
 
   const handleClick = () => {
     if (notAnswered) {
@@ -43,7 +43,7 @@ function CallActionContent() {
         },
         {
           onSuccess: () => {
-            setActionType("");
+            setActionType({ name: "", id: "" });
           },
           onError: (error) => {},
         }

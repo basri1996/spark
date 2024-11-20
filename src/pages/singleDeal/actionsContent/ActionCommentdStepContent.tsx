@@ -16,7 +16,7 @@ function ActionCommentdStepContent() {
       { id, data: { activityType: callActionStep, comment: commentValue } },
       {
         onSuccess: () => {
-          setActionType("");
+          setActionType({ name: "", id: "" });
         },
         onError: (error) => {},
       }
