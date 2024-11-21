@@ -1,28 +1,54 @@
-import { Box, Card, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import ActiveColumn from "./ActiveColumn";
 import { useStyles } from "./useStyles";
 import useGetActiveDealsListQuery from "../../common/queries/useGetActiveDealsListQuery";
-import { activeColumns } from "../../dummyData";
-import { useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 function Active() {
   const styles = useStyles();
-  // const { data: activeColumns } = useGetActiveDealsListQuery({
-  //   dealStatuses: ["ACTIVE"],
-  // });
-  const ScrollRef = useRef<HTMLElement>(null);
+  const { data: activeColumns } = useGetActiveDealsListQuery({
+    dealStatuses: ["ACTIVE"],
+  });
+  const ScrollRef = useRef<HTMLElement | null>(null);
 
-  useLayoutEffect(() => {
+  const scrollToMaxLeft = () => {
     if (ScrollRef.current) {
-      // Scroll to the far right
-      ScrollRef.current.scrollLeft = ScrollRef.current.scrollWidth;
+      ScrollRef.current.scrollLeft = 0;
     }
-  }, []);
+  };
+
+  const scrollToMaxRight = () => {
+    ScrollRef.current?.scrollTo({
+      left: ScrollRef.current.scrollWidth,
+      behavior: "smooth",
+    });
+  };
 
   return (
-    <Card sx={styles.ActiveMainBoxStyles}>
-      <Typography variant="h6" sx={styles.ActiveTypographyStyles}>
-        Active Deals
-      </Typography>
+    <Box sx={styles.ActiveMainBoxStyles}>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Typography variant="h6" sx={styles.ActiveTypographyStyles}>
+          Active Deals
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "10px",
+          }}
+        >
+          <KeyboardArrowLeftIcon
+            sx={{ fontSize: 40 }}
+            onClick={scrollToMaxLeft}
+          />
+          <KeyboardArrowRightIcon
+            sx={{ fontSize: 40 }}
+            onClick={scrollToMaxRight}
+          />
+        </Box>
+      </Box>
 
       <Box ref={ScrollRef} sx={styles.ActiveSecondaryBoxStyles}>
         {activeColumns?.map((el) => (
@@ -30,10 +56,11 @@ function Active() {
             key={el.status.id}
             label={el.status.label}
             deals={el.deals}
+            ref={ScrollRef}
           />
         ))}
       </Box>
-    </Card>
+    </Box>
   );
 }
 

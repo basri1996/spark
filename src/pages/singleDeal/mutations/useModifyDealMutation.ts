@@ -15,7 +15,7 @@ const useModifyDealMutation = () => {
       });
     },
     onError: (error) => {
-      console.error(error);
+      // throw new Error(error.message);
     },
   });
 };

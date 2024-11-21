@@ -2,7 +2,6 @@ import { Box, Card, Paper, Typography } from "@mui/material";
 import { ColumnCardTypes } from "./types";
 import { useStyles } from "./useStyles";
 import { useNavigate } from "react-router-dom";
-import UserInfo from "../../components/common/UserInfo";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
@@ -23,21 +22,15 @@ function ActiveColumnCard({
     transform: CSS.Transform.toString(transform),
     transition,
   };
-
   return (
     <Card
       sx={styles.ColumnCardMainBoxStyles}
-      onClick={() => navigate(`/deals/${id}`)}
       ref={setNodeRef}
       style={style}
       {...attributes}
       {...listeners}
+      onClick={() => navigate(`/deals/${id}`)}
     >
-      {/* <UserInfo title={"სრული სახელი"} text={name || "-"} />
-      <UserInfo title={"პროდუქტი"} text={product || "-"} />
-      <UserInfo title={"თანხა"} text={amount || "-"} />
-      <UserInfo title={"ვალუტა"} text={ccy || "-"} />
-      <UserInfo title={"სტატუსი"} text={subStatus?.label || "-"} /> */}
       <Typography sx={styles.ColumnCardTypographyStyles}>{name}</Typography>
       <Typography sx={{ color: "#4e4e4e" }}>{product}</Typography>
       <Box display="flex" gap="5px" alignItems="center">

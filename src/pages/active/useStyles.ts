@@ -1,4 +1,4 @@
-import { useTheme } from "@mui/material/styles";
+import { Theme, useTheme } from "@mui/material/styles";
 
 export const useStyles = () => {
   const theme = useTheme();
@@ -8,9 +8,6 @@ export const useStyles = () => {
       display: "flex",
       flexDirection: "column",
       gap: "30px",
-      padding: "28px",
-      boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
-      transition: "box-shadow 0.3s ease",
     },
 
     ActiveTypographyStyles: {
@@ -22,16 +19,18 @@ export const useStyles = () => {
       display: "flex",
       overflowX: "auto",
       gap: "20px",
+      paddingX: "5px",
       scrollBehavior: "smooth",
       width: "100%",
       paddingBottom: "50px",
-      transform: "rotate(180deg)",
+      transform: "rotateX(180deg)",
       paddingY: "30px",
       "& > *": {
-        transform: "rotate(180deg)",
+        transform: "rotateX(180deg)",
       },
       "&::-webkit-scrollbar": {
         height: "6px",
+        display: "none",
       },
       "&::-webkit-scrollbar-track": {
         background: "rgba(108, 99, 255, 0.1)",
@@ -47,7 +46,7 @@ export const useStyles = () => {
     CardMainBoxStyles: {
       paddingX: "70px",
       paddingY: "10px",
-      backgroundColor: "rgba(241, 245, 249, 1)",
+      backgroundColor: (theme: Theme) => theme.palette.background.default,
       borderTopLeftRadius: "4px",
       borderTopRightRadius: "4px",
     },
@@ -55,7 +54,7 @@ export const useStyles = () => {
       width: "300px",
       flex: "0 0 auto",
       backgroundColor: "rgba(241, 245, 249, 1)",
-      boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
+      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
       transition: "box-shadow 0.3s ease",
     },
 
@@ -82,6 +81,7 @@ export const useStyles = () => {
       flexDirection: "column",
       borderRadius: "8px",
       gap: "8px",
+      position: "relative",
       padding: "24px",
       cursor: "pointer",
       boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",

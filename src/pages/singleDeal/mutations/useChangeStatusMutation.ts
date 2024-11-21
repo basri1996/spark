@@ -14,9 +14,7 @@ const useChangeStatusMutation = () => {
         stale: true,
       });
     },
-    onError: (error) => {
-      console.error(error);
-    },
+    onError: (error) => {},
   });
 };
 

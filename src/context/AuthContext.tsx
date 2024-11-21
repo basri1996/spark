@@ -20,16 +20,16 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
   const { keycloak, initialized } = useKeycloak();
   const [principal, setPrincipal] = useState();
 
-  // useEffect(() => {
-  //   if (initialized && !keycloak?.authenticated) {
-  //     keycloak?.login({ redirectUrl: window.location.href });
-  //   }
-  //   if (keycloak.token) {
-  //     setPrincipal(jwtDecode(keycloak.token));
-  //   }
-  // }, [keycloak, initialized, setPrincipal]);
+  useEffect(() => {
+    if (initialized && !keycloak?.authenticated) {
+      keycloak?.login({ redirectUrl: window.location.href });
+    }
+    if (keycloak.token) {
+      setPrincipal(jwtDecode(keycloak.token));
+    }
+  }, [keycloak, initialized, setPrincipal]);
 
-  // if (!keycloak?.authenticated) return null;
+  if (!keycloak?.authenticated) return null;
 
   return (
     <AuthContext.Provider value={{ principal }}>
