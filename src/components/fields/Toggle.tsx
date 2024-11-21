@@ -30,12 +30,11 @@ const Toggle = ({
         />
       }
       label={label}
-      labelPlacement="end"
+      labelPlacement="start"
       sx={{
         display: "flex",
-        gap: "20px",
+        justifyContent: "space-between",
         margin: "0px 0px 0px 0px",
-        paddingRight: `${label ? "10px" : "0px"}`,
         color: "#525F7F",
       }}
     />

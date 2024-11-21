@@ -4,6 +4,12 @@ export interface ColumnCardTypes {
   amount: number;
   ccy: string;
   id: string;
+  subStatus: {
+    id: number;
+    subStatus: string;
+    label: string;
+    order: number;
+  };
 }
 
 export interface ActiveColumnTypes {

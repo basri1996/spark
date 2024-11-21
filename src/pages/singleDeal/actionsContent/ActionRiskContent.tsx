@@ -5,6 +5,7 @@ import useChangeTagsMutation from "../mutations/useChangeTagsMutation";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useAction } from "../../../context/ActionContext";
+import Divider from "@mui/material/Divider";
 
 function ActionRiskContent() {
   const { id } = useParams();
@@ -40,12 +41,15 @@ function ActionRiskContent() {
   return (
     <>
       {RiskOptions.map((el) => (
-        <Toggle
-          label={el.name}
-          checked={toggleState[el.id]}
-          onChange={handleChange}
-          id={el.id}
-        />
+        <>
+          <Toggle
+            label={el.name}
+            checked={toggleState[el.id]}
+            onChange={handleChange}
+            id={el.id}
+          />
+          <Divider />
+        </>
       ))}
       <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
         <Button

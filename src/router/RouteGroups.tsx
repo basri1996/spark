@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouteObject } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouteObject } from "react-router-dom";
 import Deals from "../pages/deals/Deals";
 import Layout from "../components/layout/Layout";
 import Active from "../pages/active/Active";
@@ -16,7 +16,7 @@ const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <Deals />,
+        element: <Navigate to="deals" replace />,
       },
       {
         path: "deals",

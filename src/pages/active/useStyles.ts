@@ -8,13 +8,15 @@ export const useStyles = () => {
       display: "flex",
       flexDirection: "column",
       gap: "30px",
+      padding: "28px",
+      boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
+      transition: "box-shadow 0.3s ease",
     },
 
     ActiveTypographyStyles: {
       color: theme.palette.text.primary,
       fontSize: "24px",
       fontWeight: 700,
-      paddingLeft: "44px",
     },
     ActiveSecondaryBoxStyles: {
       display: "flex",
@@ -23,9 +25,13 @@ export const useStyles = () => {
       scrollBehavior: "smooth",
       width: "100%",
       paddingBottom: "50px",
+      transform: "rotate(180deg)",
+      paddingY: "30px",
+      "& > *": {
+        transform: "rotate(180deg)",
+      },
       "&::-webkit-scrollbar": {
-        width: "12px",
-        height: "12px",
+        height: "6px",
       },
       "&::-webkit-scrollbar-track": {
         background: "rgba(108, 99, 255, 0.1)",
@@ -41,13 +47,16 @@ export const useStyles = () => {
     CardMainBoxStyles: {
       paddingX: "70px",
       paddingY: "10px",
-      backgroundColor: theme.palette.background.default,
+      backgroundColor: "rgba(241, 245, 249, 1)",
       borderTopLeftRadius: "4px",
       borderTopRightRadius: "4px",
     },
     SrollebleCard: {
       width: "300px",
       flex: "0 0 auto",
+      backgroundColor: "rgba(241, 245, 249, 1)",
+      boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
+      transition: "box-shadow 0.3s ease",
     },
 
     CardTypographyStyles: {
@@ -58,22 +67,30 @@ export const useStyles = () => {
     CardSecondaryBoxStyles: {
       display: "flex",
       flexDirection: "column",
-      gap: "5px",
-      padding: "20px",
+      gap: "12px",
       borderBottomLeftRadius: "4px",
       borderBottomRightRadius: "4px",
       alignItems: "center",
+      paddingY: "12px",
     },
 
     ColumnCardMainBoxStyles: {
       width: "240px",
-      height: "100px",
+      height: "auto",
       border: `1px solid ${theme.palette.border.primary}`,
       display: "flex",
       flexDirection: "column",
-      gap: "5px",
-      padding: "10px",
+      borderRadius: "8px",
+      gap: "8px",
+      padding: "24px",
       cursor: "pointer",
+      boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
+      transition: "box-shadow 0.5s ease",
+      "&:hover": {
+        background: "rgba(241, 245, 249, 1)",
+        boxShadow: "0",
+        border: "1px solid rgba(241, 245, 249, 1)",
+      },
     },
 
     ColumnCardTypographyStyles: {

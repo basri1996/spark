@@ -7,7 +7,7 @@ interface Props {
   textColor?: string;
 }
 
-const UserInfo = ({ icon, title, text, textColor = "#000" }: Props) => {
+const UserInfo = ({ icon, title, text, textColor = "#4e4e4e" }: Props) => {
   return (
     <Box display={"flex"} gap={"10px"}>
       {icon && (

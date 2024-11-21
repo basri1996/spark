@@ -1,7 +1,7 @@
 import { Box, CardContent } from "@mui/material";
 import { IDealsResponseObjectTypes } from "../../common/types";
 import { GridBox } from "./useStyles";
-import UserInfo from "./UserInfo";
+import UserInfo from "../../components/common/UserInfo";
 
 function SingleDealCard({
   information,
