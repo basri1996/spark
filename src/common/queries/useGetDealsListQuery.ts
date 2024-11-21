@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-
 import { IDealsListParams, IDealsResponseTypes } from "../types";
 import { AxiosError } from "axios";
 import { getDealsList } from "../services/dealsService";

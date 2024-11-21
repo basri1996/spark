@@ -1,4 +1,4 @@
-import { Box, Card, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import TextInput from "../../components/fields/TextInput";
 import DealsTable from "../../components/tables/DealsTable";
 import { useStyles } from "./useStyles";
