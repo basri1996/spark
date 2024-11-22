@@ -23,7 +23,7 @@ const ActiveColumn = React.forwardRef(
     const [dealsState, setDealsState] = useState(deals);
     const sensors = useSensors(
       useSensor(PointerSensor, {
-        activationConstraint: { delay: 50, tolerance: 5 },
+        activationConstraint: { delay: 70, tolerance: 5 },
       }),
       useSensor(KeyboardSensor, {
         coordinateGetter: sortableKeyboardCoordinates,

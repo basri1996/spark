@@ -47,7 +47,7 @@ function ActionModifyContent() {
       const resetObject = { productCode, amount, currency: ccy };
       methods.reset(resetObject);
     }
-  }, [cachedData, selectOptions]);
+  }, [cachedData, selectOptions, methods]);
 
   return (
     <FormComponent methods={methods} onSubmit={onSubmit}>
