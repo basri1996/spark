@@ -9,10 +9,18 @@ import { Box, Button } from "@mui/material";
 import useModifyDealMutation from "../mutations/useModifyDealMutation";
 import { useParams } from "react-router-dom";
 import { useAction } from "../../../context/ActionContext";
+import { useQueryClient } from "@tanstack/react-query";
+import { ISingleDealResponse } from "../../../common/types";
+import { useEffect } from "react";
 
 function ActionModifyContent() {
   const methods: UseFormReturn<IModifyData> = useForm<IModifyData>({});
   const { id } = useParams();
+  const queryClient = useQueryClient();
+  const cachedData = queryClient.getQueryData<ISingleDealResponse>([
+    "useGetSingleDealQuery",
+    id,
+  ]);
   const { data: selectOptions } = useGetLoanProductListQuery();
   const { mutate: ModifyDeal } = useModifyDealMutation();
   const { setActionType } = useAction();
@@ -30,6 +38,16 @@ function ActionModifyContent() {
       }
     );
   };
+  useEffect(() => {
+    if (cachedData?.deal && selectOptions?.length) {
+      const { product, amount, ccy } = cachedData.deal;
+      const productCode = selectOptions?.find(
+        (el) => el.name === product
+      )?.productCode;
+      const resetObject = { productCode, amount, currency: ccy };
+      methods.reset(resetObject);
+    }
+  }, [cachedData, selectOptions]);
 
   return (
     <FormComponent methods={methods} onSubmit={onSubmit}>

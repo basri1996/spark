@@ -40,11 +40,11 @@ function Active() {
           }}
         >
           <KeyboardArrowLeftIcon
-            sx={{ fontSize: 40 }}
+            sx={{ fontSize: 40, cursor: "pointer" }}
             onClick={scrollToMaxLeft}
           />
           <KeyboardArrowRightIcon
-            sx={{ fontSize: 40 }}
+            sx={{ fontSize: 40, cursor: "pointer" }}
             onClick={scrollToMaxRight}
           />
         </Box>

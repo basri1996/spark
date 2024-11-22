@@ -77,7 +77,7 @@ function ActionSighContent() {
                   BRANCH_ID: event.target.value,
                 }))
               }
-              value={values.comment}
+              value={values.BRANCH_ID}
               label="Branch"
               options={branchList || []}
               inputValueKey="branchId"

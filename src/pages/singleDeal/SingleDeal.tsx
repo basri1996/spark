@@ -32,7 +32,7 @@ function SingleDeal() {
         </Card>
         <Box sx={SignleDealInformationBox}>
           <SingleDealCard information={data?.deal} />
-          <DealsActionsCard />
+          <DealsActionsCard status={data?.deal?.dealStatus} />
           <SimpleStepper steps={data?.activities || []} />
         </Box>
       </Box>

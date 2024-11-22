@@ -31,7 +31,7 @@ export const UserBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const ActionButton = {
+export const ActionButton = (approved: boolean) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -42,11 +42,13 @@ export const ActionButton = {
   cursor: "pointer",
   color: "#5080ff",
   transition: "0.3s",
+  backgroundColor: approved ? "initial" : "#F1F1F1",
   "&:hover": {
-    backgroundColor: "#5080ff",
-    color: "#fff",
+    backgroundColor: approved ? '"#5080ff"' : "#F1F1F1",
+    color: approved ? "#fff" : "#5080ff",
   },
-};
+});
+
 export const SingleDealMainBox = {
   display: "flex",
   flexDirection: "column",

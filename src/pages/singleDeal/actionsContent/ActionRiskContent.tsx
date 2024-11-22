@@ -3,12 +3,19 @@ import Toggle from "../../../components/fields/Toggle";
 import { RiskOptions } from "../../../dummyData";
 import useChangeTagsMutation from "../mutations/useChangeTagsMutation";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAction } from "../../../context/ActionContext";
 import Divider from "@mui/material/Divider";
+import { useQueryClient } from "@tanstack/react-query";
+import { ISingleDealResponse } from "../../../common/types";
 
 function ActionRiskContent() {
   const { id } = useParams();
+  const queryClient = useQueryClient();
+  const cachedData = queryClient.getQueryData<ISingleDealResponse>([
+    "useGetSingleDealQuery",
+    id,
+  ]);
   const { mutate: changeTags } = useChangeTagsMutation();
   const [toggleState, setToggleState] = useState<{ [key: string]: boolean }>({
     RISK_ASSESSMENT: false,
@@ -38,6 +45,19 @@ function ActionRiskContent() {
   const handleChange = (checked: boolean, id: string) => {
     setToggleState((prev) => ({ ...prev, [id]: checked }));
   };
+
+  useEffect(() => {
+    if (cachedData?.deal) {
+      const statusChecker = (tag: string) => {
+        return cachedData?.deal.tags?.includes(tag) ? true : false;
+      };
+      setToggleState({
+        RISK_ASSESSMENT: statusChecker("RISK_ASSESSMENT"),
+        SENT_FOR_EVALUATION: statusChecker("SENT_FOR_EVALUATION"),
+        CONSIDERED_FOR_APPROVAL: statusChecker("CONSIDERED_FOR_APPROVAL"),
+      });
+    }
+  }, [cachedData]);
   return (
     <>
       {RiskOptions.map((el) => (

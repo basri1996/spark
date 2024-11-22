@@ -5,8 +5,9 @@ import ActionModalContent from "./actionsContent/ActionModalContent";
 import { ActionsType } from "../../dummyData";
 import { useAction } from "../../context/ActionContext";
 
-function DealsActionsCard() {
+function DealsActionsCard({ status }: { status: string | undefined }) {
   const { actionType, setActionType, setCallActionStep } = useAction();
+  const approved = status !== "ARCHIVED";
 
   const handleClose = () => {
     setCallActionStep("INITIAL");
@@ -16,7 +17,10 @@ function DealsActionsCard() {
     <CardContent sx={DealsActionCardBox}>
       {ActionsType.map((action) => (
         <Box key={action.id}>
-          <Box sx={ActionButton} onClick={() => setActionType(action)}>
+          <Box
+            sx={ActionButton(approved)}
+            onClick={() => approved && setActionType(action)}
+          >
             <Typography variant="body1">{action.name}</Typography>
           </Box>
         </Box>

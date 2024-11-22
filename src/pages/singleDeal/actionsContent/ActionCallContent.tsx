@@ -22,9 +22,9 @@ function CallActionContent() {
     "useGetSingleDealQuery",
     id,
   ]);
-  const filteredCash = cachedData?.activities?.find(
+  const filteredCash = cachedData?.activities?.filter(
     (el) => el?.activityType === "CLIENT_REJECTED_COMMUNICATION"
-  )?.attributes;
+  );
   const callCount =
     filteredCash &&
     Number(filteredCash[filteredCash.length - 1]?.attributes[0].value) ===
