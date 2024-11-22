@@ -44,7 +44,7 @@ export const ActionButton = (approved: boolean) => ({
   transition: "0.3s",
   backgroundColor: approved ? "initial" : "#F1F1F1",
   "&:hover": {
-    backgroundColor: approved ? '"#5080ff"' : "#F1F1F1",
+    backgroundColor: approved ? "#5080ff" : "#F1F1F1",
     color: approved ? "#fff" : "#5080ff",
   },
 });
