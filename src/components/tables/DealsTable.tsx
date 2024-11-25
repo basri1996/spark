@@ -1,4 +1,4 @@
-import { Box, Card } from "@mui/material";
+import { Box, Card, Tooltip } from "@mui/material";
 import { useState } from "react";
 import DataTable from "react-data-table-component";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
@@ -6,6 +6,7 @@ import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import { useStyles } from "./useStyles";
 import { IDealsResponseObjectTypes } from "../../common/types";
 import { useNavigate } from "react-router-dom";
+import moment from "moment";
 
 function DealsTable({
   list,
@@ -30,6 +31,7 @@ function DealsTable({
     {
       name: "",
       width: "50px",
+
       cell: (row: IDealsResponseObjectTypes) =>
         row.leads && (
           <Box sx={styles.tableBoxStyles}>
@@ -44,10 +46,12 @@ function DealsTable({
     {
       name: "ID",
       width: "80px",
+      id: "ID",
       sortable: true,
+
       cell: (row: IDealsResponseObjectTypes) => (
         <Box
-          onClick={() => navigate(`/deals/${row.id}`)}
+          onClick={() => row?.dealStatus && navigate(`/deals/${row.id}`)}
           sx={styles.tableBoxStyles}
         >
           {row.id}
@@ -56,33 +60,67 @@ function DealsTable({
     },
     {
       name: "Name",
+      id: "Name",
       selector: (row: IDealsResponseObjectTypes) => row.name,
       sortable: true,
+      grow: 6,
     },
     {
       name: "Id Number",
+      id: "Id Number",
       selector: (row: IDealsResponseObjectTypes) => row.personalId,
       sortable: true,
+      grow: 4,
     },
     {
       name: "Phone Number",
+      id: "Phone Number",
       selector: (row: IDealsResponseObjectTypes) => row.mobilePhone,
       sortable: true,
+      grow: 3,
     },
     {
       name: "Channel",
+      id: "Channel",
       selector: (row: IDealsResponseObjectTypes) => row.channel,
       sortable: true,
     },
     {
       name: "Created At",
-      selector: (row: IDealsResponseObjectTypes) => row.createDate,
+      id: "Created At",
+      selector: (row: IDealsResponseObjectTypes) =>
+        moment(row.createDate).format("DD.MM.YY - HH:mm"),
       sortable: true,
+      grow: 3,
+    },
+    {
+      name: "Owner",
+      width: "67px",
+      cell: (row: IDealsResponseObjectTypes) => (
+        <Tooltip
+          title={row?.owner?.fullName || "N/A"}
+          sx={{
+            background: (theme) => theme.palette.background.default,
+            color: (theme) => theme.palette.text.secondary,
+          }}
+        >
+          <Box
+            sx={{
+              color: (theme) => theme.palette.text.secondary,
+              background: (theme) => theme.palette.primary.main,
+              padding: "5px",
+              borderRadius: "50%",
+            }}
+          >
+            {row?.owner?.shortName || "N/A"}
+          </Box>
+        </Tooltip>
+      ),
     },
   ];
 
   const ExandedColumns = [
-    ...columns,
+    ...columns.filter((el) => el.name !== "Owner"),
     {
       name: "Amount",
       selector: (row: IDealsResponseObjectTypes) => row.amount,

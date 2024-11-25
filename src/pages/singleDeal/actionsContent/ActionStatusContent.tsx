@@ -8,10 +8,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { ISingleDealResponse } from "../../../common/types";
 
 function ActionStatusContent() {
-  const [selectedValue, setSelectedValue] = useState<string>();
-  const { setActionType } = useAction();
   const { id } = useParams();
-  const { mutate: changeStatus } = useChangeStatusMutation();
   const queryClient = useQueryClient();
   const cachedData = queryClient.getQueryData<ISingleDealResponse>([
     "useGetSingleDealQuery",
@@ -20,6 +17,9 @@ function ActionStatusContent() {
   const list = statusType?.filter(
     (el) => el.id !== cachedData?.deal.dealStatus
   );
+  const [selectedValue, setSelectedValue] = useState<string>(list[0].id);
+  const { setActionType } = useAction();
+  const { mutate: changeStatus } = useChangeStatusMutation();
 
   const handleClick = () => {
     changeStatus(
@@ -45,6 +45,7 @@ function ActionStatusContent() {
         setState={setSelectedValue}
         handleClick={handleClick}
         isFinished={true}
+        defaultValue={list[0].label}
       />
     </>
   );

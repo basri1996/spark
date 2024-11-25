@@ -5,10 +5,13 @@ import useGetActiveDealsListQuery from "../../common/queries/useGetActiveDealsLi
 import { useRef } from "react";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import { useAuth } from "../../context/AuthContext";
 function Active() {
   const styles = useStyles();
+  const { principal } = useAuth();
   const { data: activeColumns } = useGetActiveDealsListQuery({
-    dealStatuses: ["ACTIVE"],
+    dealStatuses: "ACTIVE",
+    ownerExternalIds: principal?.sub,
   });
   const ScrollRef = useRef<HTMLElement | null>(null);
 

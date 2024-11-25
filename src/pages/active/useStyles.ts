@@ -1,4 +1,5 @@
 import { Theme, useTheme } from "@mui/material/styles";
+import zIndex from "@mui/material/styles/zIndex";
 
 export const useStyles = () => {
   const theme = useTheme();
@@ -17,17 +18,17 @@ export const useStyles = () => {
     },
     ActiveSecondaryBoxStyles: {
       display: "flex",
-      overflowX: "auto",
+      overflow: "scroll",
       gap: "20px",
       paddingX: "5px",
       scrollBehavior: "smooth",
       width: "100%",
       paddingBottom: "50px",
-      transform: "rotateX(180deg)",
+      // transform: "rotateX(180deg)",
       paddingY: "30px",
-      "& > *": {
-        transform: "rotateX(180deg)",
-      },
+      // "& > *": {
+      //   transform: "rotateX(180deg)",
+      // },
       "&::-webkit-scrollbar": {
         height: "6px",
         display: "none",

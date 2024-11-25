@@ -9,7 +9,7 @@ function ActionCommentdStepContent() {
   const [commentValue, setCommentValue] = useState("");
   const { id } = useParams();
   const { mutate: createActivity } = useActivitiesMutation();
-  const { setActionType, callActionStep } = useAction();
+  const { setActionType, callActionStep, setCallActionStep } = useAction();
 
   const handleClick = () => {
     createActivity(
@@ -30,13 +30,24 @@ function ActionCommentdStepContent() {
         onChange={setCommentValue}
         label="Comment"
       />
-      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <Button
           sx={{
-            backgroundColor: (theme) => theme.palette.background.default,
+            backgroundColor: (theme) => theme.palette.primary.main,
             paddingX: "30px",
-            border: "1px solid #5080ff",
-            borderRadius: "5px",
+            color: (theme) => theme.palette.text.secondary,
+            borderRadius: "4px",
+          }}
+          onClick={() => setCallActionStep("CLIENT_ANSWERED")}
+        >
+          Back
+        </Button>
+        <Button
+          sx={{
+            backgroundColor: (theme) => theme.palette.primary.main,
+            paddingX: "30px",
+            color: (theme) => theme.palette.text.secondary,
+            borderRadius: "4px",
           }}
           onClick={handleClick}
         >

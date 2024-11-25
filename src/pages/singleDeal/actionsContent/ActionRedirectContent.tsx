@@ -12,8 +12,7 @@ import { useAction } from "../../../context/ActionContext";
 
 function ActionRedirectContent() {
   const methods: UseFormReturn<IRedirectObject> = useForm<IRedirectObject>({});
-  const { setActionType, callActionStep } = useAction();
-
+  const { setActionType, callActionStep, setCallActionStep } = useAction();
   const { mutate: createActivity } = useActivitiesMutation();
   const { id } = useParams();
   const { data: branchList } = useGetBranchesListQuery();
@@ -68,14 +67,27 @@ function ActionRedirectContent() {
             label="თარიღი"
           />
         )}
-        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Button
+            type="button"
+            sx={{
+              backgroundColor: (theme) => theme.palette.primary.main,
+              paddingX: "30px",
+              color: (theme) => theme.palette.text.secondary,
+              borderRadius: "4px",
+            }}
+            onClick={() => setCallActionStep("CLIENT_ANSWERED")}
+          >
+            Back
+          </Button>
+
           <Button
             type="submit"
             sx={{
-              backgroundColor: (theme) => theme.palette.background.default,
+              backgroundColor: (theme) => theme.palette.primary.main,
               paddingX: "30px",
-              border: "1px solid #5080ff",
-              borderRadius: "5px",
+              color: (theme) => theme.palette.text.secondary,
+              borderRadius: "4px",
             }}
           >
             Finish

@@ -75,10 +75,10 @@ function ActionRiskContent() {
         <Button
           onClick={handleClick}
           sx={{
-            backgroundColor: (theme) => theme.palette.background.default,
+            backgroundColor: (theme) => theme.palette.primary.main,
             paddingX: "30px",
-            border: "1px solid #5080ff",
-            borderRadius: "5px",
+            color: (theme) => theme.palette.text.secondary,
+            borderRadius: "4px",
             marginTop: "10px",
           }}
         >

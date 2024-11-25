@@ -19,7 +19,7 @@ function ActionSighContent() {
     comment: string;
     BRANCH_ID: string;
   }>({
-    radioValue: "",
+    radioValue: dealAcceptType[0].id,
     nextStep: "",
     comment: "",
     BRANCH_ID: "",
@@ -95,10 +95,10 @@ function ActionSighContent() {
           <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
             <Button
               sx={{
-                backgroundColor: (theme) => theme.palette.background.default,
+                backgroundColor: (theme) => theme.palette.primary.main,
                 paddingX: "30px",
-                border: "1px solid #5080ff",
-                borderRadius: "5px",
+                color: (theme) => theme.palette.text.secondary,
+                borderRadius: "4px",
               }}
               onClick={handleFinish}
             >
@@ -112,6 +112,7 @@ function ActionSighContent() {
           setState={handleSet}
           handleClick={handleClick}
           isFinished={false}
+          defaultValue={dealAcceptType[0].label}
         />
       )}
     </React.Fragment>

@@ -16,7 +16,6 @@ function Deals() {
     searchText: "",
   });
   const debouncedSearchTerm = useDebounce(params.searchText, 1000);
-
   const { data: deals, isPending } = useGetDealsListQuery({
     ...params,
     searchText: debouncedSearchTerm,
@@ -58,7 +57,7 @@ function Deals() {
         handlePageChange={handlePageChange}
         handlePerRowsChange={handlePerRowsChange}
         totalRows={deals?.totalElements}
-        isPending={isPending}
+        isPending={false}
       />
     </Box>
   );

@@ -1,4 +1,4 @@
-import { Box, Card } from "@mui/material";
+import { Box, Card, Tooltip } from "@mui/material";
 import { useParams } from "react-router-dom";
 import useGetSingleDealQuery from "../../common/queries/useGetSingleDealQuery";
 import CustomizedSteppers from "../../components/common/CustomizedSteppers";
@@ -31,6 +31,46 @@ function SingleDeal() {
           <VerticalSteppers activeStep={data?.deal?.progressStatus?.order} />
         </Card>
         <Box sx={SignleDealInformationBox}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              position: "absolute",
+              width: "100%",
+              top: "5px",
+              paddingX: "5px",
+            }}
+          >
+            <Box
+              sx={{
+                color: (theme) => theme.palette.text.secondary,
+                background: (theme) => theme.palette.primary.main,
+                paddingX: "20px",
+                paddingY: "5px",
+                borderRadius: "8px",
+              }}
+            >
+              {id}
+            </Box>
+            <Tooltip
+              title={data?.deal?.owner?.fullName || "N/A"}
+              sx={{
+                background: (theme) => theme.palette.background.default,
+                color: (theme) => theme.palette.text.secondary,
+              }}
+            >
+              <Box
+                sx={{
+                  color: (theme) => theme.palette.text.secondary,
+                  background: (theme) => theme.palette.primary.main,
+                  padding: "5px",
+                  borderRadius: "50%",
+                }}
+              >
+                {data?.deal?.owner?.shortName || "N/A"}
+              </Box>
+            </Tooltip>
+          </Box>
           <SingleDealCard information={data?.deal} />
           <DealsActionsCard status={data?.deal?.dealStatus} />
           <SimpleStepper steps={data?.activities || []} />

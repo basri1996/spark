@@ -32,6 +32,7 @@ function ControlledSingleSelect({
     <Controller
       control={control}
       name={name}
+      defaultValue=""
       render={({ field: { onChange, value }, fieldState: { error } }) => (
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">{label}</InputLabel>

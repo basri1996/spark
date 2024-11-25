@@ -12,10 +12,10 @@ export const HeaderMainBox = {
 };
 
 export const HeaderButton = {
-  backgroundColor: (theme: Theme) => theme.palette.background.default,
+  backgroundColor: (theme: Theme) => theme.palette.primary.main,
   paddingX: "30px",
-  border: "1px solid #5080ff",
-  borderRadius: "5px",
+  color: (theme: Theme) => theme.palette.text.secondary,
+  borderRadius: "4px",
 };
 
 export const SideBarMainBox = {

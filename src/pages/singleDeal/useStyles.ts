@@ -106,6 +106,7 @@ export const SignleDealInformationBox = {
   backgroundColor: "white",
   width: "100%",
   justifyContent: "center",
+  position: "relative",
 };
 
 export const DealsActionCardBox = {

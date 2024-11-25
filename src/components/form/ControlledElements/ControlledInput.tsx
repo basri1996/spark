@@ -22,6 +22,7 @@ function ControlledInput({
     <Controller
       control={control}
       name={name}
+      defaultValue=""
       render={({ field: { onChange, value }, fieldState: { error } }) => (
         <TextField
           disabled={disabled}

@@ -14,12 +14,14 @@ import {
   RadioGroupRadio,
 } from "./useStyles";
 import { Dispatch, SetStateAction } from "react";
+import { useAction } from "../../context/ActionContext";
 
 type Props = {
   list: { id: string; label: string; icon: React.FC<SvgIconProps> }[];
   setState: Dispatch<SetStateAction<string>> | (([key]: string) => void);
   isFinished?: boolean;
   handleClick: () => void;
+  defaultValue: string;
 };
 
 export default function RadioPositionEnd({
@@ -27,7 +29,10 @@ export default function RadioPositionEnd({
   setState,
   handleClick,
   isFinished = false,
+  defaultValue,
 }: Props) {
+  const { callActionStep, setCallActionStep } = useAction();
+  const BackButtonVisible = callActionStep === "CLIENT_ANSWERED";
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selected = list.find((item) => item.label === event.target.value);
     if (selected) {
@@ -37,7 +42,7 @@ export default function RadioPositionEnd({
   return (
     <>
       <RadioGroup
-        defaultValue="medium"
+        defaultValue={defaultValue}
         name="radio-buttons-group"
         onChange={handleChange}
       >
@@ -54,7 +59,20 @@ export default function RadioPositionEnd({
           ))}
         </List>
       </RadioGroup>
-      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: BackButtonVisible ? "space-between" : "flex-end",
+        }}
+      >
+        {BackButtonVisible && (
+          <Button
+            sx={RadioGroupButton}
+            onClick={() => setCallActionStep("INITIAL")}
+          >
+            Back
+          </Button>
+        )}
         <Button sx={RadioGroupButton} onClick={handleClick}>
           {isFinished ? "Finish" : "Next"}
         </Button>

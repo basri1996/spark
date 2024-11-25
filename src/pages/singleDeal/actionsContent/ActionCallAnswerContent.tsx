@@ -4,7 +4,9 @@ import { responseTypeNext } from "../../../dummyData";
 import { useAction } from "../../../context/ActionContext";
 
 function ActionCallAnswerContent() {
-  const [selectedValue, setSelectedValue] = useState<string>("");
+  const [selectedValue, setSelectedValue] = useState<string>(
+    responseTypeNext[0].id
+  );
   const { setCallActionStep } = useAction();
 
   const handleClick = () => {
@@ -16,6 +18,7 @@ function ActionCallAnswerContent() {
       list={responseTypeNext}
       setState={setSelectedValue}
       handleClick={handleClick}
+      defaultValue={responseTypeNext[0].label}
     />
   );
 }

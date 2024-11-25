@@ -15,7 +15,6 @@ function Archive() {
     searchText: "",
   });
   const debouncedSearchTerm = useDebounce(params.searchText, 1000);
-
   const { data: deals, isPending } = useGetDealsQuery({
     ...params,
     searchText: debouncedSearchTerm,
