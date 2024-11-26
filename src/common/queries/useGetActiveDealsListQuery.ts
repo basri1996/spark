@@ -22,8 +22,8 @@ const useGetActiveDealsListQuery = ({
         dealStatuses,
         ownerExternalIds,
         searchText,
-        productCodes,
-        progressSubStatuses,
+        productCodes:["1","3"],
+        progressSubStatuses:["1","3"],
       }),
     queryKey: [
       "useGetActiveDealsListQuery",
