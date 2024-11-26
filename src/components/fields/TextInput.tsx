@@ -31,6 +31,7 @@ const TextInput = ({
       value={value}
       onChange={onChange}
       fullWidth
+     
       placeholder={placeholder}
       slotProps={{
         input: {

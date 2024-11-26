@@ -124,3 +124,14 @@ export interface IBranchObject {
 }
 
 export type IBranchesResponse = IBranchObject[];
+
+export interface ISubStatusObject {
+  id: number;
+  subStatus: string;
+  label: string;
+  order: number;
+}
+
+
+export type ISubStatusResponse = ISubStatusObject[];
+

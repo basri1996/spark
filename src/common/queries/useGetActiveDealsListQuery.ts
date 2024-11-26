@@ -6,13 +6,31 @@ import { getActiveDealsList } from "../services/dealsService";
 const useGetActiveDealsListQuery = ({
   dealStatuses,
   ownerExternalIds,
+  searchText,
+  productCodes,
+  progressSubStatuses,
 }: {
   dealStatuses: string;
   ownerExternalIds: string;
+  searchText: string;
+  productCodes: string[];
+  progressSubStatuses: string[];
 }) => {
   return useQuery<IActiveDealsResponse, AxiosError, IActiveDealsResponse>({
-    queryFn: () => getActiveDealsList({ dealStatuses, ownerExternalIds }),
-    queryKey: ["useGetActiveDealsListQuery", dealStatuses, ownerExternalIds],
+    queryFn: () =>
+      getActiveDealsList({
+        dealStatuses,
+        ownerExternalIds,
+        searchText,
+        productCodes,
+        progressSubStatuses,
+      }),
+    queryKey: [
+      "useGetActiveDealsListQuery",
+      dealStatuses,
+      ownerExternalIds,
+      searchText,
+    ],
     enabled: !!ownerExternalIds,
   });
 };

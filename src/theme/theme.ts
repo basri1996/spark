@@ -32,7 +32,8 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: "12px !important",
-          height: "56px",
+          height: "45px",
+
           "&.MuiFormControl-root": {
             borderRadius: "12px !important",
           },
@@ -112,6 +113,7 @@ export const theme = createTheme({
           fontSize: "14px",
           "&.MuiInputLabel-shrink": {
             fontSize: "unset",
+            marginTop:"0px",
           },
         },
       },
@@ -153,7 +155,6 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: "12px",
-
           "& fieldset": {
             borderColor: "#5080ff",
           },

@@ -26,14 +26,23 @@ export const getDealsList = async ({
 export const getActiveDealsList = async ({
   dealStatuses,
   ownerExternalIds,
+  searchText,
+  productCodes,
+  progressSubStatuses
 }: {
   dealStatuses: string;
   ownerExternalIds: string;
+  searchText:string;
+  productCodes:string[];
+  progressSubStatuses:string[]
 }) => {
   const response = await api.get(activeDealsUrl, {
     params: {
       dealStatuses,
       ownerExternalIds,
+      searchText,
+      productCodes,
+      progressSubStatuses
     },
   });
   return response?.data;
