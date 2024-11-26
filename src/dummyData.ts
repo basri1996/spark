@@ -5,6 +5,7 @@ import PhonePausedIcon from "@mui/icons-material/PhonePaused";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
+
 export const activeColumns = [
   {
     status: {
@@ -21,10 +22,24 @@ export const activeColumns = [
         product: "სამომხმარებლო სესხი",
         subStatus: {
           id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
+          subStatus: "COMMUNICATION_RESCHEDULED",
           label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
           order: 0,
         },
+        attributes: [
+          {
+            key: "BRANCH_ID",
+            value: "4",
+          },
+          {
+            key: "BRANCH_NAME",
+            value: '"ბაზისბანკი" ლესელიძის #2 განყოფილება',
+          },
+          {
+            key: "COMMUNICATION_DATE",
+            value: "2024-07-19",
+          },
+        ],
       },
       {
         id: "13wr4",
@@ -34,10 +49,24 @@ export const activeColumns = [
         product: "სამომხმარებლო სესხი",
         subStatus: {
           id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
+          subStatus: "LOAN_ACCEPTED",
           label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
           order: 0,
         },
+        attributes: [
+          {
+            key: "BRANCH_ID",
+            value: "4",
+          },
+          {
+            key: "BRANCH_NAME",
+            value: '"ბაზისბანკი" ლესელიძის #2 განყოფილება',
+          },
+          {
+            key: "COMMUNICATION_DATE",
+            value: "2024-07-19",
+          },
+        ],
       },
       {
         id: "1wtwt34",
@@ -47,10 +76,24 @@ export const activeColumns = [
         product: "სამომხმარებლო სესხი",
         subStatus: {
           id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
+          subStatus: "LOAN_REJECTED",
           label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
           order: 0,
         },
+        attributes: [
+          {
+            key: "BRANCH_ID",
+            value: "4",
+          },
+          {
+            key: "BRANCH_NAME",
+            value: '"ბაზისბანკი" ლესელიძის #2 განყოფილება',
+          },
+          {
+            key: "COMMUNICATION_DATE",
+            value: "2024-07-19",
+          },
+        ],
       },
       {
         id: "13qqe4",
@@ -64,7 +107,22 @@ export const activeColumns = [
           label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
           order: 0,
         },
+        attributes: [
+          {
+            key: "BRANCH_ID",
+            value: "4",
+          },
+          {
+            key: "BRANCH_NAME",
+            value: '"ბაზისბანკი" ლესელიძის #2 განყოფილება',
+          },
+          {
+            key: "COMMUNICATION_DATE",
+            value: "2024-07-19",
+          },
+        ],
       },
+
       {
         id: "1rwer34",
         name: "5",
@@ -77,450 +135,20 @@ export const activeColumns = [
           label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
           order: 0,
         },
-      },
-    ],
-  },
-  {
-    status: {
-      id: 1,
-      status: "CLIENT_IN_PROGRESS",
-      label: "Clients in Progress",
-    },
-    deals: [
-      {
-        id: "1ew4",
-        name: "1",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "13wr4",
-        name: "2",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "1wtwt34",
-        name: "3",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "13qqe4",
-        name: "4",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "1rwer34",
-        name: "5",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-    ],
-  },
-  {
-    status: {
-      id: 1,
-      status: "CLIENT_IN_PROGRESS",
-      label: "Clients in Progress",
-    },
-    deals: [
-      {
-        id: "1ew4",
-        name: "1",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "13wr4",
-        name: "2",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "1wtwt34",
-        name: "3",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "13qqe4",
-        name: "4",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "1rwer34",
-        name: "5",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-    ],
-  },
-  {
-    status: {
-      id: 1,
-      status: "CLIENT_IN_PROGRESS",
-      label: "Clients in Progress",
-    },
-    deals: [
-      {
-        id: "1ew4",
-        name: "1",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "13wr4",
-        name: "2",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "1wtwt34",
-        name: "3",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "13qqe4",
-        name: "4",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "1rwer34",
-        name: "5",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-    ],
-  },
-  {
-    status: {
-      id: 1,
-      status: "CLIENT_IN_PROGRESS",
-      label: "Clients in Progress",
-    },
-    deals: [
-      {
-        id: "1ew4",
-        name: "1",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "13wr4",
-        name: "2",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "1wtwt34",
-        name: "3",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "13qqe4",
-        name: "4",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "1rwer34",
-        name: "5",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-    ],
-  },
-  {
-    status: {
-      id: 1,
-      status: "CLIENT_IN_PROGRESS",
-      label: "Clients in Progress",
-    },
-    deals: [
-      {
-        id: "1ew4",
-        name: "1",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "13wr4",
-        name: "2",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "1wtwt34",
-        name: "3",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "13qqe4",
-        name: "4",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "1rwer34",
-        name: "5",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-    ],
-  },
-  {
-    status: {
-      id: 1,
-      status: "CLIENT_IN_PROGRESS",
-      label: "Clients in Progress",
-    },
-    deals: [
-      {
-        id: "1ew4",
-        name: "1",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "13wr4",
-        name: "2",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "1wtwt34",
-        name: "3",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "13qqe4",
-        name: "4",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
-      },
-      {
-        id: "1rwer34",
-        name: "5",
-        amount: 134444,
-        ccy: "GEL",
-        product: "სამომხმარებლო სესხი",
-        subStatus: {
-          id: 5,
-          subStatus: "REDIRECTED_TO_BRANCH",
-          label: "გადამისამართებულია განაცხადის შესავსებად ფილიალში",
-          order: 0,
-        },
+        attributes: [
+          {
+            key: "BRANCH_ID",
+            value: "4",
+          },
+          {
+            key: "BRANCH_NAME",
+            value: '"ბაზისბანკი" ლესელიძის #2 განყოფილება',
+          },
+          {
+            key: "COMMUNICATION_DATE",
+            value: "2024-07-19",
+          },
+        ],
       },
     ],
   },

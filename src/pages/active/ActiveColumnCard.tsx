@@ -4,6 +4,7 @@ import { useStyles } from "./useStyles";
 import { useNavigate } from "react-router-dom";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { subStatusUi } from "../../data/data";
 
 function ActiveColumnCard({
   name,
@@ -12,6 +13,7 @@ function ActiveColumnCard({
   ccy,
   id,
   subStatus,
+  attributes: atr,
 }: ColumnCardTypes) {
   const styles = useStyles();
   const navigate = useNavigate();
@@ -22,6 +24,7 @@ function ActiveColumnCard({
     transform: CSS.Transform.toString(transform),
     transition,
   };
+
   return (
     <Card
       sx={styles.ColumnCardMainBoxStyles}
@@ -70,7 +73,22 @@ function ActiveColumnCard({
           </Typography>
         </Paper>
       </Box>
-      <Typography>{subStatus?.label}</Typography>
+      <Typography
+        sx={{
+          backgroundColor:
+            subStatusUi[subStatus?.subStatus as keyof typeof subStatusUi]
+              ?.color,
+          color: "white",
+          paddingX: "8px",
+          paddingY: "2px",
+          borderRadius: "8px",
+          fontSize: "15px",
+        }}
+      >
+        {subStatus?.subStatus === "TRYING_TO_COMMUNICATE"
+          ? `${atr[atr.length - 1].value === "2" ? "II" : "III"} ზარი`
+          : subStatusUi[subStatus?.subStatus as keyof typeof subStatusUi]?.text}
+      </Typography>
     </Card>
   );
 }

@@ -4,6 +4,7 @@ export interface ColumnCardTypes {
   amount: number;
   ccy: string;
   id: string;
+  attributes: { key: string; value: string }[];
   subStatus: {
     id: number;
     subStatus: string;

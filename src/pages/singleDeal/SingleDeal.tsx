@@ -34,24 +34,13 @@ function SingleDeal() {
           <Box
             sx={{
               display: "flex",
-              justifyContent: "space-between",
+              justifyContent: "flex-end",
               position: "absolute",
               width: "100%",
               top: "5px",
               paddingX: "5px",
             }}
           >
-            <Box
-              sx={{
-                color: (theme) => theme.palette.text.secondary,
-                background: (theme) => theme.palette.primary.main,
-                paddingX: "20px",
-                paddingY: "5px",
-                borderRadius: "8px",
-              }}
-            >
-              {id}
-            </Box>
             <Tooltip
               title={data?.deal?.owner?.fullName || "N/A"}
               sx={{
@@ -61,10 +50,11 @@ function SingleDeal() {
             >
               <Box
                 sx={{
-                  color: (theme) => theme.palette.text.secondary,
-                  background: (theme) => theme.palette.primary.main,
+                  color: (theme) => theme.palette.primary.main,
+                  background: "#F1F1F1",
                   padding: "5px",
                   borderRadius: "50%",
+                  border: "1px solid #d0cdcd ",
                 }}
               >
                 {data?.deal?.owner?.shortName || "N/A"}

@@ -36,6 +36,7 @@ function SingleDealCard({
             text={information?.createDate || "-"}
           />
           <UserInfo title={"სტატუსი"} text={information?.dealStatus || "-"} />
+          <UserInfo title={"დილის ნომერი"} text={information?.id || "-"} />
         </GridBox>
       </Box>
     </CardContent>

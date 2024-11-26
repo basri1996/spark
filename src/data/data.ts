@@ -133,3 +133,53 @@ export const dealAcceptType = [
     icon: AccountBalanceIcon,
   },
 ];
+export const subStatusUi = {
+  TRYING_TO_COMMUNICATE: {
+    color: "#3457D5",
+    text: "დაკავშირება მოხდეს",
+  },
+  COMMUNICATION_RESCHEDULED: {
+    text: "დაკავშირება მოხდეს",
+    color: "#3457D5",
+  },
+  DECLINED_BY_CLIENT: {
+    text: "არ სურს შევსება",
+    color: "#3457D5",
+  },
+  REDIRECTED_TO_BRANCH: {
+    text: "შესავსებია ფილიალში",
+    color: "#3457D5",
+  },
+  CLIENT_FILLED_IN_BRANCH: {
+    text: "შევსებულია ფილიალში",
+    color: "#3457D5",
+  },
+  APPLICATION_TO_BE_FILLED: {
+    text: "განაცხადი შესავსებია",
+    color: "#3457D5",
+  },
+  APPLICATION_FILLED: {
+    text: "განხილვაშია",
+    color: "#3457D5",
+  },
+  LOAN_ACCEPTED: {
+    text: "დამტკიცდა",
+    color: "#006A4E",
+  },
+  LOAN_REJECTED: {
+    text: "არ დამტკიცდა",
+    color: "#9e1b32",
+  },
+  READY_TO_SIGN: {
+    text: "ფილიალი",
+    color: "#3457D5",
+  },
+  LOAN_GRANTED: {
+    text: "გაიცა",
+    color: "#006A4E",
+  },
+  LOAN_NOT_GRANTED: {
+    text: "არ გაიცა",
+    color: "#9e1b32",
+  },
+};

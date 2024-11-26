@@ -1,5 +1,4 @@
 import { Theme, useTheme } from "@mui/material/styles";
-import zIndex from "@mui/material/styles/zIndex";
 
 export const useStyles = () => {
   const theme = useTheme();
@@ -87,9 +86,10 @@ export const useStyles = () => {
       cursor: "pointer",
       boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
       transition: "box-shadow 0.5s ease",
+
+      background: "rgba(241, 245, 249, 1)",
       "&:hover": {
-        background: "rgba(241, 245, 249, 1)",
-        boxShadow: "0",
+        background: "white",
         border: "1px solid rgba(241, 245, 249, 1)",
       },
     },
