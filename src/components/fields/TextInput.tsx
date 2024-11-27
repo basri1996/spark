@@ -28,10 +28,10 @@ const TextInput = ({
     <TextField
       type={type}
       variant="outlined"
-      value={value}
+      // value={value}
       onChange={onChange}
       fullWidth
-     
+      defaultValue={value}
       placeholder={placeholder}
       slotProps={{
         input: {

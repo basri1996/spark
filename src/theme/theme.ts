@@ -32,8 +32,6 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: "12px !important",
-          height: "45px",
-
           "&.MuiFormControl-root": {
             borderRadius: "12px !important",
           },
