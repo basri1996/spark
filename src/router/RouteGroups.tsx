@@ -1,17 +1,27 @@
 import { createBrowserRouter, Navigate, RouteObject } from "react-router-dom";
-import Deals from "../pages/deals/Deals";
 import Layout from "../components/layout/Layout";
-import Active from "../pages/active/Active";
-import OnHold from "../pages/onHold/OnHold";
-import Archive from "../pages/archive/Archive";
-import SingleDeal from "../pages/singleDeal/SingleDeal";
 import { ActionContextProvider } from "../context/ActionContext";
 import ErrorPage from "../error/ErrorPage";
+import { lazy, Suspense } from "react";
+import { Outlet } from "react-router-dom";
+import Loader from "../components/common/Loader";
+
+const Deals = lazy(() => import("../pages/deals/Deals"));
+const Active = lazy(() => import("../pages/active/Active"));
+const OnHold = lazy(() => import("../pages/onHold/OnHold"));
+const Archive = lazy(() => import("../pages/archive/Archive"));
+const SingleDeal = lazy(() => import("../pages/singleDeal/SingleDeal"));
 
 const routes: RouteObject[] = [
   {
     path: "/",
-    element: <Layout />,
+    element: (
+      <Layout>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </Layout>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
