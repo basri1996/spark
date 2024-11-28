@@ -1,4 +1,6 @@
 import { useTheme } from "@mui/material/styles";
+import { styled } from "@mui/material";
+
 
 export const useStyles = () => {
   const theme = useTheme();
@@ -21,3 +23,6 @@ export const useStyles = () => {
     },
   };
 };
+
+export const Input = styled("input")``
+

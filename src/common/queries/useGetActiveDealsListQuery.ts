@@ -22,14 +22,16 @@ const useGetActiveDealsListQuery = ({
         dealStatuses,
         ownerExternalIds,
         searchText,
-        productCodes:["1","3"],
-        progressSubStatuses:["1","3"],
+        productCodes,
+        progressSubStatuses,
       }),
     queryKey: [
       "useGetActiveDealsListQuery",
       dealStatuses,
       ownerExternalIds,
       searchText,
+      productCodes,
+      progressSubStatuses,
     ],
     enabled: !!ownerExternalIds,
   });

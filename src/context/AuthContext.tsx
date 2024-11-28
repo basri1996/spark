@@ -22,7 +22,7 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
 
   // useEffect(() => {
   //   if (initialized && !keycloak?.authenticated) {
-  //     keycloak?.login({ redirectUrl: window.location.href });
+  //     keycloak?.login({ redirectUri: window.location.href });
   //   }
   //   if (keycloak.token) {
   //     setPrincipal(jwtDecode(keycloak.token));

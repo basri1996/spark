@@ -29,7 +29,7 @@ function Active() {
 
   const [expandedModalVisible, setExpandedModalVisible] = useState(false);
   const { principal } = useAuth();
-  const { data: activeColumns, refetch } = useGetActiveDealsListQuery({
+  const { data: activeColumns } = useGetActiveDealsListQuery({
     dealStatuses: "ACTIVE",
     ownerExternalIds: principal?.sub,
     searchText: searchParams.get("searchText") ?? "",
@@ -39,6 +39,12 @@ function Active() {
   const { data: subStatusList } = useGetSubStatusListQuery();
   const { data: productList } = useGetLoanProductListQuery();
   const ScrollRef = useRef<HTMLElement | null>(null);
+
+  const category =
+    searchParams.get("searchText") ??
+    "" +
+      searchParams.getAll("productCodes") +
+      searchParams.getAll("progressSubStatuses");
 
   const scrollToMaxLeft = () => {
     if (ScrollRef.current) {
@@ -77,7 +83,6 @@ function Active() {
   };
 
   const handleApply = () => {
-    refetch();
     setExpandedModalVisible(false);
     setSearchParams((searchParams) => {
       searchParams.delete("progressSubStatuses");
@@ -163,7 +168,7 @@ function Active() {
       <Box ref={ScrollRef} sx={styles.ActiveSecondaryBoxStyles}>
         {activeColumns?.map((el) => (
           <ActiveColumn
-            key={el.status.id}
+            key={category +el.status.id}
             label={el.status.label}
             deals={el.deals}
             ref={ScrollRef}

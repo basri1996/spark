@@ -12,11 +12,11 @@ function Archive() {
   const { data: deals, isPending } = useGetDealsQuery({
     dealStatuses: "ARCHIVED",
     searchText: searchParams.get("searchText") ?? "",
-    pageNumber: Number(searchParams.get("pageNumber")) ?? 1,
-    pageSize: Number(searchParams.get("pageSize")) ?? 10,
+    pageNumber: Number(searchParams.get("pageNumber")) || 1,
+    pageSize: Number(searchParams.get("pageSize")) || 10,
   });
 
-  
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { value },

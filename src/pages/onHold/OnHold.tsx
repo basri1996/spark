@@ -10,8 +10,8 @@ function OnHold() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { data: deals, isPending } = useGetDealsQuery({
     dealStatuses: "ON_HOLD",
-    pageNumber: Number(searchParams.get("pageNumber")) ?? 1,
-    pageSize: Number(searchParams.get("pageSize")) ?? 10,
+    pageNumber: Number(searchParams.get("pageNumber")) || 1,
+    pageSize: Number(searchParams.get("pageSize")) || 10,
     searchText: searchParams.get("searchText") ?? "",
   });
 

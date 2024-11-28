@@ -108,11 +108,15 @@ function DealsTable({
             sx={{
               color: (theme) => theme.palette.text.secondary,
               background: (theme) => theme.palette.primary.main,
-              padding: "5px",
               borderRadius: "50%",
+              width:"40px",
+              height:"40px",
+              display:"flex",
+              justifyContent:"center",
+              alignItems:"center"
             }}
           >
-            {row?.owner?.shortName || "N/A"}
+            {row?.owner?.shortName.toUpperCase() || "N/A"}
           </Box>
         </Tooltip>
       ),
