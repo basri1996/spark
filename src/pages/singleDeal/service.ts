@@ -1,5 +1,5 @@
-import { api } from "../../api/api";
-import { dealsUrl } from "../../api/constants";
+import { api } from "../../config/api";
+import { dealsUrl } from "../../constant";
 import {
   IActivityObject,
   IModifyData,

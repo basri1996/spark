@@ -1,5 +1,5 @@
-import { api } from "../../api/api";
-import { branchesUrl, productUrl, statusesUrl, subStatusUrl } from "../../api/constants";
+import { api } from "../../config/api";
+import { branchesUrl, productUrl, statusesUrl, subStatusUrl } from "../../constant";
 
 export const getDealStatuses = async () => {
   const response = await api.get(`${statusesUrl}`);

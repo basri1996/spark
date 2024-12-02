@@ -1,8 +1,8 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useNavigate, useRouteError } from "react-router-dom";
-import Modal from "../components/common/Modal";
-import Logo from "../assets/icons/MainLogo.png";
-import { MainLogoStyles } from "../components/sidebar/useStyles";
+import Logo from "../../assets/icons/MainLogo.png";
+import Modal from "./Modal";
+import { MainLogoStyles } from "../sidebar/useStyles";
 
 function ErrorPage() {
   const error = useRouteError();

@@ -1,10 +1,4 @@
-import {
-  Box,
-  Button,
-  debounce,
-  SelectChangeEvent,
-  Typography,
-} from "@mui/material";
+import { Box, debounce, Typography } from "@mui/material";
 import ActiveColumn from "./ActiveColumn";
 import { useStyles } from "./useStyles";
 import useGetActiveDealsListQuery from "../../common/queries/useGetActiveDealsListQuery";
@@ -15,18 +9,11 @@ import { useAuth } from "../../context/AuthContext";
 import expanded from "../../assets/icons/expanded.svg";
 import TextInput from "../../components/fields/TextInput";
 import Modal from "../../components/common/Modal";
-import useGetSubStatusListQuery from "../../common/queries/useGetSubStatusListQuery";
-import useGetLoanProductListQuery from "../../common/queries/useGetLoanProductListQuery";
-import MultiSelect from "../../components/fields/MultiSelect";
 import { useSearchParams } from "react-router-dom";
+import ActiveFilterModal from "./ActiveFilterModal";
 function Active() {
   const styles = useStyles();
   const [searchParams, setSearchParams] = useSearchParams();
-  const [params, setParams] = useState({
-    productCodes: searchParams.getAll("productCodes"),
-    progressSubStatuses: searchParams.getAll("progressSubStatuses"),
-  });
-
   const [expandedModalVisible, setExpandedModalVisible] = useState(false);
   const { principal } = useAuth();
   const { data: activeColumns } = useGetActiveDealsListQuery({
@@ -36,11 +23,8 @@ function Active() {
     productCodes: searchParams.getAll("productCodes"),
     progressSubStatuses: searchParams.getAll("progressSubStatuses"),
   });
-  const { data: subStatusList } = useGetSubStatusListQuery();
-  const { data: productList } = useGetLoanProductListQuery();
   const ScrollRef = useRef<HTMLElement | null>(null);
-
-  const category =
+  const keyDependentOnParams =
     searchParams.get("searchText") ??
     "" +
       searchParams.getAll("productCodes") +
@@ -73,81 +57,29 @@ function Active() {
     });
   };
 
-  const handleMultiSelectChange = (field: string) => {
-    return function (value: SelectChangeEvent<string[]>) {
-      setParams((prev) => ({
-        ...prev,
-        [field]: value,
-      }));
-    };
-  };
-
-  const handleApply = () => {
-    setExpandedModalVisible(false);
-    setSearchParams((searchParams) => {
-      searchParams.delete("progressSubStatuses");
-      searchParams.delete("productCodes");
-      params.productCodes.forEach((code) => {
-        searchParams.append("productCodes", code);
-      });
-      params.progressSubStatuses.forEach((status) => {
-        searchParams.append("progressSubStatuses", status);
-      });
-
-      return searchParams;
-    });
-  };
-
   return (
     <Box sx={styles.ActiveMainBoxStyles}>
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Box
-          sx={{
-            display: "flex",
-            gap: "10px",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+      <Box sx={styles.ActiveSecondaryBox}>
+        <Box sx={styles.ActiveHeaderBox}>
+          <Box sx={styles.ActiveTypographyBox}>
             <Typography variant="h6" sx={styles.ActiveTypographyStyles}>
               Active Deals
-            </Typography>{" "}
+            </Typography>
           </Box>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "10px",
-            }}
-          >
+          <Box sx={styles.ActiveKeyBoardBox}>
             <KeyboardArrowLeftIcon
-              sx={{ fontSize: 40, cursor: "pointer" }}
+              sx={styles.ActiveKeyBoard}
               onClick={scrollToMaxLeft}
             />
             <KeyboardArrowRightIcon
-              sx={{ fontSize: 40, cursor: "pointer" }}
+              sx={styles.ActiveKeyBoard}
               onClick={scrollToMaxRight}
             />
           </Box>
         </Box>
 
-        <Box
-          sx={{
-            display: "flex",
-            gap: "10px",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Box sx={{ width: "200px" }}>
+        <Box sx={styles.ActiveHeaderLeftBox}>
+          <Box sx={styles.ActiveInputBox}>
             <TextInput
               type="text"
               placeholder="Search"
@@ -159,7 +91,7 @@ function Active() {
             component="img"
             src={expanded}
             alt="expanded"
-            sx={{ height: "56px", width: "56px", cursor: "pointer" }}
+            sx={styles.ActiveIconBox}
             onClick={() => setExpandedModalVisible(true)}
           />
         </Box>
@@ -168,7 +100,7 @@ function Active() {
       <Box ref={ScrollRef} sx={styles.ActiveSecondaryBoxStyles}>
         {activeColumns?.map((el) => (
           <ActiveColumn
-            key={category +el.status.id}
+            key={keyDependentOnParams + el.status.id}
             label={el.status.label}
             deals={el.deals}
             ref={ScrollRef}
@@ -182,47 +114,7 @@ function Active() {
           setExpandedModalVisible(false);
         }}
       >
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              flexDirection: "column",
-              gap: "20px",
-              width: "500px",
-            }}
-          >
-            <MultiSelect
-              options={productList || []}
-              label="პროდუქტი"
-              value={params.productCodes}
-              onChange={handleMultiSelectChange("productCodes")}
-              inputValueKey="productCode"
-            />
-            <MultiSelect
-              options={subStatusList || []}
-              label="საბ სტატუსი"
-              inputValueKey="subStatus"
-              content="label"
-              value={params.progressSubStatuses}
-              onChange={handleMultiSelectChange("progressSubStatuses")}
-            />
-          </Box>
-          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-            <Button
-              sx={{
-                backgroundColor: (theme) => theme.palette.primary.main,
-                paddingX: "30px",
-                color: (theme) => theme.palette.text.secondary,
-                borderRadius: "4px",
-              }}
-              onClick={handleApply}
-            >
-              Apply
-            </Button>
-          </Box>
-        </Box>
+        <ActiveFilterModal setExpandedModalVisible={setExpandedModalVisible} />
       </Modal>
     </Box>
   );

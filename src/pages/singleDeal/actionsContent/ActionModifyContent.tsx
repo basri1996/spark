@@ -4,7 +4,6 @@ import { IModifyData } from "../types";
 import ControlledSingleSelect from "../../../components/form/ControlledElements/ControlledSingleSelect";
 import useGetLoanProductListQuery from "../../../common/queries/useGetLoanProductListQuery";
 import ControlledInput from "../../../components/form/ControlledElements/ControlledInput";
-import { Currency } from "../../../dummyData";
 import { Box, Button } from "@mui/material";
 import useModifyDealMutation from "../mutations/useModifyDealMutation";
 import { useParams } from "react-router-dom";
@@ -12,6 +11,7 @@ import { useAction } from "../../../context/ActionContext";
 import { useQueryClient } from "@tanstack/react-query";
 import { ISingleDealResponse } from "../../../common/types";
 import { useEffect } from "react";
+import { Currency } from "../../../data";
 
 function ActionModifyContent() {
   const methods: UseFormReturn<IModifyData> = useForm<IModifyData>({});

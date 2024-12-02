@@ -1,6 +1,5 @@
 import { Box, Button } from "@mui/material";
 import Toggle from "../../../components/fields/Toggle";
-import { RiskOptions } from "../../../dummyData";
 import useChangeTagsMutation from "../mutations/useChangeTagsMutation";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -8,6 +7,7 @@ import { useAction } from "../../../context/ActionContext";
 import Divider from "@mui/material/Divider";
 import { useQueryClient } from "@tanstack/react-query";
 import { ISingleDealResponse } from "../../../common/types";
+import { RiskOptions } from "../../../data";
 
 function ActionRiskContent() {
   const { id } = useParams();

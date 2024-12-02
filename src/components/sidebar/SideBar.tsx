@@ -7,6 +7,7 @@ import CircleNotificationsSharpIcon from "@mui/icons-material/CircleNotification
 import ForwardToInboxIcon from "@mui/icons-material/ForwardToInbox";
 import PhonePausedIcon from "@mui/icons-material/PhonePaused";
 import ArchiveIcon from "@mui/icons-material/Archive";
+import TtyIcon from "@mui/icons-material/Tty";
 import { useNavigate } from "react-router-dom";
 import {
   MainLogoStyles,
@@ -15,6 +16,7 @@ import {
   SideBarMainBox,
   SideBarSecondaryBox,
 } from "./useStyles";
+import { useAuth } from "../../context/AuthContext";
 
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
@@ -23,6 +25,7 @@ interface Props {
 
 export default function Sidebar({ setOpen, open }: Props) {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const { roleChecker } = useAuth();
   const navigate = useNavigate();
 
   const closeSidebar = () => {
@@ -58,34 +61,51 @@ export default function Sidebar({ setOpen, open }: Props) {
         />
 
         <List sx={SideBarList}>
-          <SideBarItem
-            closeSidebar={closeSidebar}
-            title={"Inbox"}
-            to={"/deals"}
-          >
-            <ForwardToInboxIcon />
-          </SideBarItem>
-          <SideBarItem
-            closeSidebar={closeSidebar}
-            title={"Active"}
-            to={"/active"}
-          >
-            <CircleNotificationsSharpIcon />
-          </SideBarItem>
-          <SideBarItem
-            closeSidebar={closeSidebar}
-            title={"On Hold"}
-            to={"/on-hold"}
-          >
-            <PhonePausedIcon />
-          </SideBarItem>
-          <SideBarItem
-            closeSidebar={closeSidebar}
-            title={"Archive"}
-            to={"/archive"}
-          >
-            <ArchiveIcon />
-          </SideBarItem>
+          {roleChecker("lead-manager") && (
+            <SideBarItem
+              closeSidebar={closeSidebar}
+              title={"Inbox"}
+              to={"/deals"}
+            >
+              <ForwardToInboxIcon />
+            </SideBarItem>
+          )}
+          {roleChecker("lead-manager") && (
+            <SideBarItem
+              closeSidebar={closeSidebar}
+              title={"Active"}
+              to={"/active"}
+            >
+              <CircleNotificationsSharpIcon />
+            </SideBarItem>
+          )}
+          {roleChecker("lead-manager") && (
+            <SideBarItem
+              closeSidebar={closeSidebar}
+              title={"On Hold"}
+              to={"/on-hold"}
+            >
+              <PhonePausedIcon />
+            </SideBarItem>
+          )}
+          {roleChecker("lead-manager") && (
+            <SideBarItem
+              closeSidebar={closeSidebar}
+              title={"Archive"}
+              to={"/archive"}
+            >
+              <ArchiveIcon />
+            </SideBarItem>
+          )}
+          {roleChecker("call-center") && (
+            <SideBarItem
+              closeSidebar={closeSidebar}
+              title={"Call Center"}
+              to={"/call-center"}
+            >
+              <TtyIcon />
+            </SideBarItem>
+          )}
         </List>
 
         {isMobile && (

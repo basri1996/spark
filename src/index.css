@@ -7,11 +7,23 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-@keyframes spin {
+@keyframes pulse {
   0% {
-    transform: rotate(0deg);
+    transform: scale(0.9);
+  }
+  70% {
+    transform: scale(1);
   }
   100% {
-    transform: rotate(360deg);
+    transform: scale(0.9);
+  }
+}
+
+@keyframes delay {
+  0% {
+    display: none;
+  }
+  100% {
+    display: block;
   }
 }

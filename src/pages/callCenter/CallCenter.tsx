@@ -2,19 +2,17 @@ import { Box, debounce, Typography } from "@mui/material";
 import TextInput from "../../components/fields/TextInput";
 import DealsTable from "../../components/tables/DealsTable";
 import { useStyles } from "./useStyles";
-import useGetDealsQuery from "../../common/queries/useGetDealsListQuery";
 import { useSearchParams } from "react-router-dom";
+import useGetCallCenterLeadListQuery from "./queries/useGetCallCenterLeadListQuery";
 
-function Archive() {
+function OnHold() {
   const styles = useStyles();
   const [searchParams, setSearchParams] = useSearchParams();
-  const { data: deals, isPending } = useGetDealsQuery({
-    dealStatuses: "ARCHIVED",
-    searchText: searchParams.get("searchText") ?? "",
+  const { data: deals, isPending } = useGetCallCenterLeadListQuery({
     pageNumber: Number(searchParams.get("pageNumber")) || 1,
     pageSize: Number(searchParams.get("pageSize")) || 10,
+    searchText: searchParams.get("searchText") ?? "",
   });
-
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -29,30 +27,33 @@ function Archive() {
   };
   const handlePageChange = (pageNumber: number) => {
     setSearchParams((searchParams) => {
-      searchParams.set("pageNumber",String(pageNumber))
-      return searchParams
+      searchParams.set("pageNumber", String(pageNumber));
+      return searchParams;
     });
   };
 
   const handlePerRowsChange = (pageSize: number, pageNumber: number) => {
     setSearchParams((searchParams) => {
-      searchParams.set("pageNumber",String(pageNumber))
-      searchParams.set("pageSize",String(pageSize))
-      return searchParams
+      searchParams.set("pageNumber", String(pageNumber));
+      searchParams.set("pageSize", String(pageSize));
+      return searchParams;
     });
   };
-
   return (
-    <Box sx={styles.ArchiveMainBoxStyles}>
-      <Box sx={styles.ArchiveSecondaryBoxStyles}>
+    <Box sx={styles.CallCenterMainBoxStyles}>
+      <Box sx={styles.CallCenterSecondaryBoxStyles}>
         <Box
-          sx={styles.ArchiveTypographyBox}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
-          <Typography variant="h6" sx={styles.ArchiveTypographyStyles}>
-            Archive
+          <Typography variant="h6" sx={styles.CallCenterTypographyStyles}>
+            Call Center
           </Typography>
         </Box>
-        <Box sx={styles.ArchiveInputBox}>
+        <Box sx={{ width: "200px" }}>
           <TextInput
             type="text"
             placeholder="Search"
@@ -72,4 +73,4 @@ function Archive() {
   );
 }
 
-export default Archive;
+export default OnHold;

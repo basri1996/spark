@@ -4,26 +4,20 @@ export const useStyles = () => {
   const theme = useTheme();
 
   return {
-    ArchiveMainBoxStyles: {
+    CallCenterMainBoxStyles: {
       display: "flex",
       flexDirection: "column",
       gap: "30px",
     },
-    ArchiveSecondaryBoxStyles: {
+    CallCenterSecondaryBoxStyles: {
       display: "flex",
       width: "100%",
       justifyContent: "space-between",
     },
-    ArchiveTypographyStyles: {
+    CallCenterTypographyStyles: {
       color: theme.palette.text.primary,
       fontSize: "24px",
       fontWeight: 700,
     },
-    ArchiveTypographyBox:{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-    },
-    ArchiveInputBox:{ width: "200px" }
   };
 };

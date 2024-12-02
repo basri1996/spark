@@ -2,8 +2,8 @@ import { Box, CardContent, Typography } from "@mui/material";
 import Modal from "../../components/common/Modal";
 import { ActionButton, DealsActionCardBox } from "./useStyles";
 import ActionModalContent from "./actionsContent/ActionModalContent";
-import { ActionsType } from "../../dummyData";
 import { useAction } from "../../context/ActionContext";
+import { ActionsType } from "../../data";
 
 function DealsActionsCard({ status }: { status: string | undefined }) {
   const { actionType, setActionType, setCallActionStep } = useAction();

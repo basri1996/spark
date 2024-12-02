@@ -1,5 +1,5 @@
-import { api } from "../../api/api";
-import { fileuploadUrl } from "../../api/constants";
+import { api } from "../../config/api";
+import { fileuploadUrl } from "../../constant";
 
 export const uploadDeals = async (file: File[]) => {
   const formData = new FormData();

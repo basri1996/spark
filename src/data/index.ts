@@ -6,28 +6,7 @@ import ArchiveIcon from "@mui/icons-material/Archive";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
 
-export const selectOptions = [
-  {
-    productCode: "CONSUMER_LOAN",
-    name: "სამომხმარებლო სესხი",
-  },
-  {
-    productCode: "MORTGAGE_LOAN",
-    name: "იპოთეკური სესხი",
-  },
-  {
-    productCode: "SECURED_CONSUMER_LOAN",
-    name: "უზრუნველყოფილი სამომხმარებლო სესხი",
-  },
-  {
-    productCode: "MEGO_CARD",
-    name: "მეგობარათი",
-  },
-  {
-    productCode: "OVERDRAFT",
-    name: "ოვერდრაფტი",
-  },
-];
+
 
 export const RiskOptions = [
   {

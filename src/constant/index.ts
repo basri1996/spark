@@ -1,3 +1,4 @@
+//Api Urls
 const dealsUrl = "api/deals";
 const activeDealsUrl = "api/deals/progress";
 const statusesUrl = "api/deals/statuses";

@@ -13,8 +13,7 @@ const Loader = () => {
     >
       <Box
         sx={{
-          animation: 'spin 2s infinite linear', 
-         
+          animation: 'pulse 1s infinite linear, delay 1.5s', 
         }}
       >
          <Box component="img" src={Logo} height={"44px"} alt="icon" />

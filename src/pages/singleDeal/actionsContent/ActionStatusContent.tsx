@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import useChangeStatusMutation from "../mutations/useChangeStatusMutation";
 import { useAction } from "../../../context/ActionContext";
-import { statusType } from "../../../data/data";
+import { statusType } from "../../../data";
 import { useQueryClient } from "@tanstack/react-query";
 import { ISingleDealResponse } from "../../../common/types";
 

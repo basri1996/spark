@@ -1,6 +1,6 @@
-import { api } from "../../api/api";
-import { dealsUrl, activeDealsUrl } from "../../api/constants";
-import { serializeParams } from "../../utils/helper";
+import { api } from "../../config/api";
+import { dealsUrl, activeDealsUrl } from "../../constant";
+import { serializeParams } from "../../utils";
 import { IDealsListParams } from "../types";
 
 export const getDealsList = async ({

@@ -4,7 +4,6 @@ import { uploadDeals } from "../service";
 const useUploadDealsMutation = () => {
   return useMutation({
     mutationFn: uploadDeals,
-    onError: (error) => {},
   });
 };
 

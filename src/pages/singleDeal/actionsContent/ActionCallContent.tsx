@@ -2,7 +2,6 @@ import RadioPositionEnd from "../../../components/common/RadioGroupComponent";
 import { Box } from "@mui/material";
 import { useState } from "react";
 import ActionCallAnswerContent from "./ActionCallAnswerContent";
-import { responseType } from "../../../dummyData";
 import ActionCommentdStepContent from "./ActionCommentdStepContent";
 import ActionRedirectContent from "./ActionRedirectContent";
 import useActivitiesMutation from "../mutations/useActivitiesMutation";
@@ -10,6 +9,7 @@ import { useParams } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
 import { ISingleDealResponse } from "../../../common/types";
 import { useAction } from "../../../context/ActionContext";
+import { responseType } from "../../../data";
 
 function CallActionContent() {
   const { setActionType, callActionStep, setCallActionStep } = useAction();

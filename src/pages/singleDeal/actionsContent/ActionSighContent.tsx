@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import RadioPositionEnd from "../../../components/common/RadioGroupComponent";
 import { Box, Button } from "@mui/material";
-import { dealAcceptType } from "../../../dummyData";
 import { useParams } from "react-router-dom";
 import useActivitiesMutation from "../mutations/useActivitiesMutation";
 import CommentInput from "../../../components/fields/CommentInput";
@@ -9,6 +8,7 @@ import useGetBranchesListQuery from "../../../common/queries/useGetBranchesListQ
 import SingleSelect from "../../../components/fields/SingleSelect";
 import { SelectChangeEvent } from "@mui/material";
 import { useAction } from "../../../context/ActionContext";
+import { dealAcceptType } from "../../../data";
 
 function ActionSighContent() {
   const { id } = useParams();

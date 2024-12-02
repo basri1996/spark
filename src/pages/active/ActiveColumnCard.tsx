@@ -4,7 +4,7 @@ import { useStyles } from "./useStyles";
 import { useNavigate } from "react-router-dom";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { subStatusUi } from "../../data/data";
+import { subStatusUi } from "../../data";
 
 function ActiveColumnCard({
   name,

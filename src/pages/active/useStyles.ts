@@ -23,11 +23,7 @@ export const useStyles = () => {
       scrollBehavior: "smooth",
       width: "100%",
       paddingBottom: "50px",
-      // transform: "rotateX(180deg)",
       paddingY: "30px",
-      // "& > *": {
-      //   transform: "rotateX(180deg)",
-      // },
       "&::-webkit-scrollbar": {
         height: "6px",
         display: "none",
@@ -98,5 +94,53 @@ export const useStyles = () => {
       color: theme.palette.primary.main,
       fontWeight: "500",
     },
+    ActiveSecondaryBox: { display: "flex", justifyContent: "space-between" },
+    ActiveHeaderBox: {
+      display: "flex",
+      gap: "10px",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    ActiveTypographyBox: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    ActiveKeyBoard: { fontSize: 40, cursor: "pointer" },
+    ActiveKeyBoardBox: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: "10px",
+    },
+    ActiveHeaderLeftBox: {
+      display: "flex",
+      gap: "10px",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    ActiveInputBox: { width: "200px" },
+    ActiveIconBox: { height: "56px", width: "56px", cursor: "pointer" },
+    ActiveFilterMainBox: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "24px",
+    },
+
+    ActiveFilterSecondaryBox: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      flexDirection: "column",
+      gap: "20px",
+      width: "500px",
+    },
+    ActiveFilterButtonBox:{ display: "flex", justifyContent: "flex-end" },
+    ActiveFilterButtonStyles:{
+      backgroundColor: (theme:Theme) => theme.palette.primary.main,
+      paddingX: "30px",
+      color: (theme:Theme) => theme.palette.text.secondary,
+      borderRadius: "4px",
+    }
   };
 };
