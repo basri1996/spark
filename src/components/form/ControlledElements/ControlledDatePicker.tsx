@@ -23,11 +23,11 @@ export default function ControlledDateInput({ name, label }: Props) {
             value={value ? dayjs(value) : null}
             onChange={(newValue) => {
               const formattedValue = newValue
-                ? dayjs(newValue).format("MM/DD/YYYY")
+                ? dayjs(newValue).format("DD/MM/YYYY")
                 : "";
               onChange(formattedValue);
             }}
-            format="MM/DD/YYYY"
+            format="DD/MM/YYYY"
             slotProps={{
               textField: {
                 error: !!error,

@@ -1441,7 +1441,7 @@ export const activities = [
     id: 9752,
     activityType: "CLIENT_REJECTED_COMMUNICATION",
     activityDate: "2024-07-17T12:14:44",
-    comment: "",
+    comment: "awfwafwa",
     attributes: [
       {
         key: "NUMBER_OF_COMMUNICATION_ATTEMPTS",
@@ -1453,7 +1453,7 @@ export const activities = [
     id: 9753,
     activityType: "CLIENT_REDIRECTED_TO_BRANCH",
     activityDate: "2024-07-19T08:49:00",
-    comment: "",
+    comment: "wafwfawf",
     attributes: [
       {
         key: "BRANCH_ID",

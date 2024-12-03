@@ -14,6 +14,8 @@ import {
   SingleDealMainBox,
   SingleDealSecondaryBox,
 } from "./useStyles";
+import { activities, steps } from "../../data/dummyData";
+import VerticalLinearStepper from "../../components/common/VerticalLinearStepper";
 
 function SingleDeal() {
   const { id } = useParams();
@@ -63,7 +65,7 @@ function SingleDeal() {
           </Box>
           <SingleDealCard information={data?.deal} />
           <DealsActionsCard status={data?.deal?.dealStatus} />
-          <SimpleStepper steps={data?.activities || []} />
+          <VerticalLinearStepper steps={data?.activities || []}/>
         </Box>
       </Box>
       <SimpleTable list={data?.deal?.leads || []} />

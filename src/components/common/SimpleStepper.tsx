@@ -7,8 +7,16 @@ import {
   Tooltip,
 } from "@mui/material";
 import { IActivity } from "../../common/types";
+import AccordionComponent from "./AccordionComponent";
+import { useState } from "react";
 
 const SimpleStepper = ({ steps }: { steps: IActivity[] }) => {
+  const [expanded, setExpanded] = useState<string | false>(false);
+
+  const handleChange =
+    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false); // Toggle the specific panel
+    };
   return (
     <Box
       sx={{
@@ -20,21 +28,22 @@ const SimpleStepper = ({ steps }: { steps: IActivity[] }) => {
       <Stepper orientation="vertical">
         {steps.length ? (
           steps?.map((item) => (
-            <Tooltip
-              title={item.comment}
-              sx={{
-                background: "white",
-                color: "black",
-              }}
-            >
-              <Step key={item?.id} completed={true}>
+            <AccordionComponent
+            key={item?.id}
+            title={
+              <Step completed={true}>
                 <StepLabel>
-                  <Typography sx={{ fontSize: "14px" }}>
-                    {item?.activityLabel}
-                  </Typography>
+                  <Typography sx={{ fontSize: "14px" }}>{item?.activityType}</Typography>
                 </StepLabel>
               </Step>
-            </Tooltip>
+            
+            }
+            name={`panel-${item?.id}`}
+            expanded={expanded} 
+            handler={handleChange} 
+          >
+            <Typography>{item?.comment}</Typography>
+          </AccordionComponent>
           ))
         ) : (
           <Step key={"noItems"} completed={false}>
