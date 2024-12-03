@@ -35,7 +35,7 @@ function SingleDealCard({
           <UserInfo title={"არხი"} text={information?.channel || "-"} />
           <UserInfo
             title={"შემოსვლის დრო"}
-            text={moment(information?.createDate).format("DD.MM.YY - HH:mm") || "-"}
+            text={ information?.createDate ?moment(information?.createDate).format("DD.MM.YY - HH:mm") : "-"}
           />
           <UserInfo title={"სტატუსი"} text={information?.dealStatus || "-"} />
           <UserInfo title={"დილის ნომერი"} text={information?.id || "-"} />

@@ -9,6 +9,7 @@ import ControlledInput from "../../../components/form/ControlledElements/Control
 import ControlledCommentInput from "../../../components/form/ControlledElements/ControlledCommentInput";
 import { useParams } from "react-router-dom";
 import { useAction } from "../../../context/ActionContext";
+import ControlledDateInput from "../../../components/form/ControlledElements/ControlledDatePicker";
 
 function ActionRedirectContent() {
   const methods: UseFormReturn<IRedirectObject> = useForm<IRedirectObject>({});
@@ -60,13 +61,12 @@ function ActionRedirectContent() {
         )}
         <ControlledCommentInput name="comment" label="კომენტარი" />
         {!alreadySigned && (
-          <ControlledInput
-            shrink={true}
-            type="date"
-            name="attributes.COMMUNICATION_DATE"
+          <ControlledDateInput
             label="თარიღი"
+            name="attributes.COMMUNICATION_DATE"
           />
         )}
+
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Button
             type="button"
