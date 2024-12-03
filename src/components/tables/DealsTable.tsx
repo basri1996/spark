@@ -47,7 +47,7 @@ function DealsTable({
     },
     {
       name: "ID",
-      width: "80px",
+      width: "100px",
       id: "ID",
       sortable: true,
 

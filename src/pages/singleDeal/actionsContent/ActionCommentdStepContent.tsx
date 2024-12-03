@@ -17,6 +17,7 @@ function ActionCommentdStepContent() {
       {
         onSuccess: () => {
           setActionType({ name: "", id: "" });
+          setCallActionStep("INITIAL")
         },
         onError: (error) => {},
       }

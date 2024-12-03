@@ -8,7 +8,7 @@ import useGetCallCenterLeadListQuery from "./queries/useGetCallCenterLeadListQue
 function OnHold() {
   const styles = useStyles();
   const [searchParams, setSearchParams] = useSearchParams();
-  const { data: deals, isPending } = useGetCallCenterLeadListQuery({
+  const { data: deals, isFetching } = useGetCallCenterLeadListQuery({
     pageNumber: Number(searchParams.get("pageNumber")) || 1,
     pageSize: Number(searchParams.get("pageSize")) || 10,
     searchText: searchParams.get("searchText") ?? "",
@@ -67,8 +67,8 @@ function OnHold() {
         handlePageChange={handlePageChange}
         handlePerRowsChange={handlePerRowsChange}
         totalRows={deals?.totalElements}
-        isPending={isPending}
-         type="call-center"
+        isPending={isFetching}
+        type="call-center"
       />
     </Box>
   );
