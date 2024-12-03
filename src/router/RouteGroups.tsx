@@ -8,6 +8,7 @@ import ErrorPage from "../components/common/ErrorPage";
 import CallCenter from "../pages/callCenter/CallCenter";
 import { AuthContextProvider } from "../context/AuthContext";
 import ProtectedRoutes from "../components/common/ProtectedRoutes";
+import DefaultRoute from "../components/common/DefaultRoute";
 
 const Deals = lazy(() => import("../pages/deals/Deals"));
 const Active = lazy(() => import("../pages/active/Active"));
@@ -31,7 +32,7 @@ const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <Navigate to="deals" replace />,
+        element: <DefaultRoute />,
       },
       {
         path: "deals",
@@ -42,7 +43,7 @@ const routes: RouteObject[] = [
         ),
       },
       {
-        path: "deals/:id",
+        path: "/:type/:id",
         element: (
           <ActionContextProvider>
             <SingleDeal />

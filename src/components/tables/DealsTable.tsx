@@ -14,12 +14,14 @@ function DealsTable({
   handlePerRowsChange,
   totalRows,
   isPending,
+  type
 }: {
   list: IDealsResponseObjectTypes[] | undefined;
   handlePageChange: (pageSize: number) => void;
   handlePerRowsChange: (pageSize: number, pageNumber: number) => void;
   totalRows: number | undefined;
   isPending: boolean;
+  type:string
 }) {
   const styles = useStyles();
   const navigate = useNavigate();
@@ -51,7 +53,7 @@ function DealsTable({
 
       cell: (row: IDealsResponseObjectTypes) => (
         <Box
-          onClick={() => row?.dealStatus && navigate(`/deals/${row.id}`)}
+          onClick={() => row?.dealStatus && navigate(`/${type}/${row.id}`)}
           sx={styles.tableBoxStyles}
         >
           {row.id}

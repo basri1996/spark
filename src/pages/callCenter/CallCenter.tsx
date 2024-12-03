@@ -68,6 +68,7 @@ function OnHold() {
         handlePerRowsChange={handlePerRowsChange}
         totalRows={deals?.totalElements}
         isPending={isPending}
+         type="call-center"
       />
     </Box>
   );

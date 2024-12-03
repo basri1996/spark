@@ -40,7 +40,6 @@ function ActiveFilterModal({ setExpandedModalVisible }: Props) {
       params.progressSubStatuses.forEach((status) => {
         searchParams.append("progressSubStatuses", status);
       });
-
       return searchParams;
     });
   };

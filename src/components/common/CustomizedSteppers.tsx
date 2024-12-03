@@ -52,7 +52,7 @@ export default function CustomizedSteppers({
     >
       <Stepper
         alternativeLabel
-        activeStep={activeStep && activeStep + 1}
+        activeStep={activeStep}
         connector={<ColorlibConnector />}
       >
         {steps?.map((step) => (

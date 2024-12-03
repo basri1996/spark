@@ -9,7 +9,7 @@ function SimpleTable({ list }: { list: Lead[] }) {
   const columns = [
     {
       name: "ID",
-      width: "80px",
+      width: "100px",
       sortable: true,
       cell: (row: Lead) => <Box sx={styles.tableBoxStyles}>{row.id}</Box>,
     },

@@ -2,6 +2,7 @@ import { Box, CardContent } from "@mui/material";
 import { IDealsResponseObjectTypes } from "../../common/types";
 import { GridBox } from "./useStyles";
 import UserInfo from "../../components/common/UserInfo";
+import moment from "moment";
 
 function SingleDealCard({
   information,
@@ -30,10 +31,11 @@ function SingleDealCard({
           />
           <UserInfo title={"პროდუქტი"} text={information?.product || "-"} />
           <UserInfo title={"თანხა"} text={information?.amount || "-"} />
+          <UserInfo title={"ვალუტა"} text={information?.ccy || "-"} />
           <UserInfo title={"არხი"} text={information?.channel || "-"} />
           <UserInfo
             title={"შემოსვლის დრო"}
-            text={information?.createDate || "-"}
+            text={moment(information?.createDate).format("DD.MM.YY - HH:mm") || "-"}
           />
           <UserInfo title={"სტატუსი"} text={information?.dealStatus || "-"} />
           <UserInfo title={"დილის ნომერი"} text={information?.id || "-"} />

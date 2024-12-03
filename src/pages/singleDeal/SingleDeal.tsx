@@ -24,7 +24,7 @@ function SingleDeal() {
       <Box sx={SingleDealSecondaryBox}>
         <Card sx={SingleDealCardMainStyle}>
           <CustomizedSteppers
-            activeStep={data?.deal?.progressStatus?.order || 3}
+            activeStep={data?.deal?.progressStatus?.order }
           />
         </Card>
         <Card sx={SingleDealCardSecondaryStyle}>

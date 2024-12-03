@@ -67,6 +67,7 @@ function Archive() {
         handlePerRowsChange={handlePerRowsChange}
         totalRows={deals?.totalElements}
         isPending={isPending}
+        type="archive"
       />
     </Box>
   );

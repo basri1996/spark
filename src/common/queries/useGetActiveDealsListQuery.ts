@@ -34,6 +34,8 @@ const useGetActiveDealsListQuery = ({
       progressSubStatuses,
     ],
     enabled: !!ownerExternalIds,
+    staleTime:0,
+    gcTime:0
   });
 };
 

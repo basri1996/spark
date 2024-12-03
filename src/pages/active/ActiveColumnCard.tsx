@@ -32,7 +32,7 @@ function ActiveColumnCard({
       style={style}
       {...attributes}
       {...listeners}
-      onClick={() => navigate(`/deals/${id}`)}
+      onClick={() => navigate(`/active/${id}`)}
     >
       <Typography sx={styles.ColumnCardTypographyStyles}>{name}</Typography>
       <Typography sx={{ color: "#4e4e4e" }}>{product}</Typography>

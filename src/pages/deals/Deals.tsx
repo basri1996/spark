@@ -81,6 +81,7 @@ function Deals() {
         handlePerRowsChange={handlePerRowsChange}
         totalRows={deals?.totalElements}
         isPending={isPending}
+        type="deals"
       />
       <Modal
         title="Upload File"
