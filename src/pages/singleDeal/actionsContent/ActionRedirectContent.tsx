@@ -5,7 +5,6 @@ import { SubmitHandler, useForm, UseFormReturn } from "react-hook-form";
 import { IRedirectObject } from "../types";
 import useActivitiesMutation from "../mutations/useActivitiesMutation";
 import ControlledSingleSelect from "../../../components/form/ControlledElements/ControlledSingleSelect";
-import ControlledInput from "../../../components/form/ControlledElements/ControlledInput";
 import ControlledCommentInput from "../../../components/form/ControlledElements/ControlledCommentInput";
 import { useParams } from "react-router-dom";
 import { useAction } from "../../../context/ActionContext";

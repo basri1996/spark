@@ -4,12 +4,16 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers";
 import dayjs from "dayjs";
 
-interface Props {
-  name: string;
-  label: string;
-}
 
-export default function ControlledDateInput({ name, label }: Props) {
+interface Props {
+    name: string;
+    label: string;
+  }
+
+export default function ControlledDateInput({
+    name,
+    label,
+  }: Props) {
   const { control } = useFormContext();
 
   return (
@@ -23,9 +27,9 @@ export default function ControlledDateInput({ name, label }: Props) {
             value={value ? dayjs(value) : null}
             onChange={(newValue) => {
               const formattedValue = newValue
-                ? dayjs(newValue).format("DD/MM/YYYY")
+                ? dayjs(newValue).format("YYYY/MM/DD")
                 : "";
-              onChange(formattedValue);
+              onChange(formattedValue); 
             }}
             format="DD/MM/YYYY"
             slotProps={{
