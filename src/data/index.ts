@@ -6,8 +6,6 @@ import ArchiveIcon from "@mui/icons-material/Archive";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
 
-
-
 export const RiskOptions = [
   {
     id: "RISK_ASSESSMENT",
@@ -165,36 +163,43 @@ export const subStatusUi = {
 
 export const CommunicationMethods = [
   {
-    id: "call",
-    name: "ზარი",
+    id: "CHAT",
+    name: "ჩათი",
   },
   {
-    id: "chat_bbge",
+    id: "BB_CREDIT",
     name: "ჩატი: bb.ge",
   },
   {
-    id: "chat_internetBanking",
+    id: "INTERNET_BANK",
     name: "ინტერნეტ ბანკი",
   },
   {
-    id: "chat_mobileBanking",
+    id: "MOBILE_BANK",
     name: "მობაილ ბანკი",
   },
   {
-    id: "chat_facebook",
+    id: "FB_CHAT",
     name: "facebook chat",
   },
   {
-    id: "email",
+    id: "EMAIL",
     name: "info@basisbank.ge",
   },
   {
-    id: "facebook_comments",
+    id: "FB_COMMENT",
     name: "Facebook კომენტარები",
   },
   {
-    id: "other",
+    id: "PIPELINE",
+    name: "ფაიფლაინი",
+  },
+  {
+    id: "FILE",
+    name: "ფაილი",
+  },
+  {
+    id: "OTHER",
     name: "სხვა (კომენტარის ველი)",
   },
 ];
-

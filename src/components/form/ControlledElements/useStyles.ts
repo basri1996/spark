@@ -19,7 +19,7 @@ export const InputStyles = {
   },
   "& .MuiInputBase-root": {
     height: "50px",
-    width: "400px",
+    width: "100%",
   },
   "& .MuiInputBase-input": {
     fontSize: {

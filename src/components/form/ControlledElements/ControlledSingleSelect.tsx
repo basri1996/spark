@@ -50,7 +50,7 @@ function ControlledSingleSelect({
             inputRef={inputRef}
             onChange={(e) => onChange(e.target.value)}
             sx={{
-              width: "400px",
+              width: "100%",
             }}
             MenuProps={{
               PaperProps: {

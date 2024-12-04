@@ -7,7 +7,7 @@ import {
 import { SubmitHandler, useForm, UseFormReturn } from "react-hook-form";
 import { Box } from "@mui/material";
 import useGetLoanProductListQuery from "../../common/queries/useGetLoanProductListQuery";
-import { CommunicationMethods } from "../../data";
+import { CommunicationMethods, Currency } from "../../data";
 import schema from "./schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useCreateLeadMutation from "./mutations/useCreateLeadMutation";
@@ -45,42 +45,75 @@ function CreateLeadForm({
     }
   };
   const HandlePersonalNumberChange = (onChange: any, e: any) => {
-    if (e.target.value.length < 12 && !e.target.value.includes(e) ) {
+    const regexPattern = new RegExp("^[0-9]*$");
+
+    if (e.target.value.length < 12 && regexPattern.test(e.target.value)) {
+      onChange(e);
+    }
+  };
+  const HandlePhoneChange = (onChange: any, e: any) => {
+    const regexPattern = new RegExp("^[0-9]*$");
+    if (e.target.value === "" || regexPattern.test(e.target.value)) {
       onChange(e);
     }
   };
 
   return (
     <FormComponent methods={methods} onSubmit={onSubmit}>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: "25px" }}>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gap: "20px",
+          width: "500px",
+        }}
+      >
         <ControlledInput
-          name="full_name"
+          name="name"
           label="სახელი და გვარი"
           type="text"
           regex="^[ა-ჰ\s]+$"
           HandleInputChange={HandleInputChange}
         />
         <ControlledInput
-          name="personalNumber"
+          name="personalId"
           label="პირადი ნომერი"
-          type="number"
+          type="text"
           HandleInputChange={HandlePersonalNumberChange}
         />
-        <ControlledInput name="phone" label=" ტელეფონის ნომერი" type="number" />
+        <ControlledInput
+          name="mobilePhone"
+          label=" ტელეფონის ნომერი"
+          type="text"
+          HandleInputChange={HandlePhoneChange}
+        />
+        <ControlledInput
+          name="amount"
+          label="თანხა"
+          type="text"
+          HandleInputChange={HandlePhoneChange}
+        />
+
+        <ControlledSingleSelect
+          label="ვალუტა"
+          options={Currency || []}
+          name="ccy"
+        />
+
         <ControlledSingleSelect
           label="პროდუქტი"
           options={selectOptions || []}
-          name="productCode"
+          name="product"
           inputValueKey="productCode"
         />
         <ControlledSingleSelect
           label="მოთხოვნის არხი"
           options={CommunicationMethods || []}
-          name="supplier"
+          name="channel"
         />
-        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-          <CustomButton type="submit">Save</CustomButton>
-        </Box>
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+        <CustomButton type="submit">Save</CustomButton>
       </Box>
     </FormComponent>
   );
