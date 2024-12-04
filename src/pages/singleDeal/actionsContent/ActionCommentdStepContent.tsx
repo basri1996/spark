@@ -1,9 +1,9 @@
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import { useState } from "react";
-import CommentInput from "../../../components/fields/CommentInput";
 import useActivitiesMutation from "../mutations/useActivitiesMutation";
 import { useParams } from "react-router-dom";
 import { useAction } from "../../../context/ActionContext";
+import { CommentInput, CustomButton } from "../../../components";
 
 function ActionCommentdStepContent() {
   const [commentValue, setCommentValue] = useState("");
@@ -32,28 +32,17 @@ function ActionCommentdStepContent() {
         label="Comment"
       />
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Button
-          sx={{
-            backgroundColor: (theme) => theme.palette.primary.main,
-            paddingX: "30px",
-            color: (theme) => theme.palette.text.secondary,
-            borderRadius: "4px",
-          }}
+        <CustomButton
+          
           onClick={() => setCallActionStep("CLIENT_ANSWERED")}
         >
           Back
-        </Button>
-        <Button
-          sx={{
-            backgroundColor: (theme) => theme.palette.primary.main,
-            paddingX: "30px",
-            color: (theme) => theme.palette.text.secondary,
-            borderRadius: "4px",
-          }}
+        </CustomButton>
+        <CustomButton          
           onClick={handleClick}
         >
           Finish
-        </Button>
+        </CustomButton>
       </Box>
     </Box>
   );

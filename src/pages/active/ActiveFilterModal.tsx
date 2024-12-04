@@ -1,10 +1,10 @@
-import { Box, Button, SelectChangeEvent } from "@mui/material";
+import { Box, SelectChangeEvent } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
-import MultiSelect from "../../components/fields/MultiSelect";
 import useGetSubStatusListQuery from "../../common/queries/useGetSubStatusListQuery";
 import useGetLoanProductListQuery from "../../common/queries/useGetLoanProductListQuery";
 import { useSearchParams } from "react-router-dom";
 import { useStyles } from "./useStyles";
+import { CustomButton, MultiSelect } from "../../components";
 
 interface Props {
   setExpandedModalVisible: Dispatch<SetStateAction<boolean>>;
@@ -64,12 +64,7 @@ function ActiveFilterModal({ setExpandedModalVisible }: Props) {
         />
       </Box>
       <Box sx={styles.ActiveFilterButtonBox}>
-        <Button
-          sx={styles.ActiveFilterButtonStyles}
-          onClick={handleApply}
-        >
-          Apply
-        </Button>
+        <CustomButton onClick={handleApply}>Apply</CustomButton>
       </Box>
     </Box>
   );

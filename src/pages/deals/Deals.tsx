@@ -1,4 +1,4 @@
-import { Box, Button, debounce, Typography } from "@mui/material";
+import { Box, debounce, Typography } from "@mui/material";
 import DealsTable from "../../components/tables/DealsTable";
 import TextInput from "../../components/fields/TextInput";
 import { useStyles } from "./useStyles";
@@ -6,7 +6,7 @@ import useGetDealsListQuery from "../../common/queries/useGetDealsListQuery";
 import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import Modal from "../../components/common/Modal";
+import {CustomButton, Modal} from "../../components"
 import UploadFile from "./UploadFile";
 
 
@@ -67,12 +67,12 @@ function Deals() {
               onChange={debounce(handleInputChange, 1000)}
             />
           </Box>
-          <Button
+          <CustomButton
             sx={styles.DealsButton}
             onClick={() => setIsUploadModalVisible(true)}
           >
             <CloudUploadIcon sx={{ color: "white" }} />
-          </Button>
+          </CustomButton>
         </Box>
       </Box>
       <DealsTable

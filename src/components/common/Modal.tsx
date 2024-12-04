@@ -9,15 +9,17 @@ import { ModalTitle } from "./useStyles";
 import { PropsWithChildren } from "react";
 
 interface Props {
-  title: string;
+  title?: string;
   isDialogOpen: boolean;
-  handleDialogClose: () => void;
+  handleDialogClose?: () => void;
+  isCloseble?:boolean
 }
 
 function Modal({
   title,
   isDialogOpen,
   children,
+  isCloseble=true,
   handleDialogClose,
 }: PropsWithChildren<Props>) {
   return (
@@ -33,7 +35,7 @@ function Modal({
     >
       <DialogTitle sx={ModalTitle} id="customized-dialog-title">
         {title}
-        <MuiIconButtonBase
+       { isCloseble &&<MuiIconButtonBase
           aria-label="close"
           onClick={handleDialogClose}
           sx={{
@@ -41,7 +43,7 @@ function Modal({
           }}
         >
           <CloseIcon />
-        </MuiIconButtonBase>
+        </MuiIconButtonBase>}
       </DialogTitle>
 
       <DialogContent

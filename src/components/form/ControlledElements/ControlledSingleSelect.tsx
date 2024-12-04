@@ -1,4 +1,10 @@
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Typography,
+} from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
@@ -34,7 +40,7 @@ function ControlledSingleSelect({
       name={name}
       defaultValue=""
       render={({ field: { onChange, value }, fieldState: { error } }) => (
-        <FormControl fullWidth>
+        <FormControl fullWidth sx={{ position: "relative" }}>
           <InputLabel id="demo-simple-select-label">{label}</InputLabel>
           <Select
             labelId="demo-simple-select-label"
@@ -65,6 +71,19 @@ function ControlledSingleSelect({
               </MenuItem>
             ))}
           </Select>
+          {error && (
+            <Typography
+              sx={{
+                color: "#FD7171",
+                fontSize: "14px",
+                position: "absolute",
+                top:"100%",
+                left:"3px"
+              }}
+            >
+              {error?.message}
+            </Typography>
+          )}
         </FormControl>
       )}
     />

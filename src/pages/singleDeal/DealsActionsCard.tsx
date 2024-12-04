@@ -1,5 +1,5 @@
 import { Box, CardContent, Typography } from "@mui/material";
-import Modal from "../../components/common/Modal";
+import {Modal} from "../../components"
 import { ActionButton, DealsActionCardBox } from "./useStyles";
 import ActionModalContent from "./actionsContent/ActionModalContent";
 import { useAction } from "../../context/ActionContext";

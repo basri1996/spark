@@ -1,14 +1,17 @@
 import React, { useState } from "react";
-import RadioPositionEnd from "../../../components/common/RadioGroupComponent";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import { useParams } from "react-router-dom";
 import useActivitiesMutation from "../mutations/useActivitiesMutation";
-import CommentInput from "../../../components/fields/CommentInput";
 import useGetBranchesListQuery from "../../../common/queries/useGetBranchesListQuery";
-import SingleSelect from "../../../components/fields/SingleSelect";
 import { SelectChangeEvent } from "@mui/material";
 import { useAction } from "../../../context/ActionContext";
 import { dealAcceptType } from "../../../data";
+import {
+  CommentInput,
+  CustomButton,
+  RadioGroupComponent,
+  SingleSelect,
+} from "../../../components";
 
 function ActionSighContent() {
   const { id } = useParams();
@@ -93,21 +96,11 @@ function ActionSighContent() {
           />
 
           <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-            <Button
-              sx={{
-                backgroundColor: (theme) => theme.palette.primary.main,
-                paddingX: "30px",
-                color: (theme) => theme.palette.text.secondary,
-                borderRadius: "4px",
-              }}
-              onClick={handleFinish}
-            >
-              Finish
-            </Button>
+            <CustomButton onClick={handleFinish}>Finish</CustomButton>
           </Box>
         </Box>
       ) : (
-        <RadioPositionEnd
+        <RadioGroupComponent
           list={dealAcceptType}
           setState={handleSet}
           handleClick={handleClick}

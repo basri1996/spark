@@ -162,3 +162,39 @@ export const subStatusUi = {
     color: "#9e1b32",
   },
 };
+
+export const CommunicationMethods = [
+  {
+    id: "call",
+    name: "ზარი",
+  },
+  {
+    id: "chat_bbge",
+    name: "ჩატი: bb.ge",
+  },
+  {
+    id: "chat_internetBanking",
+    name: "ინტერნეტ ბანკი",
+  },
+  {
+    id: "chat_mobileBanking",
+    name: "მობაილ ბანკი",
+  },
+  {
+    id: "chat_facebook",
+    name: "facebook chat",
+  },
+  {
+    id: "email",
+    name: "info@basisbank.ge",
+  },
+  {
+    id: "facebook_comments",
+    name: "Facebook კომენტარები",
+  },
+  {
+    id: "other",
+    name: "სხვა (კომენტარის ველი)",
+  },
+];
+

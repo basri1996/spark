@@ -1,9 +1,8 @@
 import { Box, debounce, Typography } from "@mui/material";
-import TextInput from "../../components/fields/TextInput";
-import DealsTable from "../../components/tables/DealsTable";
 import { useStyles } from "./useStyles";
 import useGetDealsQuery from "../../common/queries/useGetDealsListQuery";
 import { useSearchParams } from "react-router-dom";
+import { DealsTable, TextInput } from "../../components";
 
 function Archive() {
   const styles = useStyles();

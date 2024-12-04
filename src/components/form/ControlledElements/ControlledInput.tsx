@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
 import { InputStyles } from "./useStyles";
 
@@ -8,6 +8,8 @@ interface Props {
   type: string;
   disabled?: boolean;
   shrink?: boolean;
+  regex?: any;
+  HandleInputChange?: any;
 }
 
 function ControlledInput({
@@ -16,8 +18,10 @@ function ControlledInput({
   type,
   disabled = false,
   shrink = false,
+  HandleInputChange,
 }: Props) {
   const { control } = useFormContext();
+
   return (
     <Controller
       control={control}
@@ -35,10 +39,25 @@ function ControlledInput({
           }}
           variant="outlined"
           value={value || ""}
-          onChange={onChange}
+          onChange={(e) => {
+            HandleInputChange ? HandleInputChange(onChange, e) : onChange(e);
+          }}
           label={label}
           fullWidth
           sx={InputStyles}
+          error={!!error}
+          helperText={
+            <Typography
+              sx={{
+                color: "#FD7171",
+                fontSize: "14px",
+                paddingY: "3px",
+                paddingX: "3px",
+              }}
+            >
+              {error?.message}
+            </Typography>
+          }
         />
       )}
     />

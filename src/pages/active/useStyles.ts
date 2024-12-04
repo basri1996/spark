@@ -120,7 +120,7 @@ export const useStyles = () => {
       alignItems: "center",
     },
     ActiveInputBox: { width: "200px" },
-    ActiveIconBox: { height: "56px", width: "56px", cursor: "pointer" },
+    ActiveIconBox: { borderRadius: 3, height: 56, minWidth: 56 },
     ActiveFilterMainBox: {
       display: "flex",
       flexDirection: "column",
@@ -135,12 +135,7 @@ export const useStyles = () => {
       gap: "20px",
       width: "500px",
     },
-    ActiveFilterButtonBox:{ display: "flex", justifyContent: "flex-end" },
-    ActiveFilterButtonStyles:{
-      backgroundColor: (theme:Theme) => theme.palette.primary.main,
-      paddingX: "30px",
-      color: (theme:Theme) => theme.palette.text.secondary,
-      borderRadius: "4px",
-    }
+    ActiveFilterButtonBox: { display: "flex", justifyContent: "flex-end" },
+  
   };
 };

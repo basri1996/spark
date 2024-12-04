@@ -1,5 +1,4 @@
 import { Box, Button } from "@mui/material";
-import Toggle from "../../../components/fields/Toggle";
 import useChangeTagsMutation from "../mutations/useChangeTagsMutation";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -8,6 +7,7 @@ import Divider from "@mui/material/Divider";
 import { useQueryClient } from "@tanstack/react-query";
 import { ISingleDealResponse } from "../../../common/types";
 import { RiskOptions } from "../../../data";
+import { CustomButton, Toggle } from "../../../components";
 
 function ActionRiskContent() {
   const { id } = useParams();
@@ -72,18 +72,14 @@ function ActionRiskContent() {
         </>
       ))}
       <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button
+        <CustomButton
           onClick={handleClick}
           sx={{
-            backgroundColor: (theme) => theme.palette.primary.main,
-            paddingX: "30px",
-            color: (theme) => theme.palette.text.secondary,
-            borderRadius: "4px",
             marginTop: "10px",
           }}
         >
           Save
-        </Button>
+        </CustomButton>
       </Box>
     </>
   );

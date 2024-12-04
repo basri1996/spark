@@ -1,14 +1,16 @@
-import { createBrowserRouter, Navigate, RouteObject } from "react-router-dom";
-import Layout from "../components/layout/Layout";
+import { createBrowserRouter, RouteObject } from "react-router-dom";
 import { ActionContextProvider } from "../context/ActionContext";
 import { lazy, Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import Loader from "../components/common/Loader";
-import ErrorPage from "../components/common/ErrorPage";
 import CallCenter from "../pages/callCenter/CallCenter";
 import { AuthContextProvider } from "../context/AuthContext";
-import ProtectedRoutes from "../components/common/ProtectedRoutes";
-import DefaultRoute from "../components/common/DefaultRoute";
+import {
+  DefaultRoute,
+  ErrorPage,
+  Layout,
+  Loader,
+  ProtectedRoute,
+} from "../components";
 
 const Deals = lazy(() => import("../pages/deals/Deals"));
 const Active = lazy(() => import("../pages/active/Active"));
@@ -37,9 +39,9 @@ const routes: RouteObject[] = [
       {
         path: "deals",
         element: (
-          <ProtectedRoutes role="lead-manager">
+          <ProtectedRoute role="lead-manager">
             <Deals />
-          </ProtectedRoutes>
+          </ProtectedRoute>
         ),
       },
       {
@@ -53,34 +55,34 @@ const routes: RouteObject[] = [
       {
         path: "active",
         element: (
-          <ProtectedRoutes role="lead-manager">
+          <ProtectedRoute role="lead-manager">
             <Active />
-          </ProtectedRoutes>
+          </ProtectedRoute>
         ),
       },
       {
         path: "on-hold",
         element: (
-          <ProtectedRoutes role="lead-manager">
+          <ProtectedRoute role="lead-manager">
             <OnHold />
-          </ProtectedRoutes>
+          </ProtectedRoute>
         ),
       },
       {
         path: "archive",
         element: (
-          <ProtectedRoutes role="lead-manager">
+          <ProtectedRoute role="lead-manager">
             <Archive />
-          </ProtectedRoutes>
+          </ProtectedRoute>
         ),
       },
 
       {
         path: "call-center",
         element: (
-          <ProtectedRoutes role="call-center">
+          <ProtectedRoute role="call-center">
             <CallCenter />
-          </ProtectedRoutes>
+          </ProtectedRoute>
         ),
       },
     ],

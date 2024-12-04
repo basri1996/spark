@@ -7,15 +7,16 @@ import {
   Tooltip,
 } from "@mui/material";
 import { IActivity } from "../../common/types";
-import AccordionComponent from "./AccordionComponent";
 import { useState } from "react";
+import {AccordionComponent} from "../../components"
+
 
 const SimpleStepper = ({ steps }: { steps: IActivity[] }) => {
   const [expanded, setExpanded] = useState<string | false>(false);
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
-      setExpanded(isExpanded ? panel : false); // Toggle the specific panel
+      setExpanded(isExpanded ? panel : false); 
     };
   return (
     <Box

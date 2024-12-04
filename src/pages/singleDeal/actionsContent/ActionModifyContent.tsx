@@ -1,10 +1,7 @@
-import FormComponent from "../../../components/form/FormComponent";
 import { SubmitHandler, useForm, UseFormReturn } from "react-hook-form";
 import { IModifyData } from "../types";
-import ControlledSingleSelect from "../../../components/form/ControlledElements/ControlledSingleSelect";
 import useGetLoanProductListQuery from "../../../common/queries/useGetLoanProductListQuery";
-import ControlledInput from "../../../components/form/ControlledElements/ControlledInput";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import useModifyDealMutation from "../mutations/useModifyDealMutation";
 import { useParams } from "react-router-dom";
 import { useAction } from "../../../context/ActionContext";
@@ -12,6 +9,12 @@ import { useQueryClient } from "@tanstack/react-query";
 import { ISingleDealResponse } from "../../../common/types";
 import { useEffect } from "react";
 import { Currency } from "../../../data";
+import {
+  ControlledInput,
+  ControlledSingleSelect,
+  CustomButton,
+  FormComponent,
+} from "../../../components";
 
 function ActionModifyContent() {
   const methods: UseFormReturn<IModifyData> = useForm<IModifyData>({});
@@ -65,17 +68,7 @@ function ActionModifyContent() {
           name="currency"
         />
         <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-          <Button
-            type="submit"
-            sx={{
-              backgroundColor: (theme) => theme.palette.primary.main,
-              paddingX: "30px",
-              color: (theme) => theme.palette.text.secondary,
-              borderRadius: "4px",
-            }}
-          >
-            Save
-          </Button>
+          <CustomButton type="submit">Save</CustomButton>
         </Box>
       </Box>
     </FormComponent>

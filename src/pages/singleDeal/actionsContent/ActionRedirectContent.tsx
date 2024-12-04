@@ -1,14 +1,17 @@
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import useGetBranchesListQuery from "../../../common/queries/useGetBranchesListQuery";
-import FormComponent from "../../../components/form/FormComponent";
 import { SubmitHandler, useForm, UseFormReturn } from "react-hook-form";
 import { IRedirectObject } from "../types";
 import useActivitiesMutation from "../mutations/useActivitiesMutation";
-import ControlledSingleSelect from "../../../components/form/ControlledElements/ControlledSingleSelect";
-import ControlledCommentInput from "../../../components/form/ControlledElements/ControlledCommentInput";
 import { useParams } from "react-router-dom";
 import { useAction } from "../../../context/ActionContext";
-import ControlledDateInput from "../../../components/form/ControlledElements/ControlledDatePicker";
+import {
+  ControlledCommentInput,
+  ControlledDatePicker,
+  ControlledSingleSelect,
+  CustomButton,
+  FormComponent,
+} from "../../../components";
 
 function ActionRedirectContent() {
   const methods: UseFormReturn<IRedirectObject> = useForm<IRedirectObject>({});
@@ -60,37 +63,21 @@ function ActionRedirectContent() {
         )}
         <ControlledCommentInput name="comment" label="კომენტარი" />
         {!alreadySigned && (
-          <ControlledDateInput
+          <ControlledDatePicker
             label="თარიღი"
             name="attributes.COMMUNICATION_DATE"
           />
         )}
 
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Button
+          <CustomButton
             type="button"
-            sx={{
-              backgroundColor: (theme) => theme.palette.primary.main,
-              paddingX: "30px",
-              color: (theme) => theme.palette.text.secondary,
-              borderRadius: "4px",
-            }}
             onClick={() => setCallActionStep("CLIENT_ANSWERED")}
           >
             Back
-          </Button>
+          </CustomButton>
 
-          <Button
-            type="submit"
-            sx={{
-              backgroundColor: (theme) => theme.palette.primary.main,
-              paddingX: "30px",
-              color: (theme) => theme.palette.text.secondary,
-              borderRadius: "4px",
-            }}
-          >
-            Finish
-          </Button>
+          <CustomButton type="submit">Finish</CustomButton>
         </Box>
       </Box>
     </FormComponent>

@@ -1,8 +1,9 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { Dispatch, SetStateAction, useState } from "react";
 import useUploadDealsMutation from "./mutations/useUploadDealsMutation";
 import { Input, useStyles } from "./useStyles";
+import { CustomButton } from "../../components";
 
 interface UploadModalState {
   file: File[];
@@ -96,11 +97,7 @@ function UploadFile({ setIsUploadModalVisible }: Props) {
           <Typography>
             {uploadModal?.file[0]?.name || "Drop Your File here to Upload"}
           </Typography>
-          <Button
-            component="label"
-            role={undefined}
-            variant="contained"
-            tabIndex={-1}
+          <CustomButton
             disabled={Boolean(uploadModal?.file[0]?.name)}
           >
             Upload files
@@ -110,24 +107,22 @@ function UploadFile({ setIsUploadModalVisible }: Props) {
               onChange={handleFileChange}
               accept=".xls,.xlsx"
             />
-          </Button>
+          </CustomButton>
         </Box>
       </Box>
       <Box sx={styles.UploadFileButtonBox}>
-        <Button
-          sx={styles.UploadFileButtonStyles}
+        <CustomButton
           disabled={Boolean(!uploadModal?.file[0]?.name)}
           onClick={() => setUploadModal((prev) => ({ ...prev, file: [] }))}
         >
           Clear
-        </Button>
-        <Button
-          sx={styles.UploadFileButtonStyles}
+        </CustomButton>
+        <CustomButton
           disabled={Boolean(!uploadModal?.file[0]?.name) || isUploading}
           onClick={handleSave}
         >
           Save
-        </Button>
+        </CustomButton>
       </Box>
     </Box>
   );

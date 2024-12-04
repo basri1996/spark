@@ -6,11 +6,10 @@ import { useRef, useState } from "react";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { useAuth } from "../../context/AuthContext";
-import expanded from "../../assets/icons/expanded.svg";
-import TextInput from "../../components/fields/TextInput";
-import Modal from "../../components/common/Modal";
 import { useSearchParams } from "react-router-dom";
 import ActiveFilterModal from "./ActiveFilterModal";
+import { CustomButton, Modal, TextInput } from "../../components";
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
 function Active() {
   const styles = useStyles();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -87,13 +86,13 @@ function Active() {
               onChange={debounce(handleInputChange, 1000)}
             />
           </Box>
-          <Box
-            component="img"
-            src={expanded}
-            alt="expanded"
-            sx={styles.ActiveIconBox}
+
+          <CustomButton
             onClick={() => setExpandedModalVisible(true)}
-          />
+            sx={styles.ActiveIconBox}
+          >
+            <FilterAltIcon />
+          </CustomButton>
         </Box>
       </Box>
 

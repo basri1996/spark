@@ -1,9 +1,7 @@
 import { Box } from "@mui/material";
 import { useState } from "react";
-import Sidebar from "../sidebar/SideBar";
-import Header from "../sidebar/Header";
 import { LayoutStyle } from "./useStyles";
-
+import { Header ,SideBar} from "../../components";
 
 function Layout({ children }: any) {
   const [open, setOpen] = useState<boolean>(false);
@@ -14,7 +12,7 @@ function Layout({ children }: any) {
 
   return (
     <Box>
-      <Sidebar setOpen={setOpen} open={open} />
+      <SideBar setOpen={setOpen} open={open} />
       <Header ToggleSideBar={ToggleSideBar} />
       <Box sx={LayoutStyle}>{children}</Box>
     </Box>

@@ -16,3 +16,8 @@ export const getCallCenterDealsList = async ({
     });
     return response?.data;
   };
+
+  export const CreateLead = async (data: any) => {
+    const response = await api.post(dealsUrl, data);
+    return response?.data;
+  };

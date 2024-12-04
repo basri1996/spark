@@ -8,13 +8,13 @@ import {
   Typography,
 } from "@mui/material";
 import {
-  RadioGroupButton,
   RadioGroupList,
   RadioGroupMainBox,
   RadioGroupRadio,
 } from "./useStyles";
 import { Dispatch, SetStateAction } from "react";
 import { useAction } from "../../context/ActionContext";
+import CustomButton from "./CustomButton";
 
 type Props = {
   list: { id: string; label: string; icon: React.FC<SvgIconProps> }[];
@@ -24,7 +24,7 @@ type Props = {
   defaultValue: string;
 };
 
-export default function RadioPositionEnd({
+export default function RadioGroupComponent({
   list,
   setState,
   handleClick,
@@ -66,16 +66,13 @@ export default function RadioPositionEnd({
         }}
       >
         {BackButtonVisible && (
-          <Button
-            sx={RadioGroupButton}
-            onClick={() => setCallActionStep("INITIAL")}
-          >
+          <CustomButton onClick={() => setCallActionStep("INITIAL")}>
             Back
-          </Button>
+          </CustomButton>
         )}
-        <Button sx={RadioGroupButton} onClick={handleClick}>
+        <CustomButton onClick={handleClick}>
           {isFinished ? "Finish" : "Next"}
-        </Button>
+        </CustomButton>
       </Box>
     </>
   );

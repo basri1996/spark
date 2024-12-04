@@ -1,12 +1,8 @@
 import { Box, Card, Tooltip } from "@mui/material";
 import { useParams } from "react-router-dom";
 import useGetSingleDealQuery from "../../common/queries/useGetSingleDealQuery";
-import CustomizedSteppers from "../../components/common/CustomizedSteppers";
 import SingleDealCard from "./SingleDealCard";
 import DealsActionsCard from "./DealsActionsCard";
-import SimpleStepper from "../../components/common/SimpleStepper";
-import SimpleTable from "../../components/tables/SimpleTable";
-import VerticalSteppers from "../../components/common/VerticalSteppers";
 import {
   SignleDealInformationBox,
   SingleDealCardMainStyle,
@@ -14,8 +10,7 @@ import {
   SingleDealMainBox,
   SingleDealSecondaryBox,
 } from "./useStyles";
-import { activities, steps } from "../../data/dummyData";
-import VerticalLinearStepper from "../../components/common/VerticalLinearStepper";
+import { CustomizedSteppers, SimpleTable, VerticalLinearStepper, VerticalSteppers } from "../../components";
 
 function SingleDeal() {
   const { id } = useParams();

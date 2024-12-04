@@ -26,7 +26,6 @@ export const useStyles = () => {
       alignItems: "center",
     },
     DealsButton: {
-      background: "#5080ff",
       borderRadius: 3,
       height: 56,
       minWidth: 56,

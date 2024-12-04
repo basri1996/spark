@@ -1,4 +1,3 @@
-import RadioPositionEnd from "../../../components/common/RadioGroupComponent";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import useChangeStatusMutation from "../mutations/useChangeStatusMutation";
@@ -6,6 +5,7 @@ import { useAction } from "../../../context/ActionContext";
 import { statusType } from "../../../data";
 import { useQueryClient } from "@tanstack/react-query";
 import { ISingleDealResponse } from "../../../common/types";
+import { RadioGroupComponent } from "../../../components";
 
 function ActionStatusContent() {
   const { id } = useParams();
@@ -40,7 +40,7 @@ function ActionStatusContent() {
 
   return (
     <>
-      <RadioPositionEnd
+      <RadioGroupComponent
         list={list}
         setState={setSelectedValue}
         handleClick={handleClick}

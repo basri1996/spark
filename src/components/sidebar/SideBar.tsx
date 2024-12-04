@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Box, Drawer, List } from "@mui/material";
-import SideBarItem from "./SideBarItem";
 import Logo from "../../assets/icons/MainLogo.png";
 import CloseIcon from "@mui/icons-material/Close";
 import CircleNotificationsSharpIcon from "@mui/icons-material/CircleNotificationsSharp";
@@ -17,6 +16,7 @@ import {
   SideBarSecondaryBox,
 } from "./useStyles";
 import { useAuth } from "../../context/AuthContext";
+import {SideBarItem} from "../../components"
 
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;

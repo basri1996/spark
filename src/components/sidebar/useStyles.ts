@@ -11,13 +11,6 @@ export const HeaderMainBox = {
   alignItems: "center",
 };
 
-export const HeaderButton = {
-  backgroundColor: (theme: Theme) => theme.palette.primary.main,
-  paddingX: "30px",
-  color: (theme: Theme) => theme.palette.text.secondary,
-  borderRadius: "4px",
-};
-
 export const SideBarMainBox = {
   width: 240,
   flexShrink: 0,

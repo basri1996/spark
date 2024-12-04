@@ -161,12 +161,7 @@ export const RadioGroupRadio = {
     color: "#5080ff",
   },
 };
-export const RadioGroupButton = {
-  backgroundColor: (theme: Theme) => theme.palette.primary.main,
-  paddingX: "30px",
-  color: (theme: Theme) => theme.palette.text.secondary,
-  borderRadius: "4px",
-};
+
 
 export const ModalTitle = {
   display: "flex",

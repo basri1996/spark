@@ -1,7 +1,7 @@
-import RadioPositionEnd from "../../../components/common/RadioGroupComponent";
 import { useState } from "react";
 import { useAction } from "../../../context/ActionContext";
 import { responseTypeNext } from "../../../data";
+import { RadioGroupComponent } from "../../../components";
 
 function ActionCallAnswerContent() {
   const [selectedValue, setSelectedValue] = useState<string>(
@@ -14,7 +14,7 @@ function ActionCallAnswerContent() {
   };
 
   return (
-    <RadioPositionEnd
+    <RadioGroupComponent
       list={responseTypeNext}
       setState={setSelectedValue}
       handleClick={handleClick}

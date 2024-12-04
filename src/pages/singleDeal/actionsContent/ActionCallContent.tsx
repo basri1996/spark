@@ -1,4 +1,3 @@
-import RadioPositionEnd from "../../../components/common/RadioGroupComponent";
 import { Box } from "@mui/material";
 import { useState } from "react";
 import ActionCallAnswerContent from "./ActionCallAnswerContent";
@@ -10,6 +9,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { ISingleDealResponse } from "../../../common/types";
 import { useAction } from "../../../context/ActionContext";
 import { responseType } from "../../../data";
+import { RadioGroupComponent } from "../../../components";
 
 function CallActionContent() {
   const { setActionType, callActionStep, setCallActionStep } = useAction();
@@ -55,7 +55,7 @@ function CallActionContent() {
   const ContentMap = new Map([
     [
       "INITIAL",
-      <RadioPositionEnd
+      <RadioGroupComponent
         list={responseType}
         setState={setSelectedValue}
         handleClick={handleClick}
