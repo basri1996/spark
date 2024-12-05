@@ -89,6 +89,18 @@ function ActiveColumnCard({
           ? `${atr[atr.length - 1].value === "2" ? "II" : "III"} ზარი`
           : subStatusUi[subStatus?.subStatus as keyof typeof subStatusUi]?.text}
       </Typography>
+      {subStatus?.subStatus === "COMMUNICATION_RESCHEDULED" && (
+        <Typography
+          sx={{
+            paddingX: "8px",
+            paddingY: "2px",
+            borderRadius: "8px",
+            fontSize: "15px",
+          }}
+        >
+          {atr[atr.length - 1].value}
+        </Typography>
+      )}
     </Card>
   );
 }

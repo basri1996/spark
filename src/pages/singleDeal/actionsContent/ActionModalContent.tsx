@@ -5,6 +5,7 @@ import ActionModifyContent from "./ActionModifyContent";
 import ActionStatusContent from "./ActionStatusContent";
 import ActionSighContent from "./ActionSighContent";
 import { useAction } from "../../../context/ActionContext";
+import ActionCommentContent from "./ActionCommentContent";
 
 const ContentMap = new Map([
   ["Call", ActionCallContent],
@@ -12,6 +13,7 @@ const ContentMap = new Map([
   ["Risk", ActionRiskContent],
   ["Sign", ActionSighContent],
   ["Status", ActionStatusContent],
+  ["Comment", ActionCommentContent],
 ]);
 
 function ActionModalContent() {

@@ -39,7 +39,7 @@ function CreateLeadForm({
     });
   };
   const HandleInputChange = (onChange: any, e: any) => {
-    const regexPattern = new RegExp("^[ა-ჰs]+$");
+    const regexPattern = new RegExp(/^[ა-ჰ\s]+$/);
     if (e.target.value === "" || regexPattern.test(e.target.value)) {
       onChange(e);
     }

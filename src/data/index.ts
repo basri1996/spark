@@ -78,6 +78,7 @@ export const ActionsType = [
   { name: "სტატუსი", id: "Status" },
   { name: "ხელმოწერა", id: "Sign" },
   { name: "რისკი", id: "Risk" },
+  { name: "კომენტარი", id: "Comment" },
 ];
 
 export const statusType = [
@@ -163,8 +164,8 @@ export const subStatusUi = {
 
 export const CommunicationMethods = [
   {
-    id: "CHAT",
-    name: "ჩათი",
+    id: "CALL",
+    name: "ზარი",
   },
   {
     id: "BB_CREDIT",
@@ -180,7 +181,7 @@ export const CommunicationMethods = [
   },
   {
     id: "FB_CHAT",
-    name: "facebook chat",
+    name: "Facebook ჩატი",
   },
   {
     id: "EMAIL",
@@ -191,15 +192,7 @@ export const CommunicationMethods = [
     name: "Facebook კომენტარები",
   },
   {
-    id: "PIPELINE",
-    name: "ფაიფლაინი",
-  },
-  {
-    id: "FILE",
-    name: "ფაილი",
-  },
-  {
     id: "OTHER",
-    name: "სხვა (კომენტარის ველი)",
+    name: "სხვა",
   },
 ];

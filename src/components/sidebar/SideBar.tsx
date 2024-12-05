@@ -57,7 +57,7 @@ export default function Sidebar({ setOpen, open }: Props) {
           src={Logo}
           alt="Logo"
           sx={MainLogoStyles}
-          onClick={() => navigate("/deals")}
+          onClick={() => navigate("/")}
         />
 
         <List sx={SideBarList}>

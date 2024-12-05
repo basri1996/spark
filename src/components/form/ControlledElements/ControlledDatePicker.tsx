@@ -27,7 +27,7 @@ export default function ControlledDateInput({
             value={value ? dayjs(value) : null}
             onChange={(newValue) => {
               const formattedValue = newValue
-                ? dayjs(newValue).format("YYYY/MM/DD")
+                ? dayjs(newValue).format("YYYY-MM-DD")
                 : "";
               onChange(formattedValue); 
             }}

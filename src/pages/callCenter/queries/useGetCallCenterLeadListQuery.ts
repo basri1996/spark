@@ -15,7 +15,7 @@ const useGetCallCenterLeadListQuery = ({
   searchText,
 }: CallCenterDealsParams) => {
   return useQuery<IDealsResponseTypes, AxiosError, IDealsResponseTypes>({
-    queryFn: () => getCallCenterDealsList({ pageNumber, pageSize, searchText }),
+    queryFn: () => getCallCenterDealsList({ pageNumber:pageNumber-1, pageSize, searchText }),
     queryKey: [
       "useGetCallCenterLeadListQuery",
       pageNumber,

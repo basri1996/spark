@@ -38,7 +38,7 @@ export default function VerticalLinearStepper({
                   alignItems: "center",
                 }}
               >
-                <StepLabel>{step.activityType}</StepLabel>
+                <StepLabel>{step.activityLabel}</StepLabel>
                 <MoreHorizIcon
                   onClick={() => handleClick(index)}
                   sx={{ cursor: "pointer" }}
