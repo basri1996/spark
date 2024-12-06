@@ -16,7 +16,6 @@ interface AuthContextProps {
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 
 
-//lead-manager
 export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {

@@ -1,16 +1,27 @@
 import { Box, Card, Divider, Typography } from "@mui/material";
 // import { useAction } from "../../../context/ActionContext";
-import { CommentInput, CustomButton } from "../../../components";
+import { CommentInput, CustomButton, Loader } from "../../../components";
 import { useState } from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import AddCommentIcon from "@mui/icons-material/AddComment";
+import useGetDealCommentListQuery from "../queries/useGetDealCommentListQuery";
+import { useParams } from "react-router-dom";
+import useAddComment from "../mutations/useAddComment";
+import { useAuth } from "../../../context/AuthContext";
 
 function ActionCommentContent() {
-//   const { setActionType } = useAction();
+  const { id } = useParams();
+  const { principal } = useAuth();
+
   const [comment, setComment] = useState("");
+  const { data: comments, isFetching } = useGetDealCommentListQuery({ id });
+  const { mutate: addComment ,isPending } = useAddComment();
 
-  const arr = [1, 2, 3, 4, 5, 6, 7];
-
+  const handleAddComment = () => {
+    if (comment) {
+      addComment({ userExternalId: principal?.sub, id, text: comment });
+    }
+  };
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
       <Box
@@ -19,18 +30,26 @@ function ActionCommentContent() {
           flexDirection: "column",
           gap: 1,
           height: "250px",
-          overflow: "scroll",
-          padding: "15px",
+          overflowY: "scroll",
+          paddingLeft: "1px",
+          paddingY: "1px",
+          paddingRight: "10px",
+          "&::-webkit-scrollbar": {
+            width: "6px",
+          },
+          "&::-webkit-scrollbar-track": {
+            background: "rgba(108, 99, 255, 0.1)",
+            borderRadius: "10px",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            background: "#5080ff",
+            borderRadius: "10px",
+            transition: "background-color 0.3s ease",
+          },
         }}
       >
-        {arr.map((el, index) => (
-          <Box
-            sx={{
-              width: "100%",
-              display: "flex",
-              justifyContent: index % 2 !== 0 ? "flex-end" : "flex-start",
-            }}
-          >
+        {isFetching ? (
+          comments?.map((el) => (
             <Card
               sx={{
                 borderRadius: 3,
@@ -40,7 +59,6 @@ function ActionCommentContent() {
                 display: "flex",
                 flexDirection: "column",
                 gap: 1,
-                width: "65%",
               }}
             >
               <Box
@@ -54,9 +72,11 @@ function ActionCommentContent() {
                 <Box
                   sx={{ display: "flex", flexDirection: "column", gap: "1px" }}
                 >
-                  <Typography sx={{ fontSize: "8px" }}>Datuna</Typography>
-                  <Typography sx={{ fontSize: "8px" }}>
-                    12/12/2024 00:20
+                  <Typography sx={{ fontSize: "11px" }}>
+                    {el.createdByUser.fullName}
+                  </Typography>
+                  <Typography sx={{ fontSize: "11px" }}>
+                    {el.updatedAt}
                   </Typography>
                 </Box>
               </Box>
@@ -64,13 +84,15 @@ function ActionCommentContent() {
               <Divider sx={{ backgroundColor: "rgba(169, 191, 250, 0.3)" }} />
               <Typography
                 component="p"
-                sx={{ fontSize: "12px", opacity: "0.7" }}
+                sx={{ fontSize: "16px", opacity: "0.7" }}
               >
-                hello this lead was redirected from call to branch
+                {el.text}
               </Typography>
             </Card>
-          </Box>
-        ))}
+          ))
+        ) : (
+          <Loader />
+        )}
       </Box>
       <Box sx={{ display: "flex", gap: 1, width: "100%" }}>
         <Box sx={{ width: "100%" }}>
@@ -80,7 +102,11 @@ function ActionCommentContent() {
             label="კომენტარი"
           />
         </Box>
-        <CustomButton sx={{ borderRadius: 3, height: 40, minWidth: 48 }}>
+        <CustomButton
+          sx={{ borderRadius: 3, height: 40, minWidth: 48 }}
+          onClick={handleAddComment}
+          disabled={isPending}
+        >
           <AddCommentIcon />
         </CustomButton>
       </Box>

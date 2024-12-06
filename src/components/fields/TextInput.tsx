@@ -18,11 +18,13 @@ const TextInput = ({
   value,
   onChange,
   placeholder = "",
+  TextInputRef
 }: {
   type: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
+  TextInputRef?:any
 }) => {
   return (
     <TextField
@@ -31,6 +33,7 @@ const TextInput = ({
       // value={value}
       onChange={onChange}
       fullWidth
+      inputRef={TextInputRef}
       defaultValue={value}
       placeholder={placeholder}
       slotProps={{

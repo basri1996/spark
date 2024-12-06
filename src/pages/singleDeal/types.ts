@@ -24,3 +24,18 @@ export interface IRedirectObject {
     COMMUNICATION_DATE?: string;
   };
 }
+
+export interface ICommentObject {
+  id: number;
+  createdAt: string;
+  updatedAt: string;
+  createdByUser: {
+    externalId: string;
+    name: string;
+    fullName: string;
+    shortname: string;
+  };
+  text: string;
+}
+
+export type ICommentResponse = ICommentObject[];

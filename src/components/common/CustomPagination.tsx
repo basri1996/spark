@@ -9,7 +9,6 @@ const CustomPagination: React.FC<PaginationComponentProps> = ({
   rowsPerPage,
   rowCount,
   currentPage,
-  onChangePage,
 }) => {
   const totalPages = Math.ceil(rowCount / rowsPerPage);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -20,6 +19,13 @@ const CustomPagination: React.FC<PaginationComponentProps> = ({
       return searchParams;
     });
   };
+  const handlePageChange = (pageNumber: number) => {
+    setSearchParams((searchParams) => {
+      searchParams.set("pageNumber", String(pageNumber));
+      return searchParams;
+    });
+  };
+
 
   return (
     <Box sx={{ display: "flex", justifyContent: "flex-end", padding: "20px" }}>
@@ -38,8 +44,8 @@ const CustomPagination: React.FC<PaginationComponentProps> = ({
       <Stack spacing={2} alignItems="center">
         <Pagination
           count={totalPages}
-          page={currentPage}
-          onChange={(_, page) => onChangePage(page, rowCount)}
+          page={Number(searchParams.get("pageNumber")) || currentPage}
+          onChange={(_, page) => handlePageChange(page)}
           variant="outlined"
           color="primary"
         />

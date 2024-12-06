@@ -50,3 +50,28 @@ export const changeTags = async ({
   const response = await api.post(`${dealsUrl}/${id}/tags`, data);
   return response?.data;
 };
+
+
+export const getComments = async(id:string)=>{
+  const response = await api.get(`${dealsUrl}/${id}/comments`);
+  return response?.data;
+}
+
+
+export const CreateComment = async ({
+  userExternalId,
+  text,
+  id
+}: {
+  id: string | undefined;
+  userExternalId:string 
+  text: string;
+}) => {
+  const response = await api.post(`${dealsUrl}/${id}/comments`, {text},{
+    headers: {
+      "userExternalId": userExternalId,
+    },
+  });
+  return response?.data;
+};
+

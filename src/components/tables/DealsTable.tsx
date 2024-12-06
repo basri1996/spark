@@ -1,25 +1,28 @@
-import { Box, Card, Pagination, Stack, Tooltip } from "@mui/material";
+import {
+  Box,
+  Card,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import { useState } from "react";
 import DataTable from "react-data-table-component";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import { useStyles } from "./useStyles";
 import { IDealsResponseObjectTypes } from "../../common/types";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import moment from "moment";
 import CustomPagination from "../common/CustomPagination";
+import CustomButton from "../common/CustomButton";
+import RefreshIcon from "@mui/icons-material/Refresh";
 
 function DealsTable({
   list,
-  handlePageChange,
-  handlePerRowsChange,
   totalRows,
   isPending,
   type,
 }: {
   list: IDealsResponseObjectTypes[] | undefined;
-  handlePageChange: (pageSize: number) => void;
-  handlePerRowsChange: (pageSize: number, pageNumber: number) => void;
   totalRows: number | undefined;
   isPending: boolean;
   type: string;
@@ -29,6 +32,7 @@ function DealsTable({
   const [expandedRowId, setExpandedRowId] = useState<string | number | null>(
     null
   );
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const columns = [
     {
@@ -144,7 +148,6 @@ function DealsTable({
     setExpandedRowId(expandedRowId === rowId ? null : rowId);
   };
 
-
   return (
     <Card>
       <DataTable
@@ -154,16 +157,29 @@ function DealsTable({
         paginationServer
         paginationTotalRows={totalRows}
         paginationComponent={CustomPagination}
-        onChangePage={handlePageChange}
-        onChangeRowsPerPage={handlePerRowsChange}
         progressPending={isPending}
-        fixedHeaderScrollHeight="670px"
         noDataComponent={
-          <Box sx={{ paddingY: "20px", fontWeight: 600, fontSize: "16px" }}>
-            ჩანაწერი არ მოიძებნა
+          <Box
+            sx={{
+              paddingY: "20px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 2,
+             
+            }}
+          >
+            <Typography sx={{ fontWeight: 600, fontSize: "16px" }}>
+              ჩანაწერი არ მოიძებნა
+            </Typography>
+            <CustomButton
+              sx={{ borderRadius: 2 }}
+              onClick={() => setSearchParams({})}
+            >
+              <RefreshIcon />
+            </CustomButton>
           </Box>
         }
-        fixedHeader
         expandableRows
         onRowClicked={(row) => handleRowClick(row.id)}
         expandableRowsHideExpander

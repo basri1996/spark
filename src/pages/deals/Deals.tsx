@@ -6,9 +6,8 @@ import useGetDealsListQuery from "../../common/queries/useGetDealsListQuery";
 import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import {CustomButton, Modal} from "../../components"
+import { CustomButton, Modal } from "../../components";
 import UploadFile from "./UploadFile";
-
 
 function Deals() {
   const styles = useStyles();
@@ -33,27 +32,11 @@ function Deals() {
       return searchParams;
     });
   };
-  const handlePageChange = (pageNumber: number) => {
-    setSearchParams((searchParams) => {
-      searchParams.set("pageNumber", String(pageNumber));
-      return searchParams;
-    });
-  };
-
-  const handlePerRowsChange = (pageSize: number, pageNumber: number) => {
-    setSearchParams((searchParams) => {
-      searchParams.set("pageNumber", String(pageNumber));
-      searchParams.set("pageSize", String(pageSize));
-      return searchParams;
-    });
-  };
 
   return (
     <Box sx={styles.DealsMainBoxStyles}>
       <Box sx={styles.DealsSecondaryBoxStyles}>
-        <Box
-          sx={styles.DealsTypographyBox}
-        >
+        <Box sx={styles.DealsTypographyBox}>
           <Typography variant="h6" sx={styles.DealsTypographyStyles}>
             Inbox
           </Typography>
@@ -76,9 +59,7 @@ function Deals() {
         </Box>
       </Box>
       <DealsTable
-        list={deals?.content }
-        handlePageChange={handlePageChange}
-        handlePerRowsChange={handlePerRowsChange}
+        list={deals?.content}
         totalRows={deals?.totalElements}
         isPending={isPending}
         type="deals"

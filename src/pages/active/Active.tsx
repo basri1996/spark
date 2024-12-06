@@ -10,6 +10,8 @@ import { useSearchParams } from "react-router-dom";
 import ActiveFilterModal from "./ActiveFilterModal";
 import { CustomButton, Modal, TextInput } from "../../components";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
+import RefreshIcon from "@mui/icons-material/Refresh";
+
 function Active() {
   const styles = useStyles();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -23,6 +25,8 @@ function Active() {
     progressSubStatuses: searchParams.getAll("progressSubStatuses"),
   });
   const ScrollRef = useRef<HTMLElement | null>(null);
+  const TextInputRef = useRef<HTMLInputElement  | null>(null);
+
   const keyDependentOnParams =
     searchParams.get("searchText") ??
     "" +
@@ -56,6 +60,13 @@ function Active() {
     });
   };
 
+  const handleRefresh = () => {
+    if (TextInputRef.current) {
+      TextInputRef.current.value = "";
+      setSearchParams({});
+    }
+  };
+
   return (
     <Box sx={styles.ActiveMainBoxStyles}>
       <Box sx={styles.ActiveSecondaryBox}>
@@ -84,14 +95,22 @@ function Active() {
               placeholder="Search"
               value={searchParams.get("searchText") ?? ""}
               onChange={debounce(handleInputChange, 1000)}
+              TextInputRef={TextInputRef}
             />
           </Box>
-
           <CustomButton
             onClick={() => setExpandedModalVisible(true)}
             sx={styles.ActiveIconBox}
           >
             <FilterAltIcon />
+          </CustomButton>
+          <CustomButton
+            sx={styles.ActiveIconBox}
+            onClick={() => {
+              handleRefresh();
+            }}
+          >
+            <RefreshIcon />
           </CustomButton>
         </Box>
       </Box>
