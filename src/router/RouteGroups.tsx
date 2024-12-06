@@ -2,7 +2,6 @@ import { createBrowserRouter, RouteObject } from "react-router-dom";
 import { ActionContextProvider } from "../context/ActionContext";
 import { lazy, Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import CallCenter from "../pages/callCenter/CallCenter";
 import { AuthContextProvider } from "../context/AuthContext";
 import {
   DefaultRoute,
@@ -11,12 +10,12 @@ import {
   Loader,
   ProtectedRoute,
 } from "../components";
-
 const Deals = lazy(() => import("../pages/deals/Deals"));
 const Active = lazy(() => import("../pages/active/Active"));
 const OnHold = lazy(() => import("../pages/onHold/OnHold"));
 const Archive = lazy(() => import("../pages/archive/Archive"));
 const SingleDeal = lazy(() => import("../pages/singleDeal/SingleDeal"));
+const CallCenter = lazy(() => import("../pages/callCenter/CallCenter"));
 
 const routes: RouteObject[] = [
   {

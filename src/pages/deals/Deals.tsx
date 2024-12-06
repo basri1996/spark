@@ -76,7 +76,7 @@ function Deals() {
         </Box>
       </Box>
       <DealsTable
-        list={deals?.content}
+        list={deals?.content }
         handlePageChange={handlePageChange}
         handlePerRowsChange={handlePerRowsChange}
         totalRows={deals?.totalElements}

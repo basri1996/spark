@@ -8,12 +8,14 @@ import {
 import { useEffect, useRef, useState } from "react";
 
 interface Props {
-  onChange: (event: SelectChangeEvent<string>) => void;
-  value: string;
+  onChange: any;
+  value: any;
   options: any[];
   label: string;
   inputValueKey?: string;
   content?: string;
+  width?:string;
+  height?:string
 }
 
 function SingleSelect({
@@ -23,6 +25,8 @@ function SingleSelect({
   label,
   inputValueKey = "id",
   content = "name",
+  width="400px",
+  height="auto"
 }: Props) {
   const [maxWidth, setMaxWidth] = useState(0);
   const inputRef = useRef<HTMLDivElement>(null);
@@ -45,7 +49,8 @@ function SingleSelect({
         inputRef={inputRef}
         onChange={onChange}
         sx={{
-          width: "400px",
+          width:width,
+          height:height
         }}
         MenuProps={{
           PaperProps: {

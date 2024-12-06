@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import useChangeTagsMutation from "../mutations/useChangeTagsMutation";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";

@@ -1,4 +1,4 @@
-import { styled, Theme } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import StepLabel from "@mui/material/StepLabel";
 import StepConnector, {
   stepConnectorClasses,

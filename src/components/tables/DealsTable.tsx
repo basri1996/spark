@@ -1,4 +1,4 @@
-import { Box, Card, Tooltip } from "@mui/material";
+import { Box, Card, Pagination, Stack, Tooltip } from "@mui/material";
 import { useState } from "react";
 import DataTable from "react-data-table-component";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
@@ -7,6 +7,7 @@ import { useStyles } from "./useStyles";
 import { IDealsResponseObjectTypes } from "../../common/types";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import CustomPagination from "../common/CustomPagination";
 
 function DealsTable({
   list,
@@ -14,14 +15,14 @@ function DealsTable({
   handlePerRowsChange,
   totalRows,
   isPending,
-  type
+  type,
 }: {
   list: IDealsResponseObjectTypes[] | undefined;
   handlePageChange: (pageSize: number) => void;
   handlePerRowsChange: (pageSize: number, pageNumber: number) => void;
   totalRows: number | undefined;
   isPending: boolean;
-  type:string
+  type: string;
 }) {
   const styles = useStyles();
   const navigate = useNavigate();
@@ -111,11 +112,11 @@ function DealsTable({
               color: (theme) => theme.palette.text.secondary,
               background: (theme) => theme.palette.primary.main,
               borderRadius: "50%",
-              width:"40px",
-              height:"40px",
-              display:"flex",
-              justifyContent:"center",
-              alignItems:"center"
+              width: "40px",
+              height: "40px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
             {row?.owner?.shortName.toUpperCase() || "N/A"}
@@ -143,6 +144,7 @@ function DealsTable({
     setExpandedRowId(expandedRowId === rowId ? null : rowId);
   };
 
+
   return (
     <Card>
       <DataTable
@@ -151,10 +153,16 @@ function DealsTable({
         pagination
         paginationServer
         paginationTotalRows={totalRows}
+        paginationComponent={CustomPagination}
         onChangePage={handlePageChange}
         onChangeRowsPerPage={handlePerRowsChange}
         progressPending={isPending}
         fixedHeaderScrollHeight="670px"
+        noDataComponent={
+          <Box sx={{ paddingY: "20px", fontWeight: 600, fontSize: "16px" }}>
+            ჩანაწერი არ მოიძებნა
+          </Box>
+        }
         fixedHeader
         expandableRows
         onRowClicked={(row) => handleRowClick(row.id)}

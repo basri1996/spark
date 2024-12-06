@@ -21,7 +21,7 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const { keycloak, initialized } = useKeycloak();
-  const [principal, setPrincipal] = useState<any>({resource_access:{spark:{roles:["call-center"]}}});
+  const [principal, setPrincipal] = useState<any>({resource_access:{spark:{roles:["lead-manager"]}}});
 
   // useEffect(() => {
   //   if (initialized && !keycloak?.authenticated) {

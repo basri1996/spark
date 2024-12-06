@@ -4,7 +4,6 @@ import {
   StepLabel,
   Box,
   Typography,
-  Tooltip,
 } from "@mui/material";
 import { IActivity } from "../../common/types";
 import { useState } from "react";

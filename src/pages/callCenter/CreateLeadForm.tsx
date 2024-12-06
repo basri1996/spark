@@ -1,4 +1,5 @@
 import {
+  ControlledCommentInput,
   ControlledInput,
   ControlledSingleSelect,
   CustomButton,
@@ -24,6 +25,7 @@ function CreateLeadForm({
   });
   const { data: selectOptions } = useGetLoanProductListQuery();
   const { mutate: CreateLead } = useCreateLeadMutation();
+  const otherChannel = methods.watch("channel") === "OTHER";
 
   const onSubmit: SubmitHandler<any> = async (formData: any) => {
     CreateLead(formData, {
@@ -111,8 +113,11 @@ function CreateLeadForm({
           options={CommunicationMethods || []}
           name="channel"
         />
+        {otherChannel && (
+          <ControlledCommentInput name="comment" label="კომენტარი" />
+        )}
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+      <Box sx={{ display: "flex", justifyContent: "flex-end", marginTop:"16px" }}>
         <CustomButton type="submit">Save</CustomButton>
       </Box>
     </FormComponent>

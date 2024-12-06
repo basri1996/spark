@@ -51,6 +51,7 @@ function ControlledSingleSelect({
             onChange={(e) => onChange(e.target.value)}
             sx={{
               width: "100%",
+              maxHeight:"56px"
             }}
             MenuProps={{
               PaperProps: {

@@ -55,7 +55,7 @@ function Header({ ToggleSideBar }: Props) {
         >
           <Box sx={{ display: "flex", gap: 1 }}>
             <PortraitIcon sx={{ color: "#5080ff" }} />
-            <Typography>{principal.preferred_username}</Typography>
+            <Typography>{principal?.preferred_username}</Typography>
           </Box>
           <Divider />
           <CustomButton onClick={() => keycloak.logout()}>Log out</CustomButton>
