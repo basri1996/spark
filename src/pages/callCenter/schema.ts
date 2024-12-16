@@ -7,7 +7,7 @@ const schema = yup.object().shape({
   product: yup.string().required("ველი სავალდებულოა"),
   channel: yup.string().required("ველი სავალდებულოა"),
   amount: yup.string().notRequired(),
-  ccy: yup.string().notRequired(),
+  ccy: yup.string().required("ველი სავალდებულოა"),
   comment: yup.string().notRequired(),
 });
 

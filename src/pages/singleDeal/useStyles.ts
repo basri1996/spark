@@ -127,3 +127,26 @@ export const DealsActionCardBox = {
     md: "50px",
   },
 };
+
+export const CommentScrollDiv ={
+  display: "flex",
+  flexDirection: "column-reverse",
+  gap: 1,
+  height: "250px",
+  overflowY: "scroll",
+  paddingLeft: "1px",
+  paddingY: "2px",
+  paddingRight: "10px",
+  "&::-webkit-scrollbar": {
+    width: "6px",
+  },
+  "&::-webkit-scrollbar-track": {
+    background: "rgba(108, 99, 255, 0.1)",
+    borderRadius: "10px",
+  },
+  "&::-webkit-scrollbar-thumb": {
+    background: "#5080ff",
+    borderRadius: "10px",
+    transition: "background-color 0.3s ease",
+  },
+}

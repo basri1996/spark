@@ -13,7 +13,7 @@ const SearchIcon = ({ width = 20, height = 20, color = "#6C63FF" }) => (
   />
 );
 
-const TextInput = ({
+const SearchInput = ({
   type = "text",
   value,
   onChange,
@@ -57,4 +57,4 @@ const TextInput = ({
   );
 };
 
-export default TextInput;
+export default SearchInput;

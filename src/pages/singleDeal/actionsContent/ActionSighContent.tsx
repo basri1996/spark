@@ -105,7 +105,6 @@ function ActionSighContent() {
           setState={handleSet}
           handleClick={handleClick}
           isFinished={false}
-          defaultValue={dealAcceptType[0].label}
         />
       )}
     </React.Fragment>

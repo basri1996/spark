@@ -9,15 +9,15 @@ import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
 export const RiskOptions = [
   {
     id: "RISK_ASSESSMENT",
-    name: "Risk Assessment",
+    name: "გაგზავნილია შეფასებაზე",
   },
   {
     id: "CONSIDERED_FOR_APPROVAL",
-    name: "Considered For Approval",
+    name: "განიხილავს ეფრუვალი",
   },
   {
     id: "SENT_FOR_EVALUATION",
-    name: "Sent For Eveluation",
+    name: "განიხილავს რისკები",
   },
 ];
 
@@ -168,7 +168,7 @@ export const CommunicationMethods = [
     name: "ზარი",
   },
   {
-    id: "BB_CREDIT",
+    id: "CHAT",
     name: "ჩატი: bb.ge",
   },
   {
@@ -196,10 +196,10 @@ export const CommunicationMethods = [
     name: "სხვა",
   },
 ];
-export const pageSize =[
+export const pageSize = [
   { name: "10", id: 10 },
   { name: "15", id: 15 },
   { name: "20", id: 20 },
   { name: "25", id: 25 },
   { name: "30", id: 30 },
-]
+];

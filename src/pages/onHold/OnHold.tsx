@@ -1,9 +1,10 @@
 import { Box, debounce, Typography } from "@mui/material";
-import TextInput from "../../components/fields/TextInput";
+import SearchInput from "../../components/fields/SearchInput";
 import DealsTable from "../../components/tables/DealsTable";
 import { useStyles } from "./useStyles";
 import useGetDealsQuery from "../../common/queries/useGetDealsListQuery";
 import { useSearchParams } from "react-router-dom";
+import { useRef } from "react";
 
 function OnHold() {
   const styles = useStyles();
@@ -14,6 +15,8 @@ function OnHold() {
     pageSize: Number(searchParams.get("pageSize")) || 10,
     searchText: searchParams.get("searchText") ?? "",
   });
+  const TextInputRef = useRef<HTMLInputElement  | null>(null);
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -26,20 +29,14 @@ function OnHold() {
       return searchParams;
     });
   };
-  const handlePageChange = (pageNumber: number) => {
-    setSearchParams((searchParams) => {
-      searchParams.set("pageNumber",String(pageNumber))
-      return searchParams
-    });
+
+  const handleRefresh = () => {
+    setSearchParams({});
+    if (TextInputRef.current) {
+      TextInputRef.current.value = "";
+    }
   };
 
-  const handlePerRowsChange = (pageSize: number, pageNumber: number) => {
-    setSearchParams((searchParams) => {
-      searchParams.set("pageNumber",String(pageNumber))
-      searchParams.set("pageSize",String(pageSize))
-      return searchParams
-    });
-  };
   return (
     <Box sx={styles.OnHoldMainBoxStyles}>
       <Box sx={styles.OnHoldSecondaryBoxStyles}>
@@ -55,21 +52,21 @@ function OnHold() {
           </Typography>
         </Box>
         <Box sx={{ width: "200px" }}>
-          <TextInput
+          <SearchInput
             type="text"
             placeholder="Search"
             value={searchParams.get("searchText") ?? ""}
             onChange={debounce(handleInputChange, 1000)}
+            TextInputRef={TextInputRef}
           />
         </Box>
       </Box>
       <DealsTable
         list={deals?.content}
-        handlePageChange={handlePageChange}
-        handlePerRowsChange={handlePerRowsChange}
         totalRows={deals?.totalElements}
         isPending={isPending}
-         type="on-hold"
+        type="on-hold"
+        handleRefresh={handleRefresh}
       />
     </Box>
   );

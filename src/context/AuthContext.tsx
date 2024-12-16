@@ -10,40 +10,38 @@ import { useKeycloak } from "@react-keycloak/web";
 
 interface AuthContextProps {
   principal: any;
-  roleChecker:(role:string)=>boolean
+  roleChecker: (role: string) => boolean;
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
-
 
 export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const { keycloak, initialized } = useKeycloak();
-  const [principal, setPrincipal] = useState<any>({resource_access:{spark:{roles:["lead-manager"]}}});
+  const [principal, setPrincipal] = useState<any>({
+    resource_access: { spark: { roles: ["lead-manager"] } },
+  });
 
   // useEffect(() => {
   //   if (initialized && !keycloak?.authenticated) {
   //     keycloak?.login({ redirectUri: window.location.origin });
   //   }
-  //   if (keycloak.token) {
-  //     setPrincipal(jwtDecode(keycloak.token));
+
+  //   if (initialized && keycloak?.authenticated) {
+  //     setPrincipal(jwtDecode(keycloak.token!));
+
   //   }
-  // }, [keycloak, initialized, setPrincipal]);
+  // }, [initialized, keycloak]);
 
   // if (!keycloak?.authenticated) return null;
 
-  const roleChecker =(role:string)=>{
-    if(principal?.resource_access?.spark?.roles?.includes(role)){
-      return true 
-    }else{
-      return false
-    }
-   
-  }
+  const roleChecker = (role: string) => {
+    return principal?.resource_access?.spark?.roles?.includes(role) ?? false;
+  };
 
   return (
-    <AuthContext.Provider value={{ principal ,roleChecker}}>
+    <AuthContext.Provider value={{ principal, roleChecker }}>
       {children}
     </AuthContext.Provider>
   );
@@ -53,7 +51,8 @@ export const useAuth = (): AuthContextProps => {
   const context = useContext(AuthContext);
 
   if (context === undefined) {
-    throw new Error("useAuth must be used within a AuthProvider");
+    throw new Error("useAuth must be used within an AuthProvider");
   }
+
   return context;
 };

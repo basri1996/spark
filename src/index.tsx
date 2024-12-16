@@ -8,11 +8,12 @@ import { ThemeProvider } from "@mui/material";
 import { theme } from "./theme/theme";
 import keycloak from "./config/keycloak";
 import { ReactKeycloakProvider } from "@react-keycloak/web";
+import { refreshToken } from "./utils";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <ReactKeycloakProvider authClient={keycloak}>
+  <ReactKeycloakProvider authClient={keycloak} >
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <RouterProvider

@@ -1,5 +1,12 @@
 import { api } from "../../config/api";
-import { branchesUrl, productUrl, statusesUrl, subStatusUrl } from "../../constant";
+import {
+  branchesUrl,
+  productUrl,
+  statusesUrl,
+  subStatusUrl,
+  channelUrl,
+  usersUrl,
+} from "../../constant";
 
 export const getDealStatuses = async () => {
   const response = await api.get(`${statusesUrl}`);
@@ -17,5 +24,15 @@ export const getSubStatuses = async () => {
 
 export const getBranchesList = async () => {
   const response = await api.get(`${branchesUrl}`);
+  return response?.data;
+};
+
+export const getChannelList = async () => {
+  const response = await api.get(`${channelUrl}`);
+  return response?.data;
+};
+
+export const getUsersList = async () => {
+  const response = await api.get(`${usersUrl}`);
   return response?.data;
 };

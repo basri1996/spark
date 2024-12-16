@@ -5,7 +5,7 @@ import ActionModifyContent from "./ActionModifyContent";
 import ActionStatusContent from "./ActionStatusContent";
 import ActionSighContent from "./ActionSighContent";
 import { useAction } from "../../../context/ActionContext";
-import ActionCommentContent from "./ActionCommentContent";
+import ActionCommentContent from "./comments/ActionCommentContent";
 
 const ContentMap = new Map([
   ["Call", ActionCallContent],

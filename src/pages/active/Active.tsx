@@ -8,7 +8,7 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { useAuth } from "../../context/AuthContext";
 import { useSearchParams } from "react-router-dom";
 import ActiveFilterModal from "./ActiveFilterModal";
-import { CustomButton, Modal, TextInput } from "../../components";
+import { CustomButton, Modal, SearchInput } from "../../components";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import RefreshIcon from "@mui/icons-material/Refresh";
 
@@ -61,9 +61,9 @@ function Active() {
   };
 
   const handleRefresh = () => {
+    setSearchParams({});
     if (TextInputRef.current) {
       TextInputRef.current.value = "";
-      setSearchParams({});
     }
   };
 
@@ -90,7 +90,7 @@ function Active() {
 
         <Box sx={styles.ActiveHeaderLeftBox}>
           <Box sx={styles.ActiveInputBox}>
-            <TextInput
+            <SearchInput
               type="text"
               placeholder="Search"
               value={searchParams.get("searchText") ?? ""}

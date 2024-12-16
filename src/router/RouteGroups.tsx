@@ -10,6 +10,8 @@ import {
   Loader,
   ProtectedRoute,
 } from "../components";
+import Groups from "../pages/groups/Groups";
+import SingleGroup from "../pages/groups/SingleGroup";
 const Deals = lazy(() => import("../pages/deals/Deals"));
 const Active = lazy(() => import("../pages/active/Active"));
 const OnHold = lazy(() => import("../pages/onHold/OnHold"));
@@ -81,6 +83,22 @@ const routes: RouteObject[] = [
         element: (
           <ProtectedRoute role="call-center">
             <CallCenter />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "groups",
+        element: (
+          <ProtectedRoute role="lead-manager">
+            <Groups/>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "groups/:id",
+        element: (
+          <ProtectedRoute role="lead-manager">
+            <SingleGroup/>
           </ProtectedRoute>
         ),
       },

@@ -3,7 +3,6 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  SelectChangeEvent,
 } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 
@@ -63,7 +62,7 @@ function SingleSelect({
         }}
       >
         {options.map((option) => (
-          <MenuItem value={option[inputValueKey]}>{option[content]}</MenuItem>
+          <MenuItem key={option[inputValueKey]} value={option[inputValueKey]}>{option[content]}</MenuItem>
         ))}
       </Select>
     </FormControl>

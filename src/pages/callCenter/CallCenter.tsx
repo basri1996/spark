@@ -1,11 +1,11 @@
 import { Box, debounce, Typography } from "@mui/material";
-import TextInput from "../../components/fields/TextInput";
+import TextInput from "../../components/fields/SearchInput";
 import { useStyles } from "./useStyles";
 import { useSearchParams } from "react-router-dom";
 import useGetCallCenterLeadListQuery from "./queries/useGetCallCenterLeadListQuery";
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import { CustomButton, DealsTable, Modal } from "../../components";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import CreateLeadForm from "./CreateLeadForm";
 
 function OnHold() {
@@ -18,6 +18,8 @@ function OnHold() {
     pageSize: Number(searchParams.get("pageSize")) || 10,
     searchText: searchParams.get("searchText") ?? "",
   });
+  const TextInputRef = useRef<HTMLInputElement | null>(null);
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -30,20 +32,14 @@ function OnHold() {
       return searchParams;
     });
   };
-  const handlePageChange = (pageNumber: number) => {
-    setSearchParams((searchParams) => {
-      searchParams.set("pageNumber", String(pageNumber));
-      return searchParams;
-    });
-  };
 
-  const handlePerRowsChange = (pageSize: number, pageNumber: number) => {
-    setSearchParams((searchParams) => {
-      searchParams.set("pageNumber", String(pageNumber));
-      searchParams.set("pageSize", String(pageSize));
-      return searchParams;
-    });
+  const handleRefresh = () => {
+    setSearchParams({});
+    if (TextInputRef.current) {
+      TextInputRef.current.value = "";
+    }
   };
+  
   return (
     <Box sx={styles.CallCenterMainBoxStyles}>
       <Box sx={styles.CallCenterSecondaryBoxStyles}>
@@ -65,6 +61,7 @@ function OnHold() {
               placeholder="Search"
               value={searchParams.get("searchText") ?? ""}
               onChange={debounce(handleInputChange, 1000)}
+              TextInputRef={TextInputRef}
             />
           </Box>
           <CustomButton
@@ -83,11 +80,10 @@ function OnHold() {
       </Box>
       <DealsTable
         list={deals?.content}
-        handlePageChange={handlePageChange}
-        handlePerRowsChange={handlePerRowsChange}
         totalRows={deals?.totalElements}
         isPending={isFetching}
         type="call-center"
+        handleRefresh={handleRefresh}
       />
       <Modal
         title={"Create Lead"}

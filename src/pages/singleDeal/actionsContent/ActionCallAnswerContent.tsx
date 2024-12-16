@@ -4,9 +4,7 @@ import { responseTypeNext } from "../../../data";
 import { RadioGroupComponent } from "../../../components";
 
 function ActionCallAnswerContent() {
-  const [selectedValue, setSelectedValue] = useState<string>(
-    responseTypeNext[0].id
-  );
+  const [selectedValue, setSelectedValue] = useState<string>("");
   const { setCallActionStep } = useAction();
 
   const handleClick = () => {
@@ -18,7 +16,7 @@ function ActionCallAnswerContent() {
       list={responseTypeNext}
       setState={setSelectedValue}
       handleClick={handleClick}
-      defaultValue={responseTypeNext[0].label}
+      state={selectedValue}
     />
   );
 }

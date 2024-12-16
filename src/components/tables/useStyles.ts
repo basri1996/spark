@@ -29,6 +29,6 @@ export const useStyles = () => {
         },
       },
     },
-    tableBoxStyles: { cursor: "pointer" },
+    tableBoxStyles: { cursor: "pointer", color: "#5080ff", fontWeight:500 },
   };
 };

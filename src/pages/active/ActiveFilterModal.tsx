@@ -31,14 +31,21 @@ function ActiveFilterModal({ setExpandedModalVisible }: Props) {
 
   const handleApply = () => {
     setExpandedModalVisible(false);
+    const applyHelper = (key: string, value: unknown) => {
+      if (Array.isArray(value)) {
+        searchParams.delete(key);
+        value.forEach((element) => {
+          searchParams.append(key, element);
+        });
+      } else {
+        searchParams.set(key, String(value));
+      }
+    };
     setSearchParams((searchParams) => {
-      searchParams.delete("progressSubStatuses");
-      searchParams.delete("productCodes");
-      params.productCodes.forEach((code) => {
-        searchParams.append("productCodes", code);
-      });
-      params.progressSubStatuses.forEach((status) => {
-        searchParams.append("progressSubStatuses", status);
+      Object.entries(params).forEach(([key, value]) => {
+        if ((Array.isArray(value) && value?.length) || value) {
+          applyHelper(key, value);
+        }
       });
       return searchParams;
     });

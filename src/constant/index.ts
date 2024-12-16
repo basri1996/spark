@@ -4,8 +4,19 @@ const activeDealsUrl = "api/deals/progress";
 const statusesUrl = "api/deals/statuses";
 const productUrl = "api/products";
 const branchesUrl = "api/branches";
-const subStatusUrl ="api/deals/sub-statuses"
-const fileuploadUrl ="api/deals/upload"
+const channelUrl = "api/channels";
+const usersUrl = "api/users";
+const subStatusUrl = "api/deals/sub-statuses";
+const fileuploadUrl = "api/deals/upload";
 
-
-export { dealsUrl, activeDealsUrl, statusesUrl, productUrl, branchesUrl,subStatusUrl,fileuploadUrl};
+export {
+  dealsUrl,
+  activeDealsUrl,
+  statusesUrl,
+  productUrl,
+  branchesUrl,
+  subStatusUrl,
+  fileuploadUrl,
+  channelUrl,
+  usersUrl,
+};

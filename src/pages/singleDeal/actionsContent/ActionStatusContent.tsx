@@ -17,7 +17,7 @@ function ActionStatusContent() {
   const list = statusType?.filter(
     (el) => el.id !== cachedData?.deal.dealStatus
   );
-  const [selectedValue, setSelectedValue] = useState<string>(list[0].id);
+  const [selectedValue, setSelectedValue] = useState<string>("");
   const { setActionType } = useAction();
   const { mutate: changeStatus } = useChangeStatusMutation();
 
@@ -39,15 +39,13 @@ function ActionStatusContent() {
   };
 
   return (
-    <>
-      <RadioGroupComponent
-        list={list}
-        setState={setSelectedValue}
-        handleClick={handleClick}
-        isFinished={true}
-        defaultValue={list[0].label}
-      />
-    </>
+    <RadioGroupComponent
+      list={list}
+      setState={setSelectedValue}
+      handleClick={handleClick}
+      isFinished={true}
+      state={selectedValue}
+    />
   );
 }
 

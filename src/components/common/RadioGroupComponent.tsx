@@ -20,7 +20,7 @@ type Props = {
   setState: Dispatch<SetStateAction<string>> | (([key]: string) => void);
   isFinished?: boolean;
   handleClick: () => void;
-  defaultValue: string;
+  state?:any
 };
 
 export default function RadioGroupComponent({
@@ -28,7 +28,8 @@ export default function RadioGroupComponent({
   setState,
   handleClick,
   isFinished = false,
-  defaultValue,
+  state
+  
 }: Props) {
   const { callActionStep, setCallActionStep } = useAction();
   const BackButtonVisible = callActionStep === "CLIENT_ANSWERED";
@@ -41,7 +42,7 @@ export default function RadioGroupComponent({
   return (
     <>
       <RadioGroup
-        defaultValue={defaultValue}
+      
         name="radio-buttons-group"
         onChange={handleChange}
       >
@@ -69,7 +70,7 @@ export default function RadioGroupComponent({
             Back
           </CustomButton>
         )}
-        <CustomButton onClick={handleClick}>
+        <CustomButton onClick={handleClick} disabled={!state}>
           {isFinished ? "Finish" : "Next"}
         </CustomButton>
       </Box>

@@ -60,7 +60,7 @@ function CallActionContent() {
         setState={setSelectedValue}
         handleClick={handleClick}
         isFinished={notAnswered}
-        defaultValue={responseType[0].label}
+        state={selectedValue}
       />,
     ],
     ["CLIENT_ANSWERED", <ActionCallAnswerContent />],

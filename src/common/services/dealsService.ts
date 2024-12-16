@@ -3,24 +3,10 @@ import { dealsUrl, activeDealsUrl } from "../../constant";
 import { serializeParams } from "../../utils";
 import { IDealsListParams } from "../types";
 
-export const getDealsList = async ({
-  dealStatuses,
-  ownerExternalIds,
-  pageNumber,
-  pageSize,
-  progressStatuses,
-  searchText,
-}: IDealsListParams) => {
-  const response = await api.get(dealsUrl, {
-    params: {
-      dealStatuses,
-      ownerExternalIds,
-      pageNumber,
-      pageSize,
-      progressStatuses,
-      searchText,
-    },
-  });
+export const getDealsList = async (params: IDealsListParams) => {
+
+  const response = await api.get(`${dealsUrl}?${serializeParams(params)}`);
+
   return response?.data;
 };
 

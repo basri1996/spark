@@ -36,13 +36,16 @@ function MultiSelect({
     }
   }, [setMaxWidth]);
 
-  const transformRenderValue=(selected:any) =>{
-    return selected.map((el:any)=>(
-      options.find((item)=>(
-        item[inputValueKey] === el
-      )
-    )[content])).join(", ")
-  }
+  const transformRenderValue = (selected: any) => {
+    return options?.length
+      ? selected
+          .map(
+            (el: any) =>
+              options.find((item) => item[inputValueKey] === el)[content]
+          )
+          .join(", ")
+      : "";
+  };
 
   return (
     <FormControl fullWidth>
@@ -54,7 +57,7 @@ function MultiSelect({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         input={<OutlinedInput label={label} />}
-        renderValue={(selected) => transformRenderValue(selected) }
+        renderValue={(selected) => transformRenderValue(selected)}
         MenuProps={{
           PaperProps: {
             style: {

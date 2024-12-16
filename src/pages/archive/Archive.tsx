@@ -2,7 +2,8 @@ import { Box, debounce, Typography } from "@mui/material";
 import { useStyles } from "./useStyles";
 import useGetDealsQuery from "../../common/queries/useGetDealsListQuery";
 import { useSearchParams } from "react-router-dom";
-import { DealsTable, TextInput } from "../../components";
+import { DealsTable, SearchInput } from "../../components";
+import { useRef } from "react";
 
 function Archive() {
   const styles = useStyles();
@@ -13,7 +14,7 @@ function Archive() {
     pageNumber: Number(searchParams.get("pageNumber")) || 1,
     pageSize: Number(searchParams.get("pageSize")) || 10,
   });
-
+  const TextInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -26,47 +27,38 @@ function Archive() {
       return searchParams;
     });
   };
-  const handlePageChange = (pageNumber: number) => {
-    setSearchParams((searchParams) => {
-      searchParams.set("pageNumber",String(pageNumber))
-      return searchParams
-    });
-  };
 
-  const handlePerRowsChange = (pageSize: number, pageNumber: number) => {
-    setSearchParams((searchParams) => {
-      searchParams.set("pageNumber",String(pageNumber))
-      searchParams.set("pageSize",String(pageSize))
-      return searchParams
-    });
+  const handleRefresh = () => {
+    setSearchParams({});
+    if (TextInputRef.current) {
+      TextInputRef.current.value = "";
+    }
   };
 
   return (
     <Box sx={styles.ArchiveMainBoxStyles}>
       <Box sx={styles.ArchiveSecondaryBoxStyles}>
-        <Box
-          sx={styles.ArchiveTypographyBox}
-        >
+        <Box sx={styles.ArchiveTypographyBox}>
           <Typography variant="h6" sx={styles.ArchiveTypographyStyles}>
             Archive
           </Typography>
         </Box>
         <Box sx={styles.ArchiveInputBox}>
-          <TextInput
+          <SearchInput
             type="text"
             placeholder="Search"
             value={searchParams.get("searchText") ?? ""}
             onChange={debounce(handleInputChange, 1000)}
+            TextInputRef={TextInputRef}
           />
         </Box>
       </Box>
       <DealsTable
         list={deals?.content}
-        handlePageChange={handlePageChange}
-        handlePerRowsChange={handlePerRowsChange}
         totalRows={deals?.totalElements}
         isPending={isPending}
         type="archive"
+        handleRefresh={handleRefresh}
       />
     </Box>
   );

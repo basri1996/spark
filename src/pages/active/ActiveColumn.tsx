@@ -54,6 +54,22 @@ const ActiveColumn = React.forwardRef(
       <Card sx={styles.SrollebleCard}>
         <Box sx={styles.CardMainBoxStyles}>
           <Typography sx={styles.CardTypographyStyles}>{label}</Typography>
+
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              border: "1px solid white",
+              borderRadius: "50%",
+              color: "white",
+              paddingX: "7px",
+              height: "30px",
+              backgroundColor: "#5080ff",
+            }}
+          >
+            {dealsState.length}
+          </Box>
         </Box>
         <DndContext
           sensors={sensors}

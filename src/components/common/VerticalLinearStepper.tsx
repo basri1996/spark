@@ -3,9 +3,9 @@ import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
-import StepContent from "@mui/material/StepContent";
 import Typography from "@mui/material/Typography";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
+import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
 import { IActivity } from "../../common/types";
 
 export default function VerticalLinearStepper({
@@ -13,10 +13,18 @@ export default function VerticalLinearStepper({
 }: {
   steps: IActivity[];
 }) {
-  const [activeStep, setActiveStep] = React.useState<number>(0);
+  const [activity, setActivity] = React.useState<number[]>([]);
 
-  const handleClick = (index: number) => {
-    setActiveStep(index);
+  const handleClick = (id: number) => {
+    setActivity((prev) => {
+      const value = [...prev];
+      if (value.includes(id)) {
+        return value.filter((el) => el !== id);
+      } else {
+        value.push(id);
+        return value;
+      }
+    });
   };
   return (
     <Box
@@ -26,9 +34,9 @@ export default function VerticalLinearStepper({
         },
       }}
     >
-      <Stepper activeStep={activeStep} orientation="vertical">
+      <Stepper orientation="vertical">
         {steps.length ? (
-          steps.map((step, index) => (
+          steps.map((step) => (
             <Step key={step.activityType} completed={true}>
               <Box
                 sx={{
@@ -39,18 +47,34 @@ export default function VerticalLinearStepper({
                 }}
               >
                 <StepLabel>{step.activityLabel}</StepLabel>
-                <MoreHorizIcon
-                  onClick={() => handleClick(index)}
-                  sx={{ cursor: "pointer" }}
-                />
+                {step.comment &&
+                  (!activity.includes(step.id) ? (
+                    <KeyboardArrowDownRoundedIcon
+                      onClick={() => handleClick(step.id)}
+                      sx={{ cursor: "pointer" }}
+                    />
+                  ) : (
+                    <KeyboardArrowUpRoundedIcon
+                      onClick={() => handleClick(step.id)}
+                      sx={{ cursor: "pointer" }}
+                    />
+                  ))}
               </Box>
-              <StepContent>
-                <Typography>{step.comment}</Typography>
-              </StepContent>
+
+              {activity.includes(step.id) && (
+                <Typography
+                  sx={{
+                    fontSize: "14px",
+                    paddingLeft: "30px",
+                  }}
+                >
+                  {step.comment}
+                </Typography>
+              )}
             </Step>
           ))
         ) : (
-          <Step key={"noItems"} completed={false}>
+          <Step key={"noItems"} completed={true}>
             <StepLabel>
               <Typography sx={{ fontSize: "14px" }}>
                 არ არის ხელმისაწვდომი აქტივობები

@@ -9,7 +9,7 @@ import {
 
 interface Props {
   closeSidebar: () => void;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   title: string;
   to: string;
 }

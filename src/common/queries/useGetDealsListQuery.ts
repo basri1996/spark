@@ -3,32 +3,16 @@ import { IDealsListParams, IDealsResponseTypes } from "../types";
 import { AxiosError } from "axios";
 import { getDealsList } from "../services/dealsService";
 
-const useGetDealsListQuery = ({
-  dealStatuses,
-  ownerExternalIds,
-  pageNumber,
-  pageSize,
-  progressStatuses,
-  searchText,
-}: IDealsListParams) => {
+const useGetDealsListQuery = (params: IDealsListParams) => {
   return useQuery<IDealsResponseTypes, AxiosError, IDealsResponseTypes>({
     queryFn: () =>
       getDealsList({
-        dealStatuses,
-        ownerExternalIds,
-        pageNumber: pageNumber - 1,
-        pageSize,
-        progressStatuses,
-        searchText,
+        ...params,
+        pageNumber: params.pageNumber - 1,
       }),
     queryKey: [
       "useGetDealsListQuery",
-      dealStatuses,
-      ownerExternalIds,
-      pageNumber,
-      pageSize,
-      progressStatuses,
-      searchText,
+      ...Object.entries(params).map(([_, value]) => value),
     ],
   });
 };

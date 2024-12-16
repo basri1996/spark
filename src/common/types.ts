@@ -61,6 +61,13 @@ export interface IDealsListParams {
   pageSize: number;
   progressStatuses?: string;
   searchText?: string;
+  products?: string[];
+  channels?: string[];
+  users?: string[];
+  amountFrom?: number | null;
+  amountTo?: number | null;
+  dateFrom?: string | null;
+  dateTo?: string | null ;
 }
 
 export interface Attribute {
@@ -132,6 +139,4 @@ export interface ISubStatusObject {
   order: number;
 }
 
-
 export type ISubStatusResponse = ISubStatusObject[];
-

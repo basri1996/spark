@@ -40,11 +40,14 @@ export const useStyles = () => {
     },
 
     CardMainBoxStyles: {
-      paddingX: "70px",
       paddingY: "10px",
       backgroundColor: (theme: Theme) => theme.palette.background.default,
       borderTopLeftRadius: "4px",
       borderTopRightRadius: "4px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems :"center",
+      gap:"7px"
     },
     SrollebleCard: {
       width: "300px",
@@ -52,7 +55,7 @@ export const useStyles = () => {
       backgroundColor: "rgba(241, 245, 249, 1)",
       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
       transition: "box-shadow 0.3s ease",
-      minHeight:"70vh"
+      minHeight: "70vh",
     },
 
     CardTypographyStyles: {
@@ -83,7 +86,6 @@ export const useStyles = () => {
       cursor: "pointer",
       boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
       transition: "box-shadow 0.5s ease",
-
       background: "rgba(241, 245, 249, 1)",
       "&:hover": {
         background: "white",
@@ -134,9 +136,8 @@ export const useStyles = () => {
       alignItems: "center",
       flexDirection: "column",
       gap: "20px",
-      width: "500px",
+      width: "400px",
     },
     ActiveFilterButtonBox: { display: "flex", justifyContent: "flex-end" },
-  
   };
 };

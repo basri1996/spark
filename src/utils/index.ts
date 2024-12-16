@@ -1,8 +1,10 @@
+import { api } from "../config/api";
+
 type Params = {
-    [key: string]: string | string[] | object;
+    [key: string]: any ;
   };
-  
-  export const serializeParams = (paramsObj: Params): string => {
+
+  export const serializeParams = (paramsObj:Params ): string => {
     const params = new URLSearchParams();
   
     Object.entries(paramsObj).forEach(([key, value]) => {
@@ -11,9 +13,15 @@ type Params = {
       } else if (typeof value === "object" && value !== null) {
         params.append(key, JSON.stringify(value));
       } else if (value) {
-        params.append(key, value as string);
+        params.append(key, String(value) as string);
       }
     });
     return params.toString();
   };
+
+  export const refreshToken =(e:any)=>{
+    api.defaults.headers.common[
+      "Authorization"
+    ] = `Bearer ${e.token!}`
+  }
   

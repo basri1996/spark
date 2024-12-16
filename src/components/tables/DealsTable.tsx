@@ -1,16 +1,11 @@
-import {
-  Box,
-  Card,
-  Tooltip,
-  Typography,
-} from "@mui/material";
+import { Box, Card, Tooltip, Typography } from "@mui/material";
 import { useState } from "react";
 import DataTable from "react-data-table-component";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import { useStyles } from "./useStyles";
 import { IDealsResponseObjectTypes } from "../../common/types";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import CustomPagination from "../common/CustomPagination";
 import CustomButton from "../common/CustomButton";
@@ -21,18 +16,19 @@ function DealsTable({
   totalRows,
   isPending,
   type,
+  handleRefresh
 }: {
   list: IDealsResponseObjectTypes[] | undefined;
   totalRows: number | undefined;
   isPending: boolean;
   type: string;
+  handleRefresh:any;
 }) {
   const styles = useStyles();
   const navigate = useNavigate();
   const [expandedRowId, setExpandedRowId] = useState<string | number | null>(
     null
   );
-  const [searchParams, setSearchParams] = useSearchParams();
 
   const columns = [
     {
@@ -70,21 +66,21 @@ function DealsTable({
       id: "Name",
       selector: (row: IDealsResponseObjectTypes) => row.name,
       sortable: true,
-      grow: 6,
+      
     },
     {
       name: "Id Number",
       id: "Id Number",
       selector: (row: IDealsResponseObjectTypes) => row.personalId,
       sortable: true,
-      grow: 4,
+     
     },
     {
       name: "Phone Number",
       id: "Phone Number",
       selector: (row: IDealsResponseObjectTypes) => row.mobilePhone,
       sortable: true,
-      grow: 3,
+     
     },
     {
       name: "Channel",
@@ -93,45 +89,12 @@ function DealsTable({
       sortable: true,
     },
     {
-      name: "Created At",
-      id: "Created At",
-      selector: (row: IDealsResponseObjectTypes) =>
-        moment(row.createDate).format("DD.MM.YY - HH:mm"),
+      name: "Product",
+      id: "Product",
+      selector: (row: IDealsResponseObjectTypes) => row.product,
       sortable: true,
-      grow: 3,
+      
     },
-    {
-      name: "Owner",
-      width: "67px",
-      cell: (row: IDealsResponseObjectTypes) => (
-        <Tooltip
-          title={row?.owner?.fullName || "N/A"}
-          sx={{
-            background: (theme) => theme.palette.background.default,
-            color: (theme) => theme.palette.text.secondary,
-          }}
-        >
-          <Box
-            sx={{
-              color: (theme) => theme.palette.text.secondary,
-              background: (theme) => theme.palette.primary.main,
-              borderRadius: "50%",
-              width: "40px",
-              height: "40px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            {row?.owner?.shortName.toUpperCase() || "N/A"}
-          </Box>
-        </Tooltip>
-      ),
-    },
-  ];
-
-  const ExandedColumns = [
-    ...columns.filter((el) => el.name !== "Owner"),
     {
       name: "Amount",
       selector: (row: IDealsResponseObjectTypes) => row.amount,
@@ -141,6 +104,44 @@ function DealsTable({
       name: "Currency",
       selector: (row: IDealsResponseObjectTypes) => row.ccy,
       sortable: true,
+    },
+
+    {
+      name: "Created At",
+      id: "Created At",
+      selector: (row: IDealsResponseObjectTypes) =>
+        moment(row.createDate).format("DD.MM.YY - HH:mm"),
+      sortable: true,
+   
+    },
+    {
+      name: "Owner",
+      width: "67px",
+      cell: (row: IDealsResponseObjectTypes) =>
+        row?.owner?.fullName && (
+          <Tooltip
+            title={row?.owner?.fullName || "N/A"}
+            sx={{
+              background: (theme) => theme.palette.background.default,
+              color: (theme) => theme.palette.text.secondary,
+            }}
+          >
+            <Box
+              sx={{
+                color: (theme) => theme.palette.text.secondary,
+                background: (theme) => theme.palette.primary.main,
+                borderRadius: "50%",
+                width: "40px",
+                height: "40px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {row?.owner?.shortName.toUpperCase() || "N/A"}
+            </Box>
+          </Tooltip>
+        ),
     },
   ];
 
@@ -166,7 +167,6 @@ function DealsTable({
               justifyContent: "center",
               alignItems: "center",
               gap: 2,
-             
             }}
           >
             <Typography sx={{ fontWeight: 600, fontSize: "16px" }}>
@@ -174,7 +174,7 @@ function DealsTable({
             </Typography>
             <CustomButton
               sx={{ borderRadius: 2 }}
-              onClick={() => setSearchParams({})}
+              onClick={handleRefresh}
             >
               <RefreshIcon />
             </CustomButton>
@@ -188,7 +188,7 @@ function DealsTable({
           if (data?.leads) {
             return (
               <DataTable
-                columns={ExandedColumns}
+                columns={columns}
                 data={data.leads}
                 noTableHead={true}
                 customStyles={styles.tableMainStyles}
