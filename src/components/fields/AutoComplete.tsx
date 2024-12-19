@@ -1,14 +1,18 @@
+import React, { forwardRef } from "react";
 import { Autocomplete, Box, CircularProgress, TextField } from "@mui/material";
 import InfiniteScroll from "../common/InfiniteScroll";
 
-
+interface User {
+  externalId: string;
+  fullName: string;
+}
 
 interface AutoCompleteProps {
   fetchNextPage: () => void;
   hasNextPage: boolean;
   isPending: boolean;
-  data: any,
-  setSearchterm: any;
+  data: User[];
+  setSearchterm: (val: string) => void;
   searchTerm: string;
   value: string | null;
   setValue: any
@@ -24,49 +28,63 @@ function AutoComplete({
   value,
   setValue,
 }: AutoCompleteProps) {
-  const CustomListbox = (props: any) => (
-    <InfiniteScroll
-      load={fetchNextPage}
-      hasMore={hasNextPage}
-      loader={
+  // Define the custom listbox component that uses InfiniteScroll
+  const ListboxWithInfiniteScroll = forwardRef<HTMLDivElement, any>(function ListboxWithInfiniteScroll(props, ref) {
+    return (
+      <InfiniteScroll
+        load={fetchNextPage}
+        hasMore={hasNextPage}
+        isLoading={isPending}
+        loader={
+          <Box
+            key="circularProgress"
+            sx={{
+              scrollbarWidth: "none",
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <CircularProgress size="25px" color="inherit" />
+          </Box>
+        }
+        endMessage=""
+        scrollContainerRef={ref as React.RefObject<HTMLDivElement>}
+      >
         <Box
-          key="circularProgress"
+          ref={ref}
+          {...props}
           sx={{
-            scrollbarWidth: "none",
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            minHeight: 200,
+            maxHeight: 300,
+            overflowY: "auto",
           }}
         >
-          <CircularProgress size="25px" color="inherit" />
+          {props.children}
         </Box>
-      }
-      endMessage={""}
-      isLoading={isPending}
-    >
-      <Box {...props}>{props.children}</Box>
-    </InfiniteScroll>
-  );
+      </InfiniteScroll>
+    );
+  });
 
   return (
     <Autocomplete
-      value={data ? data.find((option:any) => option.externalId === value) || null : null}
+      value={data ? data.find((option) => option.externalId === value) || null : null}
       onChange={(event, newValue) => {
-        setValue(newValue ? newValue.externalId : null); // store only externalId
+        setValue(newValue ? newValue.externalId : null);
       }}
       inputValue={searchTerm}
       onInputChange={(event, newInputValue) => {
         setSearchterm(newInputValue);
       }}
       id="controllable-states-demo"
-      options={data || []} // default to empty array if data is null
+      options={data || []}
       sx={{ width: 300 }}
-      getOptionLabel={(option) => option?.fullName || ""} // safely handle undefined option
-      renderInput={(params) => <TextField {...params} label="მომხმარებლები" />}
+      getOptionLabel={(option) => option?.fullName || ""}
+      renderInput={(params) => <TextField {...params} label="Users" />}
       slotProps={{
         listbox: {
-          component: CustomListbox,
+          component: ListboxWithInfiniteScroll, // Use the component here
         },
       }}
     />
