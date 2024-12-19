@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
 
 function ControlledCommentInput({
@@ -23,12 +23,24 @@ function ControlledCommentInput({
           rows={4}
           label={label}
           fullWidth
+          error={!!error}
           sx={{
             height: "100px",
             "& .MuiInputBase-root": {
               paddingTop: "30px",
             },
           }}
+          helperText={
+            <Typography
+              sx={{
+                color: "#FD7171",
+                fontSize: "14px",
+                paddingX: "3px",
+              }}
+            >
+              {error?.message}
+            </Typography>
+          }
         />
       )}
     />

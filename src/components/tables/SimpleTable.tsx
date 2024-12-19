@@ -44,6 +44,12 @@ function SimpleTable({ list }: { list: Lead[] }) {
       sortable: true,
     },
     {
+      name: "Product",
+      id: "Product",
+      selector: (row: Lead) => row.product,
+      sortable: true,
+    },
+    {
       name: "Currency",
       selector: (row: Lead) => row.ccy,
       sortable: true,

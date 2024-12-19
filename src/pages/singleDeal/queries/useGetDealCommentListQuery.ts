@@ -7,6 +7,7 @@ const useGetDealCommentListQuery = ({ id }: { id: string | undefined }) => {
   return useQuery<ICommentResponse, AxiosError, ICommentResponse>({
     queryFn: () => getComments(id ?? ""),
     queryKey: ["useGetDealCommentListQuery", id],
+    
   });
 };
 

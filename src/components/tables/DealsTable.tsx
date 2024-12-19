@@ -5,7 +5,7 @@ import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import { useStyles } from "./useStyles";
 import { IDealsResponseObjectTypes } from "../../common/types";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import moment from "moment";
 import CustomPagination from "../common/CustomPagination";
 import CustomButton from "../common/CustomButton";
@@ -16,19 +16,21 @@ function DealsTable({
   totalRows,
   isPending,
   type,
-  handleRefresh
+  handleRefresh,
 }: {
   list: IDealsResponseObjectTypes[] | undefined;
   totalRows: number | undefined;
   isPending: boolean;
   type: string;
-  handleRefresh:any;
+  handleRefresh: any;
 }) {
   const styles = useStyles();
   const navigate = useNavigate();
   const [expandedRowId, setExpandedRowId] = useState<string | number | null>(
     null
   );
+  const location = useLocation();
+  const prevUrl = location.pathname + location.search;
 
   const columns = [
     {
@@ -54,7 +56,10 @@ function DealsTable({
 
       cell: (row: IDealsResponseObjectTypes) => (
         <Box
-          onClick={() => row?.dealStatus && navigate(`/${type}/${row.id}`)}
+          onClick={() =>
+            row?.dealStatus &&
+            navigate(`/${type}/${row.id}`, { state: { prevUrl } })
+          }
           sx={styles.tableBoxStyles}
         >
           {row.id}
@@ -66,21 +71,18 @@ function DealsTable({
       id: "Name",
       selector: (row: IDealsResponseObjectTypes) => row.name,
       sortable: true,
-      
     },
     {
       name: "Id Number",
       id: "Id Number",
       selector: (row: IDealsResponseObjectTypes) => row.personalId,
       sortable: true,
-     
     },
     {
       name: "Phone Number",
       id: "Phone Number",
       selector: (row: IDealsResponseObjectTypes) => row.mobilePhone,
       sortable: true,
-     
     },
     {
       name: "Channel",
@@ -93,7 +95,6 @@ function DealsTable({
       id: "Product",
       selector: (row: IDealsResponseObjectTypes) => row.product,
       sortable: true,
-      
     },
     {
       name: "Amount",
@@ -112,7 +113,6 @@ function DealsTable({
       selector: (row: IDealsResponseObjectTypes) =>
         moment(row.createDate).format("DD.MM.YY - HH:mm"),
       sortable: true,
-   
     },
     {
       name: "Owner",
@@ -172,10 +172,7 @@ function DealsTable({
             <Typography sx={{ fontWeight: 600, fontSize: "16px" }}>
               ჩანაწერი არ მოიძებნა
             </Typography>
-            <CustomButton
-              sx={{ borderRadius: 2 }}
-              onClick={handleRefresh}
-            >
+            <CustomButton sx={{ borderRadius: 2 }} onClick={handleRefresh}>
               <RefreshIcon />
             </CustomButton>
           </Box>

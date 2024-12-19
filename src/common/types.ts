@@ -61,7 +61,7 @@ export interface IDealsListParams {
   pageSize: number;
   progressStatuses?: string;
   searchText?: string;
-  products?: string[];
+  productCodes?: string[];
   channels?: string[];
   users?: string[];
   amountFrom?: number | null;

@@ -1,7 +1,7 @@
 import { Box, Card, Paper, Typography } from "@mui/material";
 import { ColumnCardTypes } from "./types";
 import { useStyles } from "./useStyles";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { subStatusUi } from "../../data";
@@ -19,7 +19,8 @@ function ActiveColumnCard({
   const navigate = useNavigate();
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id });
-
+  const location = useLocation();
+  const prevUrl = location.pathname + location.search;
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
@@ -32,7 +33,7 @@ function ActiveColumnCard({
       style={style}
       {...attributes}
       {...listeners}
-      onClick={() => navigate(`/active/${id}`)}
+      onClick={() => navigate(`/active/${id}`, { state: { prevUrl } })}
     >
       <Typography sx={styles.ColumnCardTypographyStyles}>{name}</Typography>
       <Typography sx={{ color: "#4e4e4e" }}>{product}</Typography>

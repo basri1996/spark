@@ -17,7 +17,6 @@ import {
   SideBarList,
   SideBarMainBox,
   SideBarSecondaryBox,
-  StyledNavLink,
 } from "./useStyles";
 import { useAuth } from "../../context/AuthContext";
 import { AccordionComponent, SideBarItem } from "../../components";

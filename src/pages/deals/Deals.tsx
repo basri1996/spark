@@ -26,7 +26,7 @@ function Deals() {
     searchText: searchParams.get("searchText") ?? "",
     pageNumber: Number(searchParams.get("pageNumber")) || 1,
     pageSize: Number(searchParams.get("pageSize")) || 10,
-    products: searchParams.getAll("products"),
+    productCodes: searchParams.getAll("productCodes"),
     channels: searchParams.getAll("channels"),
     users: searchParams.getAll("users"),
     amountFrom: Number(searchParams.get("amountFrom")) || null,

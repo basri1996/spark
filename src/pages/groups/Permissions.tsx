@@ -48,11 +48,11 @@ function Permissions() {
         sx={{
           display: "flex",
           flexWrap: "wrap",
-          overflowY: "scroll",
+          overflowY: "auto",
           paddingX: "10px",
           gap: 1,
           height: "80px",
-          paddingTop: "4px",
+          paddingY: "4px",
           "&::-webkit-scrollbar": {
             width: "6px",
           },

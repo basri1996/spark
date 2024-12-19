@@ -8,6 +8,9 @@ const channelUrl = "api/channels";
 const usersUrl = "api/users";
 const subStatusUrl = "api/deals/sub-statuses";
 const fileuploadUrl = "api/deals/upload";
+const groupsUrl = 'api/groups'
+const allUsersUrl = "api/users/all";
+
 
 export {
   dealsUrl,
@@ -19,4 +22,6 @@ export {
   fileuploadUrl,
   channelUrl,
   usersUrl,
+  groupsUrl,
+  allUsersUrl
 };

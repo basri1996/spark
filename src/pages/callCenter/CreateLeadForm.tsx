@@ -33,10 +33,10 @@ function CreateLeadForm({
         setIsCreateModalVisible(false);
       },
       onError: (error) => {
-        methods.setError("name", {
-          type: "manual",
-          message: "Name is required",
-        });
+        // methods.setError("name", {
+        //   type: "manual",
+        //   message: "Name is required",
+        // });
       },
     });
   };

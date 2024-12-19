@@ -39,6 +39,8 @@ export { default as Loader } from "./common/Loader";
 export { default as ErrorPage } from "./common/ErrorPage";
 export { default as AccordionComponent } from "./common/AccordionComponent";
 export { default as CustomButton } from "./common/CustomButton";
+export { default as InfiniteScroll } from "./common/InfiniteScroll";
+
 
 
 

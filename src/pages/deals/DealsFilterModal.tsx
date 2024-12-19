@@ -15,7 +15,7 @@ interface Props {
 function DealsFilterModal({ setExpandedModalVisible }: Props) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [params, setParams] = useState({
-    products: searchParams.getAll("products"),
+    productCodes: searchParams.getAll("productCodes"),
     channels: searchParams.getAll("channels"),
     users: searchParams.getAll("users"),
     amountFrom: searchParams.get("amountFrom"),
@@ -82,8 +82,8 @@ function DealsFilterModal({ setExpandedModalVisible }: Props) {
       <MultiSelect
         options={productList || []}
         label="პროდუქტი"
-        value={params.products}
-        onChange={handleChangeDirectValue("products")}
+        value={params.productCodes}
+        onChange={handleChangeDirectValue("productCodes")}
         inputValueKey="productCode"
       />
       <Box

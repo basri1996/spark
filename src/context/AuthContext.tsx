@@ -4,9 +4,11 @@ import React, {
   useContext,
   ReactNode,
   useEffect,
+  useRef,
 } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useKeycloak } from "@react-keycloak/web";
+import { api } from "../config/api";
 
 interface AuthContextProps {
   principal: any;
@@ -19,22 +21,38 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const { keycloak, initialized } = useKeycloak();
-  const [principal, setPrincipal] = useState<any>({
-    resource_access: { spark: { roles: ["lead-manager"] } },
-  });
+  const [principal, setPrincipal] = useState<any>({resource_access:{spark:{roles:["lead-manager"]}}});
+  const inactivityTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // useEffect(() => {
-  //   if (initialized && !keycloak?.authenticated) {
-  //     keycloak?.login({ redirectUri: window.location.origin });
-  //   }
+  useEffect(() => {
+    if (initialized && !keycloak?.authenticated) {
+      keycloak?.login({ redirectUri: window.location.origin });
+    }
 
-  //   if (initialized && keycloak?.authenticated) {
-  //     setPrincipal(jwtDecode(keycloak.token!));
+    if (initialized && keycloak?.authenticated) {
+      setPrincipal(jwtDecode(keycloak.token!));
+    }
+  }, [initialized, keycloak]);
 
-  //   }
-  // }, [initialized, keycloak]);
+  useEffect(() => {
+    const responseInterceptor = api.interceptors.request.use((config) => {
+      if (inactivityTimerRef.current) {
+        clearTimeout(inactivityTimerRef.current);
+      }
+      inactivityTimerRef.current = setTimeout(() => {
+        keycloak.logout();
+      }, 15 * 60 * 1000);
+      return config;
+    });
+    return () => {
+      api.interceptors.response.eject(responseInterceptor);
+      if (inactivityTimerRef.current) {
+        clearTimeout(inactivityTimerRef.current);
+      }
+    };
+  }, [keycloak]);
 
-  // if (!keycloak?.authenticated) return null;
+  if (!keycloak?.authenticated) return null;
 
   const roleChecker = (role: string) => {
     return principal?.resource_access?.spark?.roles?.includes(role) ?? false;

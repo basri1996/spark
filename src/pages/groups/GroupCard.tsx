@@ -4,25 +4,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { CustomButton } from "../../components";
 import { useNavigate } from "react-router-dom";
 
-const GroupCard = () => {
-  const navigate = useNavigate()
-
-  const role = {
-    name: "Admin",
-    description:
-      "The administrator of the admin panel has the possibility to add users, assign roles and disable or enable permissions for the specific users.",
-    permissions: [
-      { name: "View : Dashboard" },
-      { name: "Manage : Users" },
-      { name: "Edit : Settings" },
-      { name: "View : Dashboard" },
-      { name: "View : Dashboard" },
-      { name: "View : Dashboard" },
-      { name: "View : Dashboard" },
-      { name: "View : Dashboard" },
-      { name: "View : Dashboard" },
-    ],
-  };
+const GroupCard = ({ name, description ,id}: any) => {
+  const navigate = useNavigate();
 
   return (
     <Card
@@ -34,7 +17,6 @@ const GroupCard = () => {
         flexDirection: "column",
         gap: 3,
       }}
-      onClick={()=>navigate("/groups/wfwafwa")}
     >
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <Typography
@@ -46,9 +28,7 @@ const GroupCard = () => {
             textOverflow: "ellipsis",
             whiteSpace: "nowrap",
           }}
-        >
-          {role.name}
-        </Typography>
+        >{name}</Typography>
         <Box sx={{ display: "flex", gap: 1 }}>
           <IconButton
             color="primary"
@@ -71,7 +51,7 @@ const GroupCard = () => {
           flexWrap: "wrap",
           gap: 1,
           height: "100px",
-          overflowY: "scroll",
+          overflowY: "auto",
         }}
       >
         <Typography
@@ -82,11 +62,13 @@ const GroupCard = () => {
             lineHeight: "1.625",
           }}
         >
-          {role.description ?? ""}
+          {description ?? ""}
         </Typography>
       </Box>
       <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-        <CustomButton>View more</CustomButton>
+        <CustomButton onClick={() => navigate(`/groups/${id}`)}>
+          View more
+        </CustomButton>
       </Box>
     </Card>
   );

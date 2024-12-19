@@ -22,7 +22,7 @@ function ActionSighContent() {
     comment: string;
     BRANCH_ID: string;
   }>({
-    radioValue: dealAcceptType[0].id,
+    radioValue: "",
     nextStep: "",
     comment: "",
     BRANCH_ID: "",
@@ -105,6 +105,7 @@ function ActionSighContent() {
           setState={handleSet}
           handleClick={handleClick}
           isFinished={false}
+          state={values.radioValue}
         />
       )}
     </React.Fragment>
