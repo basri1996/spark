@@ -37,8 +37,8 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
 
     observerRef.current = new IntersectionObserver(handleIntersect, {
       root: scrollContainerRef.current,
-      rootMargin: "0px",
-      threshold: 1.0,
+      rootMargin: "100px", // Start loading a bit before reaching the bottom
+      threshold: 0,
     });
 
     if (sentinelRef.current) {
@@ -55,7 +55,8 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
   return (
     <>
       {children}
-      <div ref={sentinelRef} />
+      {/* Sentinel element at the bottom */}
+      <div ref={sentinelRef} style={{ height: 1 }} />
       {isLoading && loader}
       {!(hasMore || isLoading) && endMessage}
     </>

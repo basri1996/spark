@@ -15,7 +15,7 @@ interface AutoCompleteProps {
   setSearchterm: (val: string) => void;
   searchTerm: string;
   value: string | null;
-  setValue: any;
+  setValue: any
 }
 
 export default function AutoComplete({
@@ -28,50 +28,46 @@ export default function AutoComplete({
   value,
   setValue,
 }: AutoCompleteProps) {
-  // Custom listbox component that uses InfiniteScroll
-  const ListboxWithInfiniteScroll = (props: any) => {
-    const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-    return (
-      <InfiniteScroll
-        load={fetchNextPage}
-        hasMore={hasNextPage}
-        isLoading={isPending}
-        loader={
-          <Box
-            key="circularProgress"
-            sx={{
-              scrollbarWidth: "none",
-              width: "100%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <CircularProgress size="25px" color="inherit" />
-          </Box>
-        }
-        endMessage=""
-        scrollContainerRef={scrollContainerRef}
-      >
+  const ListboxWithInfiniteScroll = (props: any) => (
+    <InfiniteScroll
+      load={fetchNextPage}
+      hasMore={hasNextPage}
+      isLoading={isPending}
+      loader={
         <Box
-          ref={scrollContainerRef}
-          {...props}
+          key="circularProgress"
           sx={{
-            minHeight: 200,
-            maxHeight: 300,
-            overflowY: "auto",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            py: 1,
           }}
         >
-          {props.children}
+          <CircularProgress size="25px" color="inherit" />
         </Box>
-      </InfiniteScroll>
-    );
-  };
+      }
+      endMessage={<Box sx={{ p: 1, textAlign: "center" }}>No more data</Box>}
+      scrollContainerRef={scrollContainerRef}
+    >
+      <Box
+        ref={scrollContainerRef}
+        {...props}
+        sx={{
+          maxHeight: 200,
+          overflowY: "auto",
+        }}
+      >
+        {props.children}
+      </Box>
+    </InfiniteScroll>
+  );
 
   return (
     <Autocomplete
-      value={data ? data.find((option) => option.externalId === value) || null : null}
+      disablePortal
+      value={data.find((option) => option.externalId === value) || null}
       onChange={(event, newValue) => {
         setValue(newValue ? newValue.externalId : null);
       }}
@@ -80,7 +76,6 @@ export default function AutoComplete({
         setSearchterm(newInputValue);
       }}
       options={data || []}
-      sx={{ width: 300 }}
       getOptionLabel={(option) => option?.fullName || ""}
       renderInput={(params) => <TextField {...params} label="Users" />}
       slotProps={{
