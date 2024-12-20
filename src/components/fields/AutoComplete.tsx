@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+"use client";
 import { Autocomplete, Box, CircularProgress, TextField } from "@mui/material";
-import InfiniteScroll from "../common/InfiniteScroll";
+import { InfiniteScroll } from "../common/InfiniteScroll";
 
 interface User {
   externalId: string;
@@ -15,7 +15,7 @@ interface AutoCompleteProps {
   setSearchterm: (val: string) => void;
   searchTerm: string;
   value: string | null;
-  setValue: any
+  setValue: any;
 }
 
 export default function AutoComplete({
@@ -28,41 +28,40 @@ export default function AutoComplete({
   value,
   setValue,
 }: AutoCompleteProps) {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  const ListboxWithInfiniteScroll = (props: any) => (
-    <InfiniteScroll
-      load={fetchNextPage}
-      hasMore={hasNextPage}
-      isLoading={isPending}
-      loader={
+  const ListboxWithInfiniteScroll = (props: any) => {
+    return (
+      <InfiniteScroll
+        load={fetchNextPage}
+        hasMore={hasNextPage}
+        isLoading={isPending}
+        loader={
+          <Box
+            key="circularProgress"
+            sx={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              py: 1,
+            }}
+          >
+            <CircularProgress size="25px" color="inherit" />
+          </Box>
+        }
+        endMessage={<Box sx={{ textAlign: "center", p: 1 }}>No more data</Box>}
+      >
         <Box
-          key="circularProgress"
+          {...props}
           sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            py: 1,
+            maxHeight: 200, 
+            overflowY: "auto",
           }}
         >
-          <CircularProgress size="25px" color="inherit" />
+          {props.children}
         </Box>
-      }
-      endMessage={<Box sx={{ p: 1, textAlign: "center" }}>No more data</Box>}
-      scrollContainerRef={scrollContainerRef}
-    >
-      <Box
-        ref={scrollContainerRef}
-        {...props}
-        sx={{
-          maxHeight: 200,
-          overflowY: "auto",
-        }}
-      >
-        {props.children}
-      </Box>
-    </InfiniteScroll>
-  );
+      </InfiniteScroll>
+    );
+  };
 
   return (
     <Autocomplete
@@ -75,7 +74,7 @@ export default function AutoComplete({
       onInputChange={(event, newInputValue) => {
         setSearchterm(newInputValue);
       }}
-      options={data || []}
+      options={data}
       getOptionLabel={(option) => option?.fullName || ""}
       renderInput={(params) => <TextField {...params} label="Users" />}
       slotProps={{
@@ -83,6 +82,7 @@ export default function AutoComplete({
           component: ListboxWithInfiniteScroll,
         },
       }}
+      sx={{ width: 300 }}
     />
   );
 }

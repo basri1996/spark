@@ -1,44 +1,41 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
-interface InfiniteScrollProps {
+type InfiniteScrollProps = {
   load: () => void;
   hasMore: boolean;
   isLoading: boolean;
   loader: React.ReactNode;
-  children: React.ReactNode;
-  endMessage: React.ReactNode;
-  scrollContainerRef: React.RefObject<HTMLDivElement>;
-}
+  children?: React.ReactNode;
+  endMessage?: React.ReactNode;
+};
 
-const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
+export const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
   load,
   hasMore,
-  isLoading,
   loader,
   children,
   endMessage,
-  scrollContainerRef,
+  isLoading,
 }) => {
   const sentinelRef = useRef<HTMLDivElement>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   const handleIntersect = useCallback(
     (entries: IntersectionObserverEntry[]) => {
-      if (!hasMore || isLoading) return;
+      if (isLoading || !hasMore) return;
+
       if (entries[0].isIntersecting) {
         load();
       }
     },
-    [hasMore, isLoading, load]
+    [isLoading, load, hasMore]
   );
 
   useEffect(() => {
-    if (!scrollContainerRef.current) return;
-
     observerRef.current = new IntersectionObserver(handleIntersect, {
-      root: scrollContainerRef.current,
-      rootMargin: "100px", // Start loading a bit before reaching the bottom
-      threshold: 0,
+      root: null,
+      rootMargin: "0px",
+      threshold: 1.0,
     });
 
     if (sentinelRef.current) {
@@ -50,17 +47,14 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
         observerRef.current.disconnect();
       }
     };
-  }, [handleIntersect, scrollContainerRef]);
+  }, [handleIntersect]);
 
   return (
     <>
       {children}
-      {/* Sentinel element at the bottom */}
-      <div ref={sentinelRef} style={{ height: 1 }} />
+      <div ref={sentinelRef} />
       {isLoading && loader}
       {!(hasMore || isLoading) && endMessage}
     </>
   );
 };
-
-export default InfiniteScroll;
