@@ -1,6 +1,6 @@
-"use client";
+import React, { useRef } from "react";
 import { Autocomplete, Box, CircularProgress, TextField } from "@mui/material";
-import { InfiniteScroll } from "../common/InfiniteScroll";
+import InfiniteScroll from "../common/InfiniteScroll";
 
 interface User {
   externalId: string;
@@ -10,12 +10,12 @@ interface User {
 interface AutoCompleteProps {
   fetchNextPage: () => void;
   hasNextPage: boolean;
-  isPending: boolean;
-  data: User[];
+  isPending: boolean;   // Indicates if the next page is being fetched
+  data: User[];         // Flattened array of all loaded users
   setSearchterm: (val: string) => void;
   searchTerm: string;
   value: string | null;
-  setValue: any;
+  setValue:any;
 }
 
 export default function AutoComplete({
@@ -28,40 +28,44 @@ export default function AutoComplete({
   value,
   setValue,
 }: AutoCompleteProps) {
-  const ListboxWithInfiniteScroll = (props: any) => {
-    return (
-      <InfiniteScroll
-        load={fetchNextPage}
-        hasMore={hasNextPage}
-        isLoading={isPending}
-        loader={
-          <Box
-            key="circularProgress"
-            sx={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              py: 1,
-            }}
-          >
-            <CircularProgress size="25px" color="inherit" />
-          </Box>
-        }
-        endMessage={<Box sx={{ textAlign: "center", p: 1 }}>No more data</Box>}
-      >
+
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // Custom listbox that uses InfiniteScroll
+  const ListboxWithInfiniteScroll = (props: any) => (
+    <InfiniteScroll
+      load={fetchNextPage}
+      hasMore={hasNextPage}
+      isLoading={isPending}
+      loader={
         <Box
-          {...props}
+          key="circularProgress"
           sx={{
-            maxHeight: 200, 
-            overflowY: "auto",
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            py: 1,
           }}
         >
-          {props.children}
+          <CircularProgress size="25px" color="inherit" />
         </Box>
-      </InfiniteScroll>
-    );
-  };
+      }
+      endMessage={<Box sx={{ textAlign: "center", p: 1 }}>No more data</Box>}
+      scrollContainerRef={scrollContainerRef}
+    >
+      <Box
+        ref={scrollContainerRef}
+        {...props}
+        sx={{
+          maxHeight: 200, // Only maxHeight as requested
+          overflowY: "auto",
+        }}
+      >
+        {props.children}
+      </Box>
+    </InfiniteScroll>
+  );
 
   return (
     <Autocomplete

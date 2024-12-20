@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <ReactKeycloakProvider authClient={keycloak}  >
+  <ReactKeycloakProvider authClient={keycloak} onTokens={refreshToken}  >
     <QueryClientProvider client={queryClient} >
       <ThemeProvider theme={theme}>
         <RouterProvider

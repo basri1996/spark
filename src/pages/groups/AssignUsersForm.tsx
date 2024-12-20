@@ -22,7 +22,6 @@ function AssignUsersForm() {
  
   return (
     <Box sx={{ display: "flex", gap: 2 }}>
-      
       <AutoComplete
         fetchNextPage={groupsFetchNextPage}
         hasNextPage={groupsHasNextPage}

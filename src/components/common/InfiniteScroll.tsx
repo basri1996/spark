@@ -1,21 +1,24 @@
-import { useCallback, useEffect, useRef } from "react";
+"use client";
+import React, { useCallback, useEffect, useRef } from "react";
 
-type InfiniteScrollProps = {
+interface InfiniteScrollProps {
   load: () => void;
   hasMore: boolean;
   isLoading: boolean;
   loader: React.ReactNode;
   children?: React.ReactNode;
   endMessage?: React.ReactNode;
-};
+  scrollContainerRef: React.RefObject<HTMLDivElement>;
+}
 
-export const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
+const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
   load,
   hasMore,
   loader,
   children,
   endMessage,
   isLoading,
+  scrollContainerRef,
 }) => {
   const sentinelRef = useRef<HTMLDivElement>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -23,7 +26,6 @@ export const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
   const handleIntersect = useCallback(
     (entries: IntersectionObserverEntry[]) => {
       if (isLoading || !hasMore) return;
-
       if (entries[0].isIntersecting) {
         load();
       }
@@ -32,8 +34,10 @@ export const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
   );
 
   useEffect(() => {
+    if (!scrollContainerRef.current) return;
+
     observerRef.current = new IntersectionObserver(handleIntersect, {
-      root: null,
+      root: scrollContainerRef.current,
       rootMargin: "0px",
       threshold: 1.0,
     });
@@ -47,7 +51,7 @@ export const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
         observerRef.current.disconnect();
       }
     };
-  }, [handleIntersect]);
+  }, [handleIntersect, scrollContainerRef]);
 
   return (
     <>
@@ -58,3 +62,5 @@ export const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
     </>
   );
 };
+
+export default InfiniteScroll
