@@ -1,3 +1,4 @@
+"use client";
 import React, { useRef } from "react";
 import { Autocomplete, Box, CircularProgress, TextField } from "@mui/material";
 import InfiniteScroll from "../common/InfiniteScroll";
@@ -10,15 +11,15 @@ interface User {
 interface AutoCompleteProps {
   fetchNextPage: () => void;
   hasNextPage: boolean;
-  isPending: boolean;   // Indicates if the next page is being fetched
-  data: User[];         // Flattened array of all loaded users
+  isPending: boolean;
+  data: User[];
   setSearchterm: (val: string) => void;
   searchTerm: string;
   value: string | null;
-  setValue:any;
+  setValue: any;
 }
 
-export default function AutoComplete({
+export default function AutoCompleteComponent({
   fetchNextPage,
   hasNextPage,
   isPending,
@@ -28,11 +29,10 @@ export default function AutoComplete({
   value,
   setValue,
 }: AutoCompleteProps) {
-
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const sentinelRef = useRef<HTMLDivElement>(null); // Sentinel placed inside Box
 
-  // Custom listbox that uses InfiniteScroll
-  const ListboxWithInfiniteScroll = (props: any) => (
+  const ListboxComponent = (props: any) => (
     <InfiniteScroll
       load={fetchNextPage}
       hasMore={hasNextPage}
@@ -41,7 +41,6 @@ export default function AutoComplete({
         <Box
           key="circularProgress"
           sx={{
-            width: "100%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -53,16 +52,19 @@ export default function AutoComplete({
       }
       endMessage={<Box sx={{ textAlign: "center", p: 1 }}>No more data</Box>}
       scrollContainerRef={scrollContainerRef}
+      sentinelRef={sentinelRef}
     >
       <Box
         ref={scrollContainerRef}
         {...props}
         sx={{
-          maxHeight: 200, // Only maxHeight as requested
+          maxHeight: 200,
           overflowY: "auto",
         }}
       >
         {props.children}
+        {/* Sentinel placed INSIDE the scrollable container, not in InfiniteScroll */}
+        <div ref={sentinelRef} style={{ height: 1 }} />
       </Box>
     </InfiniteScroll>
   );
@@ -83,7 +85,7 @@ export default function AutoComplete({
       renderInput={(params) => <TextField {...params} label="Users" />}
       slotProps={{
         listbox: {
-          component: ListboxWithInfiniteScroll,
+          component: ListboxComponent,
         },
       }}
       sx={{ width: 300 }}

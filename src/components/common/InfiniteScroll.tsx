@@ -8,19 +8,20 @@ interface InfiniteScrollProps {
   loader: React.ReactNode;
   children?: React.ReactNode;
   endMessage?: React.ReactNode;
-  scrollContainerRef: React.RefObject<HTMLDivElement>;
+  scrollContainerRef: React.RefObject<HTMLDivElement>; 
+  sentinelRef: React.RefObject<HTMLDivElement>;          // Sentinel ref passed from outside
 }
 
 const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
   load,
   hasMore,
+  isLoading,
   loader,
   children,
   endMessage,
-  isLoading,
   scrollContainerRef,
+  sentinelRef,
 }) => {
-  const sentinelRef = useRef<HTMLDivElement>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   const handleIntersect = useCallback(
@@ -34,31 +35,27 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
   );
 
   useEffect(() => {
-    if (!scrollContainerRef.current) return;
+    if (!scrollContainerRef.current || !sentinelRef.current) return;
 
     observerRef.current = new IntersectionObserver(handleIntersect, {
       root: scrollContainerRef.current,
-      rootMargin: "0px",
       threshold: 1.0,
     });
 
-    if (sentinelRef.current) {
-      observerRef.current.observe(sentinelRef.current);
-    }
+    observerRef.current.observe(sentinelRef.current);
 
     return () => {
       if (observerRef.current) {
         observerRef.current.disconnect();
       }
     };
-  }, [handleIntersect, scrollContainerRef]);
+  }, [handleIntersect, scrollContainerRef, sentinelRef]);
 
   return (
     <>
       {children}
-      <div ref={sentinelRef} />
       {isLoading && loader}
-      {!(hasMore || isLoading) && endMessage}
+      {!hasMore && !isLoading && endMessage}
     </>
   );
 };
