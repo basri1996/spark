@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { useRef } from "react";
 import { Autocomplete, Box, CircularProgress, TextField } from "@mui/material";
 import InfiniteScroll from "../common/InfiniteScroll";
 
@@ -15,10 +15,10 @@ interface AutoCompleteProps {
   setSearchterm: (val: string) => void;
   searchTerm: string;
   value: string | null;
-  setValue: any
+  setValue: any;
 }
 
-function AutoComplete({
+export default function AutoComplete({
   fetchNextPage,
   hasNextPage,
   isPending,
@@ -28,8 +28,10 @@ function AutoComplete({
   value,
   setValue,
 }: AutoCompleteProps) {
-  // Define the custom listbox component that uses InfiniteScroll
-  const ListboxWithInfiniteScroll = forwardRef<HTMLDivElement, any>(function ListboxWithInfiniteScroll(props, ref) {
+  // Custom listbox component that uses InfiniteScroll
+  const ListboxWithInfiniteScroll = (props: any) => {
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+
     return (
       <InfiniteScroll
         load={fetchNextPage}
@@ -50,10 +52,10 @@ function AutoComplete({
           </Box>
         }
         endMessage=""
-        scrollContainerRef={ref as React.RefObject<HTMLDivElement>}
+        scrollContainerRef={scrollContainerRef}
       >
         <Box
-          ref={ref}
+          ref={scrollContainerRef}
           {...props}
           sx={{
             minHeight: 200,
@@ -65,7 +67,7 @@ function AutoComplete({
         </Box>
       </InfiniteScroll>
     );
-  });
+  };
 
   return (
     <Autocomplete
@@ -77,18 +79,15 @@ function AutoComplete({
       onInputChange={(event, newInputValue) => {
         setSearchterm(newInputValue);
       }}
-      id="controllable-states-demo"
       options={data || []}
       sx={{ width: 300 }}
       getOptionLabel={(option) => option?.fullName || ""}
       renderInput={(params) => <TextField {...params} label="Users" />}
       slotProps={{
         listbox: {
-          component: ListboxWithInfiniteScroll, // Use the component here
+          component: ListboxWithInfiniteScroll,
         },
       }}
     />
   );
 }
-
-export default AutoComplete;

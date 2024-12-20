@@ -24,12 +24,12 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
 
   const handleIntersect = useCallback(
     (entries: IntersectionObserverEntry[]) => {
-      if (isLoading || !hasMore) return;
+      if (!hasMore || isLoading) return;
       if (entries[0].isIntersecting) {
         load();
       }
     },
-    [isLoading, load, hasMore]
+    [hasMore, isLoading, load]
   );
 
   useEffect(() => {
